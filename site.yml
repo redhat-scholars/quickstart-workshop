@@ -4,7 +4,7 @@ runtime:
 site:
   title: Custom Console Workshop
   url: https://redhat-scholars.github.io/quickstart-workshop
-  start_page: template-tutorial::index.adoc
+  start_page: quickstart-workshop::index.adoc
 
 content:
   sources:
