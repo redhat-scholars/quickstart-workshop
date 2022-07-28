@@ -22,6 +22,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "start": "gulp",
     "dev": "gulp",
     "clean": "gulp clean",
     "workshop": "gulp workshopSite"
