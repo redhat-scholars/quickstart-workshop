@@ -5,14 +5,14 @@
 [.text-center.strong]
 == Console Customization 
 
-The purpose of this workshop is to explore several of the new OpenShift Console Customization and extensibility features. Build clusters that are easier to use and more welcoming for new users.
+The purpose of this workshop is to explore several of the new OpenShift Console Customization and extensibility features. Learn to build clusters that are easier to use and more welcoming for new users.
 
 == Scoring
 Your team will receive points for completing each of the following challenges:
 1. Installation of Web Terminal
 2. Installation of Quickstart
 3. Customization of Login screen
-4. Use of Helm chart
+4. Use a Helm chart
 5. Provide a demo of your solution
 
 Scoring doc is located here: LINK_TBD
