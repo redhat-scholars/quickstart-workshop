@@ -1,7 +1,21 @@
-* xref:01-setup.adoc[1. Setup]
-** xref:01-setup.adoc#prerequisite[Prerequisites]
-** xref:01-setup.adoc#minikube[Setup Minikube]
+* xref:index.adoc[Introduction]
 
-* xref:02-deploy.adoc[2. Deploy Service]
-** xref:02-deploy.adoc#package[Build Service]
-** xref:02-deploy.adoc#deploy[Deploy Dervice]
+* xref:01-cluster-access.adoc[1. Cluster Access]
+** xref:01-cluster-access.adoc#cluster_access[Accessing the Cluster]
+** xref:01-cluster-access.adoc#cli_tools[Command Line Tools]
+
+* xref:02-web-terminal.adoc[2. Web Terminal]
+** xref:02-web-terminal.adoc#install[Installation]
+** xref:02-web-terminal.adoc#basics[Basics]
+
+* xref:02-web-terminal.adoc[Green]
+** xref:02-web-terminal.adoc#install[Installation]
+** xref:02-web-terminal.adoc#basics[Basics]
+
+* xref:02-web-terminal.adoc[Red]
+** xref:02-web-terminal.adoc#install[Installation]
+** xref:02-web-terminal.adoc#basics[Basics]
+
+* xref:02-web-terminal.adoc[Blue]
+** xref:02-web-terminal.adoc#install[Installation]
+** xref:02-web-terminal.adoc#basics[Basics]

@@ -7,24 +7,23 @@
 
 The purpose of this workshop is to explore several of the new OpenShift Console Customization and extensibility features. Learn to build clusters that are easier to use and more welcoming for new users.
 
-== Scoring
-Your team will receive points for completing each of the following challenges:
-1. Installation of Web Terminal
-2. Installation of Quickstart
-3. Customization of Login screen
-4. Use a Helm chart
-5. Provide a demo of your solution
-
-Scoring doc is located here: LINK_TBD
-
 [.tiles.browse]
-== Browse modules
+== Workshop Outline
+Complete each of the following challenges:
 
 [.tile]
-.xref:01-setup.adoc[Get Started]
-* xref:01-setup.adoc#minikube[Minikube]
+.xref:01-cluster-access.adoc[Get Started]
+* xref:01-cluster-access.adoc#[Cluster Access]
 
 [.tile]
-.xref:02-deploy.adoc[Deploying]
-* xref:02-deploy.adoc#package[Package the Application]
-* xref:02-deploy.adoc#deploy[Deploy the Application]
+.xref:02-web-terminal.adoc[Web Terminal]
+* xref:02-web-terminal.adoc#install[Installing the Web Terminal operator]
+* xref:02-web-terminal.adoc#test[Web Terminal Basics]
+
+Coming Soon:
+
+. Installation of Quickstarts
+. Customization of Login screen
+. Provide a demo of your solution
+
+Scoring doc is located here: LINK
