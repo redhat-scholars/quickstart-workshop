@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/01-setup.html</loc>
-<lastmod>2022-07-28T20:54:39.683Z</lastmod>
+<loc>https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/01-cluster-access.html</loc>
+<lastmod>2022-08-03T18:39:59.712Z</lastmod>
 </url>
 <url>
-<loc>https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/02-deploy.html</loc>
-<lastmod>2022-07-28T20:54:39.683Z</lastmod>
+<loc>https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/02-web-terminal.html</loc>
+<lastmod>2022-08-03T18:39:59.712Z</lastmod>
+</url>
+<url>
+<loc>https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/03-blue.html</loc>
+<lastmod>2022-08-03T18:39:59.712Z</lastmod>
+</url>
+<url>
+<loc>https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/03-green.html</loc>
+<lastmod>2022-08-03T18:39:59.712Z</lastmod>
+</url>
+<url>
+<loc>https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/03-red.html</loc>
+<lastmod>2022-08-03T18:39:59.712Z</lastmod>
 </url>
 <url>
 <loc>https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/index.html</loc>
-<lastmod>2022-07-28T20:54:39.683Z</lastmod>
+<lastmod>2022-08-03T18:39:59.712Z</lastmod>
 </url>
 </urlset>
