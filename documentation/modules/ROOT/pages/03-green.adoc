@@ -2,7 +2,43 @@
 include::_attributes.adoc[]
 
 [#service]
-== The Service
+== Green Team Cluster
+
+Welcome to the green team cluster!
+
+This cluster demonstrates how to:
+
+* Customise the tools incldued in the Web Terminal that you deployed in a prior section.
+* Use link:https://developers.redhat.com/topics/gitops[GitOps] to automatically synchronise your customisations to the OpenShift cluster:
+    . Console notification banners using the link:https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-notification-banners_customizing-web-console[ConsoleNotification CRD].
+    . YAML samples for link:https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/[CustomResources] using the link:https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#adding-yaml-examples-to-kube-resources_customizing-web-console[ConsoleYAMLSample CRD].
+    . Custom links to using the link:https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-links_customizing-web-console[ConsoleLink CRD].
+    . 
+* Using a link:https://docs.openshift.com/container-platform/4.10/monitoring/managing-metrics.html#specifying-how-a-service-is-monitored_managing-metrics[ServiceMonitor CR] to collect custom application metrics.
+
+
+== Getting Started with a Customised Web Terminal
+
+Customising the Web Terminal tooling image enables you to provide your developers with specific versions of tools to use directly in the OpenShift Web Console.
+
+The source code for the default tooling container image is available in the link:https://github.com/redhat-developer/web-terminal-tooling[redhat-developer/web-terminal-tooling] repository on GitHub.
+
+In this guide you'll customise the Web Terminal tooling container using a pre-built image.
+
+. Login to your OpenShift cluster as a user that has the `cluster-admin` role.
++
+TIP: You can apply the `cluster-admin` role to any user using the `oc adm policy add-cluster-role-to-user cluster-admin <username>` command. The user running this command must have the `cluster-admin` role themselves.
+. Select the *Administrator* view from the top left.
+. Expand the *Home* pane in the sidemenu and select the *Search* section.
+. Choose `openshift-operators` in the *Project* dropdown at the top of the screen.
+. Use the *Resources* dropdown to find the *DevWorkspaceTemplate* and select it.
++
+image::/quickstart-workshop/_images/green/devworkspacetemplate-listing.png[]
+. Select the *web-terminal-tooling* item in the resulting list, and navigate to the *YAML* tab on the subsequent screen.
++
+image::/quickstart-workshop/_images/green/devworkspacetemplate-yaml.png[]
+. Modify the *image* property in the listed *container* to use the `quay.io/evanshortiss/summit-connect-2022-web-terminal:latest` container image.
+
 
 The code:
 
