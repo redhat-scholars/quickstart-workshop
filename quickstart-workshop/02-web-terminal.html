@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Deploy Service :: Custom Console Workshop</title>
+    <title>Web Terminal :: Custom Console Workshop</title>
     <link rel="canonical" href="https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/02-web-terminal.html">
     <link rel="prev" href="01-cluster-access.html">
     <link rel="next" href="03-green.html">
@@ -62,7 +62,7 @@
     <a class="nav-link" href="01-cluster-access.html#cluster_access">Accessing the Cluster</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="01-cluster-access.html#cli_tools">Command Line Tools</a>
+    <a class="nav-link" href="01-cluster-access.html#scoring">Scoring Guidelines</a>
   </li>
 </ul>
   </li>
@@ -136,81 +136,98 @@
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Deploy Service</h1>
+<h1 class="page">Web Terminal</h1>
 <div class="sect1">
-<h2 id="service"><a class="anchor" href="#service"></a>The Service</h2>
+<h2 id="installation"><a class="anchor" href="#installation"></a>Installing the Web Terminal operator</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The code:</p>
+<p>To install the Web Terminal operator, open the OperatorHub located under the Operators side menu.</p>
 </div>
-<div class="listingblock lines_7 console-input">
+<div class="imageblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class Main {
-
-    public static void main(String[] args) {
-
-    }
-
-}
-
-./mvnw compile</code></pre>
+<img src="_images/terminal/operatorhub-open.png" alt="Open OperatorHub">
+</div>
+</div>
+<div class="paragraph">
+<p>Enter "Web Terminal" into the OperatorHub search box, then select the "Web Terminal" tile from the list of results.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/terminal/operatorhub-search.png" alt="Search for Web Terminal">
+</div>
+</div>
+<div class="paragraph">
+<p>Click "Install" to initiate the installation process.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/terminal/operatorhub-view.png" alt="View the Web Terminal Operator">
+</div>
+</div>
+<div class="paragraph">
+<p>Confirm the default installation details by clicking "Install".</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/terminal/operatorhub-install.png" alt="Click Install to Confirm">
+</div>
+</div>
+<div class="paragraph">
+<p>OpenShift will now install the Web Terminal Operator in the <code>openshift-operators</code> namespace.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/terminal/operatorhub-installing.png" alt="Installation in Progress&#8230;&#8203;">
+</div>
+</div>
+<div class="paragraph">
+<p>Wait a few mins for the installation to proceed&#8230;&#8203;</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/terminal/operatorhub-installed.png" alt="Installation Complete">
+</div>
+</div>
+<div class="paragraph">
+<p>After the installation has completed, you will be able to find the Web Terminal Operator in the list of installed operators.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/terminal/operatorhub-detail.png" alt="Web Terminal Operator detail view">
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="package"><a class="anchor" href="#package"></a>Packaging the Service</h2>
+<h2 id="basics"><a class="anchor" href="#basics"></a>Web Terminal basics</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can package the next bash script:</p>
+<p>Reload your web browser to reveal a new Web Terminal button in the header menu.  Click on it to open a new Web Terminal.</p>
 </div>
-<div class="listingblock">
+<div class="imageblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">#!/bin/sh
-echo "Hello World"</code></pre>
+<img src="_images/terminal/terminal-open.png" alt="Open the Web Terminal">
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="deploy"><a class="anchor" href="#deploy"></a>Deploy the Service</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>And then you can deploy the service and execute commands inside:</p>
-</div>
-<div class="paragraph">
-<p>Check that the pod is up and running:</p>
-</div>
-<div class="listingblock lines_space console-input">
+<div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl get pods</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl version</code></pre>
+</div>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc version</code></pre>
+</div>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc whoami</code></pre>
 </div>
 </div>
 <div class="listingblock console-output">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">NAME                        READY   STATUS    RESTARTS   AGE
-apps   1/1     Running   0          5s</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">opentlc-mgr</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Then let&#8217;s go into the running pod to execute some commands:</p>
-</div>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl exec -ti apps /bin/bash</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Change the pod name with your pod name.
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>
