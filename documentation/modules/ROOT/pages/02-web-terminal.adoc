@@ -1,43 +1,66 @@
-= Deploy Service
+= Web Terminal
 include::_attributes.adoc[]
 
-[#service]
-== The Service
+[#installation]
+== Installing the Web Terminal operator
 
-The code:
+To install the Web Terminal operator, open the OperatorHub located under the Operators side menu.
 
-[.lines_7]
+image::terminal/operatorhub-open.png[Open OperatorHub]
+
+Enter "Web Terminal" into the OperatorHub search box, then select the "Web Terminal" tile from the list of results.
+
+image::terminal/operatorhub-search.png[Search for Web Terminal]
+
+Click "Install" to initiate the installation process.
+
+image::terminal/operatorhub-view.png[View the Web Terminal Operator]
+
+Confirm the default installation details by clicking "Install".
+
+image::terminal/operatorhub-install.png[Click Install to Confirm]
+
+OpenShift will now install the Web Terminal Operator in the `openshift-operators` namespace.
+
+image::terminal/operatorhub-installing.png[Installation in Progress...]
+
+Wait a few mins for the installation to proceed...
+
+image::terminal/operatorhub-installed.png[Installation Complete]
+
+After the installation has completed, you will be able to find the Web Terminal Operator in the list of installed operators.
+
+image::terminal/operatorhub-detail.png[Web Terminal Operator detail view]
+
+[#basics]
+== Web Terminal basics
+
+:adminname: opentlc-mgr
+
+Reload your web browser to reveal a new Web Terminal button in the header menu.  Click on it to open a new Web Terminal.
+
+image::terminal/terminal-open.png[Open the Web Terminal]
+
 [.console-input]
-[source, java,subs="+macros,+attributes"]
+[source,bash, subs="+macros,+attributes"]
 ----
-public class Main {
-
-    public static void main(String[] args) {
-
-    } 
-
-}
-
-./mvnw compile
+kubectl version
 ----
 
-[#package]
-== Packaging the Service
-
-You can package the next bash script:
-
-[source,bash,subs="+macros,+attributes"]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
 ----
-include::example$run.sh[]
+oc version
 ----
 
-[#deploy]
-== Deploy the Service
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+oc whoami
+----
 
-And then you can deploy the service and execute commands inside:
-
-:podname: apps
-
-include::partial$exec_pod.adoc[]
-
-:!podname:
+[.console-output]
+[source,bash, subs="+macros,+attributes"]
+----
+{adminname}
+----

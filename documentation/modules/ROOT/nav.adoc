@@ -2,7 +2,7 @@
 
 * xref:01-cluster-access.adoc[1. Cluster Access]
 ** xref:01-cluster-access.adoc#cluster_access[Accessing the Cluster]
-** xref:01-cluster-access.adoc#cli_tools[Command Line Tools]
+** xref:01-cluster-access.adoc#scoring[Scoring Guidelines]
 
 * xref:02-web-terminal.adoc[2. Web Terminal]
 ** xref:02-web-terminal.adoc#install[Installation]
