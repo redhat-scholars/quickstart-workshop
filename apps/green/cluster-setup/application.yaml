@@ -11,8 +11,8 @@ spec:
   source:
     directory:
       recurse: true
-    path: nodejs/k8s
-    repoURL: https://github.com/evanshortiss/summit-connect-hackathon-2022
+    path: /apps/green/nodejs-app/k8s
+    repoURL: https://github.com/redhat-scholars/quickstart-workshop/
     targetRevision: main
   syncPolicy:
     syncOptions:
