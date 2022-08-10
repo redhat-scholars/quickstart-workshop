@@ -3,19 +3,19 @@
 This cluster demonstrates how to:
 
 * Customise the tools incldued in the Web Terminal that you deployed in a prior section.
-* Use link:https://developers.redhat.com/topics/gitops[GitOps] to automatically synchronise your customisations to the OpenShift cluster:
-    . Console notification banners using the link:https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-notification-banners_customizing-web-console[ConsoleNotification CRD].
-    . YAML samples for link:https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/[CustomResources] using the link:https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#adding-yaml-examples-to-kube-resources_customizing-web-console[ConsoleYAMLSample CRD].
-    . Custom links to using the link:https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-links_customizing-web-console[ConsoleLink CRD].
+* Use link:https://developers.redhat.com/topics/gitops[GitOps^] to automatically synchronise your customisations to the OpenShift cluster:
+    . Console notification banners using the link:https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-notification-banners_customizing-web-console[ConsoleNotification CRD^].
+    . YAML samples for link:https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/[CustomResources^] using the link:https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#adding-yaml-examples-to-kube-resources_customizing-web-console[ConsoleYAMLSample CRD^].
+    . Custom links to using the link:https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-links_customizing-web-console[ConsoleLink CRD^].
     . 
-* Using a link:https://docs.openshift.com/container-platform/4.10/monitoring/managing-metrics.html#specifying-how-a-service-is-monitored_managing-metrics[ServiceMonitor CR] to collect custom application metrics.
+* Using a link:https://docs.openshift.com/container-platform/4.10/monitoring/managing-metrics.html#specifying-how-a-service-is-monitored_managing-metrics[ServiceMonitor CR^] to collect custom application metrics.
 
 
 == Customise the Web Terminal
 
 Customising the Web Terminal tooling image enables you to provide your developers with specific versions of tools to use directly in the OpenShift Web Console.
 
-The source code for the default tooling container image is available in the link:https://github.com/redhat-developer/web-terminal-tooling[redhat-developer/web-terminal-tooling] repository on GitHub.
+The source code for the default tooling container image is available in the link:https://github.com/redhat-developer/web-terminal-tooling[redhat-developer/web-terminal-tooling^] repository on GitHub.
 
 In this guide you'll customise the Web Terminal tooling container using a pre-built image.
 
@@ -29,12 +29,12 @@ TIP: You posses the `cluster-admin` role if you can view Projects starting with 
 . Choose `openshift-operators` in the *Project* dropdown at the top of the screen.
 . Use the *Resources* dropdown to find the *DevWorkspaceTemplate* and select it.
 +
-image::green/devworkspacetemplate-listing.png[]
+image::green/devworkspacetemplate-listing.png[DevWorkspaceTemplate listing in the OpenShift Web Console]
 . Select the *web-terminal-tooling* item in the resulting list, and navigate to the *YAML* tab on the subsequent screen.
 . Add the line `web-terminal.redhat.com/unmanaged-state: 'true'` to the *annotations* in the YAML.
 . Change the *image* property in the listed *container* to use the `quay.io/evanshortiss/summit-connect-2022-web-terminal:latest` container image.
 +
-image::green/devworkspacetemplate-yaml.png[]
+image::green/devworkspacetemplate-yaml.png[DevWorkspaceTemplate YAML in the OpenShift Web Console]
 
 === Use the Customised Web Terminal Container Image
 
@@ -55,7 +55,7 @@ This will delete Pods that were created using the old Web Terminal container ima
 
 The ASCII art displayed by the customised Web Terminal is shown in the image below.
 
-image::green/custom-web-terminal.png[]
+image::green/custom-web-terminal.png[A customised Web Terminal showing ASCII Art]
 
 == Customising the OpenShift Web Console
 
@@ -63,14 +63,14 @@ The OpenShift Web Console provides extensive customistion options. These are doc
 
 === Console Notification Banners
 
-A notification banner can be added to the OpenShift Console using a link:https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-notification-banners_customizing-web-console[ConsoleNotification CRD]. An example is shown in the following screenshot.
+A notification banner can be added to the OpenShift Console using a link:https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-notification-banners_customizing-web-console[ConsoleNotification CRD^]. An example is shown in the following screenshot.
 
 [NOTE]
 ====
 Customising the Web Console requires use of a user account with `cluster-admin` permission. 
 ====
 
-image::green/custom-notification-banner.png[]
+image::green/custom-notification-banner.png[A custom banner at the top of the OpenShift Web Console]
 
 Add this banner to your cluster using by following these steps:
 
@@ -78,7 +78,7 @@ Add this banner to your cluster using by following these steps:
 . Click the *Search* link in the side-menu of the Developer Perspective.
 . Search for the *ConsoleNotification* using the *Resources* dropdown. Check the box beside it when listed.
 +
-image::green/search-consolenotification.png[]
+image::green/search-consolenotification.png[Search feature in the OpenShift Web Console showing the ConsoleNotification listing]
 . Click the *Create ConsoleNotification* button.
 . Replace the YAML sample with the following content:
 +
@@ -109,15 +109,15 @@ Take note of the link to a GitHub repository in the ConsoleNotification. You'll 
 
 == Using GitOps to Manage Cluster Resources
 
-In this section you’ll add a customisation known as a QuickStart to the OpenShift cluster, but there's a twist! You'll be using OpenShift GitOps to synchronise the QuickStart YAML definition from a Git repository to the OpenShift cluster. The QuickStart will guide users through the steps required to manage a resources using OpenShift GitOps.
+In this section you’ll add a customisation known as a QuickStart to the OpenShift cluster, but there's a twist! You'll be using link: https://docs.openshift.com/container-platform/4.10/cicd/gitops/understanding-openshift-gitops.html[OpenShift GitOps^] to synchronise the QuickStart YAML definition from a Git repository to the OpenShift cluster. The QuickStart will guide users through the steps required to manage a resources using OpenShift GitOps.
 
-If you’re not familiar with it, GitOps is a set of practices to manage infrastructure and application configurations using Git repositories as a single source of truth for declarative infrastructure. Red Hat OpenShift GitOps uses Argo CD to maintain cluster resources. Argo CD is an open-source declarative tool for the continuous integration and continuous deployment (CI/CD) of applications.
+If you’re not familiar with it, GitOps is a set of practices to manage infrastructure and application configurations using Git repositories as a single source of truth for declarative infrastructure. Red Hat OpenShift GitOps uses link:https://argo-cd.readthedocs.io/en/stable/[Argo CD^] to maintain cluster resources. Argo CD is an open-source declarative tool for the continuous integration and continuous deployment (CI/CD) of applications.
 
-image::green/gitops-argo-sync.png[]
+image::green/gitops-argo-sync.png[Simplified ArgoCD Flow Diagram]
 
 [NOTE]
 ====
-It's possible to run OpenShift GitOps on the same cluster that you want to sync resources to, or on a separate cluster and sync resources to a one or more distinct clusters. In this woekshop we're running everything on a single cluster to remove the need for managing multiple clusters.
+It's possible to run OpenShift GitOps on the same cluster that you want to sync resources to, or on a separate cluster and sync resources to a one or more distinct clusters. In this workshop we're running everything on a single cluster to remove the need for managing multiple clusters.
 ====
 
 === Access the Cluster ArgoCD Instance
@@ -127,7 +127,7 @@ To get started, you’ll need to access the ArgoCD UI:
 . Login to your OpenShift cluster as a “cluster-admin” user.
 . Expand the *Application Launcher** menu (the 3x3 sqaure icon) in the top-right of the OpenShift console.
 +
-image::green/gitops-url.png[]
+image::green/gitops-url.png[Expanded Application Launcher in the OpenShift Web Console showing an ArgoCD Link]
 . Click the *Cluster ArgoCD* link to load the ArgoCD UI.
 . Use the *Log in via OpenShift* button to initiate an OpenShift SSO login flow. Enter your password and accept the permissions request when prompted.
 +
@@ -138,11 +138,11 @@ This ArgoCD instance has been pre-configured to support integration with OpenShi
 
 You should be redirected to the ArgoCD applications dashboard upon successful login.
 
-image::green/gitops-dashboard.png[]
+image::green/gitops-dashboard.png[The ArgoCD Dashboard]
 
 === Create an Application in ArgoCD
 
-An link:https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications[*Application*] in ArgoCD represents a deployed application instance on a Kubernetes cluster. Applications can be created using the ArgoCD UI, or directly via a YAML Application CR. 
+An link:https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications[*Application*^] in ArgoCD represents a deployed application instance on a Kubernetes cluster. Applications can be created using the ArgoCD UI, or directly via a YAML Application CR. 
 
 Create an Application using the ArgoCD UI:
 
@@ -168,7 +168,7 @@ The *console-customisations* Application should be created, and the status of th
 
 All of the listed resources will be synced to the OpenShift cluster. Changes made in to resources in the Git repository will automatically be detected and synchronised to the OpenShift cluster by ArgoCD.
 
-image::green/gitops-application.png[]
+image::green/gitops-application.png[An application being rendered in the ArgoCD UI]
 
 Return to the OpenShift Console, refresh the page, and verify that:
 
