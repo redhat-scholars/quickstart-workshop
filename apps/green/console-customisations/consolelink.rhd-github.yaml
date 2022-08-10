@@ -1,0 +1,12 @@
+apiVersion: console.openshift.io/v1
+kind: ConsoleLink
+metadata:
+  name: application-menu-rh-developer-github
+spec:
+  href: 'https://github.com/redhat-developer'
+  location: ApplicationMenu
+  text: Red Hat Developer - GitHub
+  applicationMenu:
+    section: Hackathon Resources
+    # TODO: Get better source URL, or add to GitHub
+    imageURL: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png

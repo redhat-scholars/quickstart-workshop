@@ -1,0 +1,12 @@
+apiVersion: console.openshift.io/v1
+kind: ConsoleLink
+metadata:
+  name: application-menu-rh-developer-blog
+spec:
+  href: 'https://developers.redhat.com/'
+  location: ApplicationMenu
+  text: Red Hat Developer - Blog
+  applicationMenu:
+    section: Hackathon Resources
+    # TODO: Get better source URL, or add to GitHub
+    imageURL: https://yt3.ggpht.com/ytc/AKedOLRI9AQ_w5yyklg6BhPexpyq9ZPbAXZnXTnzEcyx5Q=s88-c-k-c0x00ffffff-no-rj

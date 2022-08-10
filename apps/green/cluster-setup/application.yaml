@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nodejs-metrics-example
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: hackathon
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    directory:
+      recurse: true
+    path: nodejs/k8s
+    repoURL: https://github.com/evanshortiss/summit-connect-hackathon-2022
+    targetRevision: main
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true

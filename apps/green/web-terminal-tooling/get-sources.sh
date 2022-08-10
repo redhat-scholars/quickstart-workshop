@@ -100,8 +100,7 @@ rm -rf "${TMPDIR:?}"/*
 chmod -R +x "${CONTAINER_USR_BIN_DIR}"
 
 echo "Downloading argocd ${ARGO_CLI_VERSION}"
-mkdir -p "$CONTAINER_OPT_DIR/argocd"
-curl -sSL -o "$CONTAINER_OPT_DIR/argocd" https://github.com/argoproj/argo-cd/releases/download/${ARGO_CLI_VERSION}/argocd-linux-amd64
+curl -sSL -o "$CONTAINER_USR_BIN_DIR/argocd" https://github.com/argoproj/argo-cd/releases/download/${ARGO_CLI_VERSION}/argocd-linux-amd64
 rm -rf "${TMPDIR:?}"/*
 chmod -R +x "${CONTAINER_USR_BIN_DIR}"
 

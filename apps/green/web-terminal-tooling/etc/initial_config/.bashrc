@@ -36,6 +36,10 @@ shopt -s histappend
 # Append lines from this session to history, clear the session's history, re-read the history file
 PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
+# Required for nvm (node.js) to work
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 # Render the custom green team banner
 cat banner.txt
 
