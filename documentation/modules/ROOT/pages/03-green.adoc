@@ -145,7 +145,7 @@ Create an Application using the ArgoCD UI:
 . Set the following paramaters in *Source* section of the overlay:
     * *Repository URL:* `https://github.com/redhat-scholars/quickstart-workshop/`
     * *Revision:* `HEAD`
-    * *Path:* `/apps/green/console-customisations`
+    * *Path:* `apps/green/console-customisations`
 . Set the following paramaters in *Destination* section of the overlay:
     * *Cluster URL:* `https://kubernetes.default.svc`
     * *Namespace:* `default`
