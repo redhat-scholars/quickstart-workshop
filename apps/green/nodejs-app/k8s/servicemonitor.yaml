@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app.kubernetes.io/name: nodejs-metrics-example
+    app.kubernetes.io/instance: nodejs-metrics-example
+    app.kubernetes.io/component: nodejs-metrics-example
+    app: nodejs-metrics-example
+  name: nodejs-metrics-example
+spec:
+  endpoints:
+  - interval: 15s
+    port: 8080-tcp
+    scheme: http
+  selector:
+    matchLabels:
+      app: nodejs-metrics-example

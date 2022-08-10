@@ -1,0 +1,125 @@
+apiVersion: console.openshift.io/v1
+kind: ConsoleQuickStart
+metadata:
+  name: summit-connect-hackathon-quickstart-observe
+spec:
+  icon: data:image/png;base64,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
+  conclusion: >-
+    Congratulations! You learned how to view the built-in user workload monitoring, and how to setup a ServiceMonitor for scraping custom application metrics! 
+  displayName: '#2 - Summit Connect Hackathon (Observe)'
+  tags:     
+  - summit
+  - connect
+  - hackathon
+  durationMinutes: 12
+  description: >-
+    Learn how to view obersvability informaiton and metrics captured by the OpenShift Container Platform monitoring stack.
+  prerequisites:
+  - Complete the "Summit Connect Hackathon (Deploy)" quick start.
+  introduction: >-
+    Welcome to Red Hat Summit Connect 2022, and this hackaton quick start!
+
+
+    In this quick start, you'll learn how to monitor applications using the built-in monitoring stack included with OpenShift Container Platform.
+
+
+    OpenShift Container Platform includes a preconfigured, preinstalled, and self-updating monitoring stack that provides monitoring for core platform components. You also have the option to enable monitoring for user-defined projects.
+
+
+    You can read more about the monitoring stack in the [OpenShift Container Platform documentation](https://docs.openshift.com/container-platform/4.10/monitoring/monitoring-overview.html).
+  tasks:
+  - title: Accessing the Monitoring UI for your Project
+    description: >-
+      You created a Project and deployed a Node.js application in the previous **Summit Connect Hackathon (Deploy)** quick start.
+      
+      
+      Since this OpenShift cluster has [enabled monitoring for user-defined projects](https://docs.openshift.com/container-platform/4.10/monitoring/enabling-monitoring-for-user-defined-projects.html#enabling-monitoring-for-user-defined-projects), it has been capturing metrics such as CPU and Memory usage by Pods deployed in your Project namespace.
+
+
+      To view this information:
+      
+      
+      1. Use the [perspective switcher]{{highlight qs-perspective-switcher}} to select the **Developer** perspective.
+
+      1. Click on the [Observe]{{highlight qs-nav-monitoring}} section in the navigation menu to the side.
+
+      1. Select the Project you created in the previous quick start using the Project dropdown in the top-left of the **Observe** UI.
+
+      1. Use the three horizontal lines in the top-left of the OpenShift UI above the [perspective switcher]{{highlight qs-perspective-switcher}} to hide the navigation menu and get a better view of the Observe UI.
+
+
+      The Observe UI will display the observability dashboard for your Project. 
+
+
+      **CPU Usage** will be low (fractions of a percent), since your Node.js application is not serving requests nor performing CPU intensive tasks.
+
+
+      **CPU Quota** should show that the Node.js application Pod is using the default 250Mi request and limit values for CPU.
+
+      
+      **Memory Usage** and **Memory Quota** should be showing similarly low values.
+    review:
+      instructions: |-
+          Is the **Observe** screen visible? Does it display the CPU and Memory utilisation, quotas, and limits?
+      failedTaskHelp: Verify that you've selected the correct Project using the dropdown menu.
+  - title: Collecting Custom Application Metrics
+    description: >-
+      You've seen that the built-in OpenShift user-workload monitoring will track resource usage for your Pods, but it's also possible to configure custom metrics scraping.
+
+
+      The Node.js application you deployed in the previous quick start exposes a `/metrics` endpoint that provides metrics in Prometheus format.
+
+
+      OpenShift Container Platform is using Prometheus as part of the monitoring stack, so you can Configure a Prometheus **ServiceMonitor** to collect these custom metrics:
+
+      1. Use the [perspective switcher]{{highlight qs-perspective-switcher}} to select the **Administrator** perspective.
+
+      1. Expand the [Home]{{highlight qs-nav-home}} section in the navigation menu and navigate to the **Search** section.
+
+      1. Select the Project you created in the previous quick start using the Project dropdown in the top-left of the **Observe** UI.
+
+      
+      You can use this UI to explore available Custom Resource Definitions available on the cluster, and to view existing instances of Custom Resources in the selected Project.
+
+
+      1. Click the **Resources** dropdown and search for **ServiceMonitor**.
+
+      1. Check the box next to **ServiceMonitor** in the dropdown, and click the **Resources** dropdown again to close it.
+
+      1. Click the **Create ServiceMonitor** button. A web-based YAML editor is displayed.
+
+      1. Select the **Samples** pane on the right and click the "Try it" link under the **Example Service Monitor** item. 
+
+      1. Replace all instances of `your-app-name` in the YAML with `nodejs-metrics-example`.
+      
+      
+      The YAML editor should now show a ServiceMonitor that scrapes any Service with an `app` label that matches `nodejs-metrics-example`. It will scrape the named port `8080-tcp` via `http`.
+
+
+      Click the **Create** button to create ServiceMonitor in the chosen Project namesapce.
+  - title: View the Custom Application Metrics
+    description: >-
+      Now that you've created a ServiceMonitor, you should review the monitoring UI for your Project once again.
+
+      1. Use the [perspective switcher]{{highlight qs-perspective-switcher}} to select the **Developer** perspective.
+
+      1. Click on the [Observe]{{highlight qs-nav-monitoring}} section in the navigation menu to the side.
+
+      1. Select the Project you created in the previous quick start using the Project dropdown in the top-left of the **Observe** UI.
+
+      1. Select the **Metrics** tab in the Observe UI.
+
+      1. Choose the **Custom query** option in the **Select query** dropdown. A textarea will appear.
+
+      1. Paste `nodejs_eventloop_lag_seconds` into the textarea and press Enter.
+
+
+      Notice that the query returns a graph showing the Node.js event-loop lag. This is a metric that was collected by the ServiceMonitor that's now available to query. 
+    review:
+      instructions: |-
+        Were you able to query custom metrics?
+      failedTaskHelp: Return the the **Home > Search** UI and search for your **ServiceMonitor**, making sure that the correct Project has been selected in the top-left. Verify it exists, and if not retry the steps above.
+    summary:
+      success: >-
+        You've created a ServiceMonitor to scrape custom metrics for your deployed Node.js application!
+      failed: Try the steps again.

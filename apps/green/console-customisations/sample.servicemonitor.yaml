@@ -1,0 +1,40 @@
+apiVersion: console.openshift.io/v1
+kind: ConsoleYAMLSample
+metadata:
+  name: service-monitor-sample
+spec:
+  targetResource:
+    apiVersion: monitoring.coreos.com/v1
+    kind: ServiceMonitor
+  title: Example Service Monitor
+  description: |
+    A complete example of the ServiceMonitor YAML. 
+    
+    The endpoints array contains objects that define what scheme to use, the metrics scraping interval, and the named port of the target Service to scrape. 
+    
+    All Services matching the selector will be scraped.
+  yaml: |
+    apiVersion: monitoring.coreos.com/v1
+    kind: ServiceMonitor
+    metadata:
+      # Change this to a unique name, maybe the same name as your deployment
+      name: your-app-name
+      # Change these labels to match your application deployment, service, etc.
+      labels:
+        app.kubernetes.io/name: your-app-name
+        app.kubernetes.io/instance: your-app-name
+        app.kubernetes.io/component: your-app-name
+        app: your-app-name
+    spec:
+      # The endpoint "port" property must be a named port. The value for this can
+      # be obtained a from a Service in the same namespace, e.g sample oc command:
+      # oc get service/your-app-name -o jsonpath='{.spec.ports[0].name}'
+      endpoints:
+      - interval: 15s
+        port: 8080-tcp
+        scheme: http
+      # Ensure the app label specified here matches the corresponding app label
+      # on the Service object whose /metrics endpoint you want to scrape
+      selector:
+        matchLabels:
+          app: your-app-name

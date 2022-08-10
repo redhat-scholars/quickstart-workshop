@@ -1,0 +1,88 @@
+apiVersion: console.openshift.io/v1
+kind: ConsoleQuickStart
+metadata:
+  name: summit-connect-hackathon-quickstart-deploy
+spec:
+  icon: data:image/png;base64,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
+  conclusion: >-
+    Congratulations! You successfully deployed a pre-built container image! 
+  displayName: '#1 - Summit Connect Hackathon (Deploy)'
+  tags:     
+  - summit
+  - connect
+  - hackathon
+  durationMinutes: 8
+  description: >-
+    Learn how to deploy a pre-built container image on OpenShift Container Platform.
+  prerequisites:
+  - Desire to learn.
+  - Familiarity with containers.
+  - Basic Kubernetes knowledge.
+  nextQuickStart:
+  - summit-connect-hackathon-quickstart-observe
+  introduction: >-
+    Welcome to Red Hat Summit Connect 2022, and this hackaton quick start!
+
+
+    In this quick start, you'll learn how to deploy a pre-built container image on OpenShift Container Platform.
+
+
+    The pre-built container image is available at [quay.io/evanshortiss/summit-connect-2022-metrics-app](quay.io/evanshortiss/summit-connect-2022-metrics-app).
+
+
+    You can test it on your local machine using Podman or Docker using the following command:
+    
+    `podman run --rm -p 8080:8080 quay.io/evanshortiss/summit-connect-2022-metrics-app`.
+
+  tasks:
+  - title: Create a Project on OpenShift Container Platform
+    description: >-
+      To create a Project:
+      
+      1. Use the [perspective switcher]{{highlight qs-perspective-switcher}} to select the **Administrator** perspective.
+
+      1. In the navigation menu expand the [Home]{{highlight qs-nav-home}} and click the Projects link.
+
+      1. Click the **Create Project** button in the top-right of the Projects screen.
+
+      1. Enter a **Name** for your project, and click the **Create** button.
+
+
+      The **Projects details** screen will be displayed.
+    review:
+      instructions: |-
+          Is the **Projects details** screen visible? 
+          
+          Does it display the **Name** you entered when creating your Project?
+      failedTaskHelp: Return to the Projects view and find your Project in the list. Retry the steps if your Project is not listed.
+  - title: Deploy a Container Image on OpenShift Container Platform
+    description: >-
+      To deploy an existing container image:
+
+      1. Use the [perspective switcher]{{highlight qs-perspective-switcher}} to select the **Developer** perspective.
+
+      1. Select the [Add]{{highlight qs-nav-add}} option in the navigation menu.
+
+      1. Choose your Project from dropdown in the top-left of the Add screen.
+
+      1. Click the **Container images** card on the Add screen. The **Deploy Image** screen will be displayed.
+
+      1. Set the **Image** value to `quay.io/evanshortiss/summit-connect-2022-metrics-app`
+        
+      1. Select `nodejs` from the **Runtime icon** dropdown.
+
+      1. Scroll downm and click the **Create** button.
+
+
+      The **Topology** view should be displayed for your Project.
+    review:
+      instructions: |-
+        Is a Node.js Deployment shown in the Topology View of your Project?
+
+        Is the Deployment surrounded by a blue ring to indicate it is running healthy Pod(s)?
+      failedTaskHelp: Verify that you're viewing the correct Project Topology view. Wait a moment for the Pods to be created. If this, retry the steps.
+    summary:
+      success: >-
+        You've deployed a container on OpenShift. Nice work!
+      failed: Try the steps again.
+  

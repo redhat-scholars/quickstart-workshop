@@ -1,43 +1,181 @@
-= Deploy Service
-include::_attributes.adoc[]
+== Welcome to the Green Team Cluster
 
-[#service]
-== The Service
+This cluster demonstrates how to:
 
-The code:
+* Customise the tools incldued in the Web Terminal that you deployed in a prior section.
+* Use link:https://developers.redhat.com/topics/gitops[GitOps] to automatically synchronise your customisations to the OpenShift cluster:
+    . Console notification banners using the link:https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-notification-banners_customizing-web-console[ConsoleNotification CRD].
+    . YAML samples for link:https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/[CustomResources] using the link:https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#adding-yaml-examples-to-kube-resources_customizing-web-console[ConsoleYAMLSample CRD].
+    . Custom links to using the link:https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-links_customizing-web-console[ConsoleLink CRD].
+    . 
+* Using a link:https://docs.openshift.com/container-platform/4.10/monitoring/managing-metrics.html#specifying-how-a-service-is-monitored_managing-metrics[ServiceMonitor CR] to collect custom application metrics.
 
-[.lines_7]
+
+== Customise the Web Terminal
+
+Customising the Web Terminal tooling image enables you to provide your developers with specific versions of tools to use directly in the OpenShift Web Console.
+
+The source code for the default tooling container image is available in the link:https://github.com/redhat-developer/web-terminal-tooling[redhat-developer/web-terminal-tooling] repository on GitHub.
+
+In this guide you'll customise the Web Terminal tooling container using a pre-built image.
+
+. Login to your OpenShift cluster as a user that has the `cluster-admin` role.
++
+TIP: You posses the `cluster-admin` role if you can view Projects starting with the *openshift-* prefix. An existing user with the `cluster-admin` role can grant the same role to other users using the `oc adm policy add-cluster-role-to-user cluster-admin <username>` command.
+. Select the *Administrator* view from the top left.
+. Expand the *Home* pane in the sidemenu and select the *Search* section.
+. Choose `openshift-operators` in the *Project* dropdown at the top of the screen.
+. Use the *Resources* dropdown to find the *DevWorkspaceTemplate* and select it.
++
+image::/quickstart-workshop/_images/green/devworkspacetemplate-listing.png[]
+. Select the *web-terminal-tooling* item in the resulting list, and navigate to the *YAML* tab on the subsequent screen.
+. Add the line `web-terminal.redhat.com/unmanaged-state: 'true'` to the *annotations* in the YAML.
+. Change the *image* property in the listed *container* to use the `quay.io/evanshortiss/summit-connect-2022-web-terminal:latest` container image.
++
+image::/quickstart-workshop/_images/green/devworkspacetemplate-yaml.png[]
+
+== Use the Customised Web Terminal
+
+Take your customised Web Terminal for a spin:
+
+. Login to the cluster as any user available to you.
+. Click the Web Terminal icon in the toolbar at the top of the screen, and follow the onscreen prompts to select an existing project or create a new project.
+. Verify that the terminal has started and you see a unqiue ASCII art welcome message.
++
+[TIP]
+====
+You might not see the ASCII art if you used an existing Project that had an existing terminal session. 
+
+Delete the old Pods `oc delete pod -l 'controller.devfile.io/devworkspace_id'` in the Web Terminal session.
+
+This will delete Pods that were created using the old Web Terminal container image, and force a new Pod to be created using the new customised container image.
+====
+
+The ASCII art displayed by the customised Web Terminal is shown in the image below.
+
+image::/quickstart-workshop/_images/green/custom-web-terminal.png[]
+
+== Console Notification Banners
+
+A notification banner can be added to the OpenShift Console using a link:https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-notification-banners_customizing-web-console[ConsoleNotification CRD]. An example is shown in the following screenshot.
+
+image::/quickstart-workshop/_images/green/custom-notification-banner.png[]
+
+Add this banner to your cluster using by following these steps:
+
+. Select the *Developer Perspective* from the side-menu on OpenShift.
+. Click the *Search* link in the side-menu of the Developer Perspective.
+. Search for the *ConsoleNotification* using the *Resources* dropdown. Check the box beside it when listed.
++
+image::/quickstart-workshop/_images/green/search-consolenotification.png[]
+. Click the *Create ConsoleNotification* button.
+. Replace the YAML sample with the following content:
++
 [.console-input]
-[source, java,subs="+macros,+attributes"]
+[source, yaml,subs="+macros,+attributes"]
 ----
-public class Main {
+apiVersion: console.openshift.io/v1
+kind: ConsoleNotification
+metadata:
+  name: hackathon-banner
+spec:
+  text: Welcome to the Green Team OpenShift cluster for the Summit Connect Hackathon!
+  location: BannerTop 
+  link:
+    href: 'https://github.com/redhat-scholars/quickstart-workshop/tree/master/apps/green'
+    text: (View Code for the Green Team Cluster)
+  color: '#fafafa'
+  backgroundColor: '#65a30d'
+----
+. Click the *Create* button.
 
-    public static void main(String[] args) {
+[TIP]
+====
+If you are unable to create the ConsoleNotification, make sure to log in as a user with *cluster-admin* permissions and try again.
+====
 
-    } 
+Take note of the link to a GitHub repository in the ConsoleNotification. You'll be using that code shortly!
 
-}
+== Using GitOps to Manage Cluster Resources
 
-./mvnw compile
+In this section you’ll add a customisation known as a QuickStart to the OpenShift cluster, but there's a twist! You'll be using OpenShift GitOps to synchronise the QuickStart YAML definition from a Git repository to the OpenShift cluster. The QuickStart will guide users through the steps required to manage a resources using OpenShift GitOps.
+
+If you’re not familiar with it, GitOps is a set of practices to manage infrastructure and application configurations using Git repositories as a single source of truth for declarative infrastructure. Red Hat OpenShift GitOps uses Argo CD to maintain cluster resources. Argo CD is an open-source declarative tool for the continuous integration and continuous deployment (CI/CD) of applications.
+
+image::/quickstart-workshop/_images/green/gitops-argo-sync.png[]
+
+[NOTE]
+====
+It's possible to run OpenShift GitOps on the same cluster that you want to sync resources to, or on a separate cluster and sync resources to a one or more distinct clusters. In this woekshop we're running everything on a single cluster to remove the need for managing multiple clusters.
+====
+
+=== Access the Cluster ArgoCD Instance
+
+To get started, you’ll need to access the ArgoCD UI:
+
+. Login to your OpenShift cluster as a “cluster-admin” user.
+. Expand the *Application Launcher** menu (the 3x3 sqaure icon) in the top-right of the OpenShift console.
++
+image::/quickstart-workshop/_images/green/gitops-url.png[]
+. Click the *Cluster ArgoCD* link to load the ArgoCD UI.
+. Use the *Log in via OpenShift* button to initiate an OpenShift SSO login flow. Enter your password and accept the permissions request when prompted.
++
+[NOTE]
+====
+This ArgoCD instance has been pre-configured to support integration with OpenShift SSO. All users on the cluster can login, but only users in `cluster-admins` group have write access.
+====
+
+You should be redirected to the ArgoCD applications dashboard upon successful login.
+
+image::/quickstart-workshop/_images/green/gitops-dashboard.png[]
+
+=== Create an Application in ArgoCD
+
+An link:https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications[*Application*] in ArgoCD represents a deployed application instance on a Kubernetes cluster. Applications can be created using the ArgoCD UI, or directly via a YAML Application CR. 
+
+Create an Application using the ArgoCD UI:
+
+. Login to the ArgoCD applications dashboard. You learned how to do this in the previous section.
+. Click the *Create Application* button on the ArgoCD applications dashboard. An overlay will appear.
+. Set the following paramaters in *General* section of the overlay:
+    * *Application Name:* `console-customisations`
+    * *Project:* `default`
+    * *Sync Policy:* `automatic`
+    * *Self Heal:* `Enabled`
+. Set the following paramaters in *Source* section of the overlay:
+    * *Repository URL:* `https://github.com/redhat-scholars/quickstart-workshop/`
+    * *Revision:* `HEAD`
+    * *Path:* `apps/green/console-customisations`
+. Set the following paramaters in *Destination* section of the overlay:
+    * *Cluster URL:* `https://kubernetes.default.svc`
+    * *Namespace:* `default`
+. Set the following paramaters in *Directory* section of the overlay:
+    * *Directory Recurse:* `Enabled`
+. Click the *Create* button at the top of the overlay.
+
+The *console-customisations* Application should be created, and the status of the Application will be shown in the ArgoCD UI.
+
+All of the listed resources will be synced to the OpenShift cluster. Changes made in to resources in the Git repository will automatically be detected and synchronised to the OpenShift cluster by ArgoCD.
+
+image::/quickstart-workshop/_images/green/gitops-application.png[]
+
+Return to the OpenShift Console, refresh the page, and verify that:
+
+. The previously added *ConsoleNotification* banner has changed colour.
+. The OpenShift Container Platform logo has been replaced by a custom logo.
+. The *Application Launcher** menu (the 3x3 sqaure icon) contains a *Hackathon Resources* section.
+
+== Customise the Cluster Branding
+
+----
+oc create configmap console-custom-logo \
+--from-file /apps/green/green-team.png \
+-n openshift-config
 ----
 
-[#package]
-== Packaging the Service
 
-You can package the next bash script:
-
-[source,bash,subs="+macros,+attributes"]
 ----
-include::example$run.sh[]
+oc patch consoles.operator.openshift.io cluster \
+--type merge --patch-file apps/green/console-logo.patch.yaml
 ----
 
-[#deploy]
-== Deploy the Service
-
-And then you can deploy the service and execute commands inside:
-
-:podname: apps
-
-include::partial$exec_pod.adoc[]
-
-:!podname:
