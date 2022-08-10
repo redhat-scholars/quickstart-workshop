@@ -27,12 +27,12 @@ TIP: You posses the `cluster-admin` role if you can view Projects starting with 
 . Choose `openshift-operators` in the *Project* dropdown at the top of the screen.
 . Use the *Resources* dropdown to find the *DevWorkspaceTemplate* and select it.
 +
-image::/quickstart-workshop/_images/green/devworkspacetemplate-listing.png[]
+image::green/devworkspacetemplate-listing.png[]
 . Select the *web-terminal-tooling* item in the resulting list, and navigate to the *YAML* tab on the subsequent screen.
 . Add the line `web-terminal.redhat.com/unmanaged-state: 'true'` to the *annotations* in the YAML.
 . Change the *image* property in the listed *container* to use the `quay.io/evanshortiss/summit-connect-2022-web-terminal:latest` container image.
 +
-image::/quickstart-workshop/_images/green/devworkspacetemplate-yaml.png[]
+image::green/devworkspacetemplate-yaml.png[]
 
 == Use the Customised Web Terminal
 
@@ -53,13 +53,13 @@ This will delete Pods that were created using the old Web Terminal container ima
 
 The ASCII art displayed by the customised Web Terminal is shown in the image below.
 
-image::/quickstart-workshop/_images/green/custom-web-terminal.png[]
+image::green/custom-web-terminal.png[]
 
 == Console Notification Banners
 
 A notification banner can be added to the OpenShift Console using a link:https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-notification-banners_customizing-web-console[ConsoleNotification CRD]. An example is shown in the following screenshot.
 
-image::/quickstart-workshop/_images/green/custom-notification-banner.png[]
+image::green/custom-notification-banner.png[]
 
 Add this banner to your cluster using by following these steps:
 
@@ -67,7 +67,7 @@ Add this banner to your cluster using by following these steps:
 . Click the *Search* link in the side-menu of the Developer Perspective.
 . Search for the *ConsoleNotification* using the *Resources* dropdown. Check the box beside it when listed.
 +
-image::/quickstart-workshop/_images/green/search-consolenotification.png[]
+image::green/search-consolenotification.png[]
 . Click the *Create ConsoleNotification* button.
 . Replace the YAML sample with the following content:
 +
@@ -102,7 +102,7 @@ In this section you’ll add a customisation known as a QuickStart to the OpenSh
 
 If you’re not familiar with it, GitOps is a set of practices to manage infrastructure and application configurations using Git repositories as a single source of truth for declarative infrastructure. Red Hat OpenShift GitOps uses Argo CD to maintain cluster resources. Argo CD is an open-source declarative tool for the continuous integration and continuous deployment (CI/CD) of applications.
 
-image::/quickstart-workshop/_images/green/gitops-argo-sync.png[]
+image::green/gitops-argo-sync.png[]
 
 [NOTE]
 ====
@@ -116,7 +116,7 @@ To get started, you’ll need to access the ArgoCD UI:
 . Login to your OpenShift cluster as a “cluster-admin” user.
 . Expand the *Application Launcher** menu (the 3x3 sqaure icon) in the top-right of the OpenShift console.
 +
-image::/quickstart-workshop/_images/green/gitops-url.png[]
+image::green/gitops-url.png[]
 . Click the *Cluster ArgoCD* link to load the ArgoCD UI.
 . Use the *Log in via OpenShift* button to initiate an OpenShift SSO login flow. Enter your password and accept the permissions request when prompted.
 +
@@ -127,7 +127,7 @@ This ArgoCD instance has been pre-configured to support integration with OpenShi
 
 You should be redirected to the ArgoCD applications dashboard upon successful login.
 
-image::/quickstart-workshop/_images/green/gitops-dashboard.png[]
+image::green/gitops-dashboard.png[]
 
 === Create an Application in ArgoCD
 
@@ -157,7 +157,7 @@ The *console-customisations* Application should be created, and the status of th
 
 All of the listed resources will be synced to the OpenShift cluster. Changes made in to resources in the Git repository will automatically be detected and synchronised to the OpenShift cluster by ArgoCD.
 
-image::/quickstart-workshop/_images/green/gitops-application.png[]
+image::green/gitops-application.png[]
 
 Return to the OpenShift Console, refresh the page, and verify that:
 
