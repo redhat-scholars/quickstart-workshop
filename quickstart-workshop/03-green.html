@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Deploy Service :: Custom Console Workshop</title>
+    <title>Untitled :: Custom Console Workshop</title>
     <link rel="canonical" href="https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/03-green.html">
-    <link rel="prev" href="02-web-terminal.html">
-    <link rel="next" href="03-red.html">
+    <link rel="prev" href="03-red.html">
+    <link rel="next" href="03-blue.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -78,18 +78,6 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="03-green.html">3. Green</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#install">Installation</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#basics">Basics</a>
-  </li>
-</ul>
-  </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="03-red.html">3. Red</a>
@@ -99,6 +87,21 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="03-red.html#basics">Basics</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-green.html">3. Green</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#_customise_the_web_terminal">Customise the Web Terminal</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#_use_the_customised_web_terminal">Use the Customised Web Terminal</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#_console_notification_banners">Console Notification Banners</a>
   </li>
 </ul>
   </li>
@@ -136,68 +139,242 @@
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Deploy Service</h1>
 <div class="sect1">
-<h2 id="service"><a class="anchor" href="#service"></a>The Service</h2>
+<h2 id="_welcome_to_the_green_team_cluster"><a class="anchor" href="#_welcome_to_the_green_team_cluster"></a>Welcome to the Green Team Cluster</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The code:</p>
+<p>This cluster demonstrates how to:</p>
 </div>
-<div class="listingblock lines_7 console-input">
+<div class="ulist">
+<ul>
+<li>
+<p>Customise the tools incldued in the Web Terminal that you deployed in a prior section.</p>
+</li>
+<li>
+<p>Use <a href="https://developers.redhat.com/topics/gitops">GitOps</a> to automatically synchronise your customisations to the OpenShift cluster:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Console notification banners using the <a href="https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-notification-banners_customizing-web-console">ConsoleNotification CRD</a>.</p>
+</li>
+<li>
+<p>YAML samples for <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">CustomResources</a> using the <a href="https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#adding-yaml-examples-to-kube-resources_customizing-web-console">ConsoleYAMLSample CRD</a>.</p>
+</li>
+<li>
+<p>Custom links to using the <a href="https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-links_customizing-web-console">ConsoleLink CRD</a>.
+.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Using a <a href="https://docs.openshift.com/container-platform/4.10/monitoring/managing-metrics.html#specifying-how-a-service-is-monitored_managing-metrics">ServiceMonitor CR</a> to collect custom application metrics.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_customise_the_web_terminal"><a class="anchor" href="#_customise_the_web_terminal"></a>Customise the Web Terminal</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Customising the Web Terminal tooling image enables you to provide your developers with specific versions of tools to use directly in the OpenShift Web Console.</p>
+</div>
+<div class="paragraph">
+<p>The source code for the default tooling container image is available in the <a href="https://github.com/redhat-developer/web-terminal-tooling">redhat-developer/web-terminal-tooling</a> repository on GitHub.</p>
+</div>
+<div class="paragraph">
+<p>In this guide you&#8217;ll customise the Web Terminal tooling container using a pre-built image.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Login to your OpenShift cluster as a user that has the <code>cluster-admin</code> role.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You posses the <code>cluster-admin</code> role if you can view Projects starting with the <strong>openshift-</strong> prefix. An existing user with the <code>cluster-admin</code> role can grant the same role to other users using the <code>oc adm policy add-cluster-role-to-user cluster-admin &lt;username&gt;</code> command.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Select the <strong>Administrator</strong> view from the top left.</p>
+</li>
+<li>
+<p>Expand the <strong>Home</strong> pane in the sidemenu and select the <strong>Search</strong> section.</p>
+</li>
+<li>
+<p>Choose <code>openshift-operators</code> in the <strong>Project</strong> dropdown at the top of the screen.</p>
+</li>
+<li>
+<p>Use the <strong>Resources</strong> dropdown to find the <strong>DevWorkspaceTemplate</strong> and select it.</p>
+<div class="imageblock unresolved">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class Main {
-
-    public static void main(String[] args) {
-
-    }
-
-}
-
-./mvnw compile</code></pre>
+<img src="/quickstart-workshop/_images/green/devworkspacetemplate-listing.png" alt="devworkspacetemplate listing">
+</div>
+</div>
+</li>
+<li>
+<p>Select the <strong>web-terminal-tooling</strong> item in the resulting list, and navigate to the <strong>YAML</strong> tab on the subsequent screen.</p>
+</li>
+<li>
+<p>Add the line <code>web-terminal.redhat.com/unmanaged-state: 'true'</code> to the <strong>annotations</strong> in the YAML.</p>
+</li>
+<li>
+<p>Change the <strong>image</strong> property in the listed <strong>container</strong> to use the <code>quay.io/evanshortiss/summit-connect-2022-web-terminal:latest</code> container image.</p>
+<div class="imageblock unresolved">
+<div class="content">
+<img src="/quickstart-workshop/_images/green/devworkspacetemplate-yaml.png" alt="devworkspacetemplate yaml">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_use_the_customised_web_terminal"><a class="anchor" href="#_use_the_customised_web_terminal"></a>Use the Customised Web Terminal</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Take your customised Web Terminal for a spin:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Login to the cluster as any user available to you.</p>
+</li>
+<li>
+<p>Click the Web Terminal icon in the toolbar at the top of the screen, and follow the onscreen prompts to select an existing project or create a new project.</p>
+</li>
+<li>
+<p>Verify that the terminal has started and you see a unqiue ASCII art welcome message.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You might not see the ASCII art if you used an existing Project that had an existing terminal session.</p>
+</div>
+<div class="paragraph">
+<p>Delete the old Pods <code>oc delete pod -l 'controller.devfile.io/devworkspace_id'</code> in the Web Terminal session.</p>
+</div>
+<div class="paragraph">
+<p>This will delete Pods that were created using the old Web Terminal container image, and force a new Pod to be created using the new customised container image.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The ASCII art displayed by the customised Web Terminal is shown in the image below.</p>
+</div>
+<div class="imageblock unresolved">
+<div class="content">
+<img src="/quickstart-workshop/_images/green/custom-web-terminal.png" alt="custom web terminal">
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="package"><a class="anchor" href="#package"></a>Packaging the Service</h2>
+<h2 id="_console_notification_banners"><a class="anchor" href="#_console_notification_banners"></a>Console Notification Banners</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can package the next bash script:</p>
+<p>A notification banner can be added to the OpenShift Console using a <a href="https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-notification-banners_customizing-web-console">ConsoleNotification CRD</a>. An example is shown in the following screenshot.</p>
 </div>
-<div class="listingblock">
+<div class="imageblock unresolved">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">#!/bin/sh
-echo "Hello World"</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="deploy"><a class="anchor" href="#deploy"></a>Deploy the Service</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>And then you can deploy the service and execute commands inside:</p>
-</div>
-<div class="paragraph">
-<p>Check that the pod is up and running:</p>
-</div>
-<div class="listingblock lines_space console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl get pods</code></pre>
-</div>
-</div>
-<div class="listingblock console-output">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">NAME                        READY   STATUS    RESTARTS   AGE
-apps   1/1     Running   0          5s</code></pre>
+<img src="/quickstart-workshop/_images/green/custom-notification-banner.png" alt="custom notification banner">
 </div>
 </div>
 <div class="paragraph">
-<p>Then let&#8217;s go into the running pod to execute some commands:</p>
+<p>Add this banner to your cluster using by following these steps:</p>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select the <strong>Developer Perspective</strong> from the side-menu on OpenShift.</p>
+</li>
+<li>
+<p>Click the <strong>Search</strong> link in the side-menu of the Developer Perspective.</p>
+</li>
+<li>
+<p>Search for the <strong>ConsoleNotification</strong> using the <strong>Resources</strong> dropdown. Check the box beside it when listed.</p>
+<div class="imageblock unresolved">
+<div class="content">
+<img src="/quickstart-workshop/_images/green/search-consolenotification.png" alt="search consolenotification">
+</div>
+</div>
+</li>
+<li>
+<p>Click the <strong>Create ConsoleNotification</strong> button.</p>
+</li>
+<li>
+<p>Replace the YAML sample with the following content:</p>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl exec -ti apps /bin/bash</code></pre>
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: console.openshift.io/v1
+kind: ConsoleNotification
+metadata:
+  name: hackathon-banner
+spec:
+  text: Welcome to the Green Team OpenShift cluster for the Summit Connect Hackathon!
+  location: BannerTop
+  link:
+    href: 'https://github.com/redhat-scholars/quickstart-workshop/tree/master/apps/green'
+    text: (View Code for the Green Team Cluster)
+  color: '#fafafa'
+  backgroundColor: '#65a30d'</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Click the <strong>Create</strong> button.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you are unable to create the ConsoleNotification, make sure to log in as a user with <strong>cluster-admin</strong> permissions and try again.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Take note of the link to a GitHub repository in the ConsoleNotification. You&#8217;ll be using that code shortly!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_gitops_to_manage_cluster_resources"><a class="anchor" href="#_using_gitops_to_manage_cluster_resources"></a>Using GitOps to Manage Cluster Resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this section you’ll add a customisation known as a QuickStart to the OpenShift cluster, but there&#8217;s a twist! You&#8217;ll be using OpenShift GitOps to synchronise the QuickStart YAML definition from a Git repository to the OpenShift cluster. The QuickStart will guide users through the steps required to manage a resources using OpenShift GitOps.</p>
+</div>
+<div class="paragraph">
+<p>If you’re not familiar with it, GitOps is a set of practices to manage infrastructure and application configurations using Git repositories as a single source of truth for declarative infrastructure. Red Hat OpenShift GitOps uses Argo CD to maintain cluster resources. Argo CD is an open-source declarative tool for the continuous integration and continuous deployment (CI/CD) of applications.</p>
+</div>
+<div class="imageblock unresolved">
+<div class="content">
+<img src="/quickstart-workshop/_images/green/gitops-argo-sync.png" alt="gitops argo sync">
 </div>
 </div>
 <div class="admonitionblock note">
@@ -207,16 +384,192 @@ apps   1/1     Running   0          5s</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Change the pod name with your pod name.
+<div class="paragraph">
+<p>It&#8217;s possible to run OpenShift GitOps on the same cluster that you want to sync resources to, or on a separate cluster and sync resources to a one or more distinct clusters. In this woekshop we&#8217;re running everything on a single cluster to remove the need for managing multiple clusters.</p>
+</div>
 </td>
 </tr>
 </table>
 </div>
+<div class="sect2">
+<h3 id="_access_the_cluster_argocd_instance"><a class="anchor" href="#_access_the_cluster_argocd_instance"></a>Access the Cluster ArgoCD Instance</h3>
+<div class="paragraph">
+<p>To get started, you’ll need to access the ArgoCD UI:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Login to your OpenShift cluster as a “cluster-admin” user.</p>
+</li>
+<li>
+<p>Expand the <strong>Application Launcher</strong>* menu (the 3x3 sqaure icon) in the top-right of the OpenShift console.</p>
+<div class="imageblock unresolved">
+<div class="content">
+<img src="/quickstart-workshop/_images/green/gitops-url.png" alt="gitops url">
+</div>
+</div>
+</li>
+<li>
+<p>Click the <strong>Cluster ArgoCD</strong> link to load the ArgoCD UI.</p>
+</li>
+<li>
+<p>Use the <strong>Log in via OpenShift</strong> button to initiate an OpenShift SSO login flow. Enter your password and accept the permissions request when prompted.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This ArgoCD instance has been pre-configured to support integration with OpenShift SSO. All users on the cluster can login, but only users in <code>cluster-admins</code> group have write access.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You should be redirected to the ArgoCD applications dashboard upon successful login.</p>
+</div>
+<div class="imageblock unresolved">
+<div class="content">
+<img src="/quickstart-workshop/_images/green/gitops-dashboard.png" alt="gitops dashboard">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_an_application_in_argocd"><a class="anchor" href="#_create_an_application_in_argocd"></a>Create an Application in ArgoCD</h3>
+<div class="paragraph">
+<p>An <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications"><strong>Application</strong></a> in ArgoCD represents a deployed application instance on a Kubernetes cluster. Applications can be created using the ArgoCD UI, or directly via a YAML Application CR.</p>
+</div>
+<div class="paragraph">
+<p>Create an Application using the ArgoCD UI:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Login to the ArgoCD applications dashboard. You learned how to do this in the previous section.</p>
+</li>
+<li>
+<p>Click the <strong>Create Application</strong> button on the ArgoCD applications dashboard. An overlay will appear.</p>
+</li>
+<li>
+<p>Set the following paramaters in <strong>General</strong> section of the overlay:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Application Name:</strong> <code>console-customisations</code></p>
+</li>
+<li>
+<p><strong>Project:</strong> <code>default</code></p>
+</li>
+<li>
+<p><strong>Sync Policy:</strong> <code>automatic</code></p>
+</li>
+<li>
+<p><strong>Self Heal:</strong> <code>Enabled</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Set the following paramaters in <strong>Source</strong> section of the overlay:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Repository URL:</strong> <code><a href="https://github.com/redhat-scholars/quickstart-workshop/" class="bare">https://github.com/redhat-scholars/quickstart-workshop/</a></code></p>
+</li>
+<li>
+<p><strong>Revision:</strong> <code>HEAD</code></p>
+</li>
+<li>
+<p><strong>Path:</strong> <code>apps/green/console-customisations</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Set the following paramaters in <strong>Destination</strong> section of the overlay:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Cluster URL:</strong> <code><a href="https://kubernetes.default.svc" class="bare">https://kubernetes.default.svc</a></code></p>
+</li>
+<li>
+<p><strong>Namespace:</strong> <code>default</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Set the following paramaters in <strong>Directory</strong> section of the overlay:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Directory Recurse:</strong> <code>Enabled</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click the <strong>Create</strong> button at the top of the overlay.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The <strong>console-customisations</strong> Application should be created, and the status of the Application will be shown in the ArgoCD UI.</p>
+</div>
+<div class="paragraph">
+<p>All of the listed resources will be synced to the OpenShift cluster. Changes made in to resources in the Git repository will automatically be detected and synchronised to the OpenShift cluster by ArgoCD.</p>
+</div>
+<div class="imageblock unresolved">
+<div class="content">
+<img src="/quickstart-workshop/_images/green/gitops-application.png" alt="gitops application">
+</div>
+</div>
+<div class="paragraph">
+<p>Return to the OpenShift Console, refresh the page, and verify that:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The previously added <strong>ConsoleNotification</strong> banner has changed colour.</p>
+</li>
+<li>
+<p>The OpenShift Container Platform logo has been replaced by a custom logo.</p>
+</li>
+<li>
+<p>The <strong>Application Launcher</strong>* menu (the 3x3 sqaure icon) contains a <strong>Hackathon Resources</strong> section.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_customise_the_cluster_branding"><a class="anchor" href="#_customise_the_cluster_branding"></a>Customise the Cluster Branding</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre>oc create configmap console-custom-logo \
+--from-file /apps/green/green-team.png \
+-n openshift-config</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>oc patch consoles.operator.openshift.io cluster \
+--type merge --patch-file apps/green/console-logo.patch.yaml</pre>
+</div>
+</div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="02-web-terminal.html">2. Web Terminal</a></span>
-  <span class="next"><a href="03-red.html">3. Red</a></span>
+  <span class="prev"><a href="03-red.html">3. Red</a></span>
+  <span class="next"><a href="03-blue.html">3. Blue</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
