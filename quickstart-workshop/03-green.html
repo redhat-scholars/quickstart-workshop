@@ -151,24 +151,24 @@
 <p>Customise the tools incldued in the Web Terminal that you deployed in a prior section.</p>
 </li>
 <li>
-<p>Use <a href="https://developers.redhat.com/topics/gitops">GitOps</a> to automatically synchronise your customisations to the OpenShift cluster:</p>
+<p>Use <a href="https://developers.redhat.com/topics/gitops" target="_blank" rel="noopener">GitOps</a> to automatically synchronise your customisations to the OpenShift cluster:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Console notification banners using the <a href="https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-notification-banners_customizing-web-console">ConsoleNotification CRD</a>.</p>
+<p>Console notification banners using the <a href="https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-notification-banners_customizing-web-console" target="_blank" rel="noopener">ConsoleNotification CRD</a>.</p>
 </li>
 <li>
-<p>YAML samples for <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">CustomResources</a> using the <a href="https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#adding-yaml-examples-to-kube-resources_customizing-web-console">ConsoleYAMLSample CRD</a>.</p>
+<p>YAML samples for <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/" target="_blank" rel="noopener">CustomResources</a> using the <a href="https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#adding-yaml-examples-to-kube-resources_customizing-web-console" target="_blank" rel="noopener">ConsoleYAMLSample CRD</a>.</p>
 </li>
 <li>
-<p>Custom links to using the <a href="https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-links_customizing-web-console">ConsoleLink CRD</a>.
+<p>Custom links to using the <a href="https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-links_customizing-web-console" target="_blank" rel="noopener">ConsoleLink CRD</a>.
 .</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Using a <a href="https://docs.openshift.com/container-platform/4.10/monitoring/managing-metrics.html#specifying-how-a-service-is-monitored_managing-metrics">ServiceMonitor CR</a> to collect custom application metrics.</p>
+<p>Using a <a href="https://docs.openshift.com/container-platform/4.10/monitoring/managing-metrics.html#specifying-how-a-service-is-monitored_managing-metrics" target="_blank" rel="noopener">ServiceMonitor CR</a> to collect custom application metrics.</p>
 </li>
 </ul>
 </div>
@@ -181,7 +181,7 @@
 <p>Customising the Web Terminal tooling image enables you to provide your developers with specific versions of tools to use directly in the OpenShift Web Console.</p>
 </div>
 <div class="paragraph">
-<p>The source code for the default tooling container image is available in the <a href="https://github.com/redhat-developer/web-terminal-tooling">redhat-developer/web-terminal-tooling</a> repository on GitHub.</p>
+<p>The source code for the default tooling container image is available in the <a href="https://github.com/redhat-developer/web-terminal-tooling" target="_blank" rel="noopener">redhat-developer/web-terminal-tooling</a> repository on GitHub.</p>
 </div>
 <div class="paragraph">
 <p>In this guide you&#8217;ll customise the Web Terminal tooling container using a pre-built image.</p>
@@ -218,7 +218,7 @@ You posses the <code>cluster-admin</code> role if you can view Projects starting
 <p>Use the <strong>Resources</strong> dropdown to find the <strong>DevWorkspaceTemplate</strong> and select it.</p>
 <div class="imageblock">
 <div class="content">
-<img src="_images/green/devworkspacetemplate-listing.png" alt="devworkspacetemplate listing">
+<img src="_images/green/devworkspacetemplate-listing.png" alt="DevWorkspaceTemplate listing in the OpenShift Web Console">
 </div>
 </div>
 </li>
@@ -232,7 +232,7 @@ You posses the <code>cluster-admin</code> role if you can view Projects starting
 <p>Change the <strong>image</strong> property in the listed <strong>container</strong> to use the <code>quay.io/evanshortiss/summit-connect-2022-web-terminal:latest</code> container image.</p>
 <div class="imageblock">
 <div class="content">
-<img src="_images/green/devworkspacetemplate-yaml.png" alt="devworkspacetemplate yaml">
+<img src="_images/green/devworkspacetemplate-yaml.png" alt="DevWorkspaceTemplate YAML in the OpenShift Web Console">
 </div>
 </div>
 </li>
@@ -282,7 +282,7 @@ You posses the <code>cluster-admin</code> role if you can view Projects starting
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/green/custom-web-terminal.png" alt="custom web terminal">
+<img src="_images/green/custom-web-terminal.png" alt="A customised Web Terminal showing ASCII Art">
 </div>
 </div>
 </div>
@@ -297,7 +297,7 @@ You posses the <code>cluster-admin</code> role if you can view Projects starting
 <div class="sect2">
 <h3 id="_console_notification_banners"><a class="anchor" href="#_console_notification_banners"></a>Console Notification Banners</h3>
 <div class="paragraph">
-<p>A notification banner can be added to the OpenShift Console using a <a href="https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-notification-banners_customizing-web-console">ConsoleNotification CRD</a>. An example is shown in the following screenshot.</p>
+<p>A notification banner can be added to the OpenShift Console using a <a href="https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-notification-banners_customizing-web-console" target="_blank" rel="noopener">ConsoleNotification CRD</a>. An example is shown in the following screenshot.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -315,7 +315,7 @@ You posses the <code>cluster-admin</code> role if you can view Projects starting
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/green/custom-notification-banner.png" alt="custom notification banner">
+<img src="_images/green/custom-notification-banner.png" alt="A custom banner at the top of the OpenShift Web Console">
 </div>
 </div>
 <div class="paragraph">
@@ -333,7 +333,7 @@ You posses the <code>cluster-admin</code> role if you can view Projects starting
 <p>Search for the <strong>ConsoleNotification</strong> using the <strong>Resources</strong> dropdown. Check the box beside it when listed.</p>
 <div class="imageblock">
 <div class="content">
-<img src="_images/green/search-consolenotification.png" alt="search consolenotification">
+<img src="_images/green/search-consolenotification.png" alt="Search feature in the OpenShift Web Console showing the ConsoleNotification listing">
 </div>
 </div>
 </li>
@@ -388,14 +388,14 @@ spec:
 <h2 id="_using_gitops_to_manage_cluster_resources"><a class="anchor" href="#_using_gitops_to_manage_cluster_resources"></a>Using GitOps to Manage Cluster Resources</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this section you’ll add a customisation known as a QuickStart to the OpenShift cluster, but there&#8217;s a twist! You&#8217;ll be using OpenShift GitOps to synchronise the QuickStart YAML definition from a Git repository to the OpenShift cluster. The QuickStart will guide users through the steps required to manage a resources using OpenShift GitOps.</p>
+<p>In this section you’ll add a customisation known as a QuickStart to the OpenShift cluster, but there&#8217;s a twist! You&#8217;ll be using link: <a href="https://docs.openshift.com/container-platform/4.10/cicd/gitops/understanding-openshift-gitops.html" target="_blank" rel="noopener">OpenShift GitOps</a> to synchronise the QuickStart YAML definition from a Git repository to the OpenShift cluster. The QuickStart will guide users through the steps required to manage a resources using OpenShift GitOps.</p>
 </div>
 <div class="paragraph">
-<p>If you’re not familiar with it, GitOps is a set of practices to manage infrastructure and application configurations using Git repositories as a single source of truth for declarative infrastructure. Red Hat OpenShift GitOps uses Argo CD to maintain cluster resources. Argo CD is an open-source declarative tool for the continuous integration and continuous deployment (CI/CD) of applications.</p>
+<p>If you’re not familiar with it, GitOps is a set of practices to manage infrastructure and application configurations using Git repositories as a single source of truth for declarative infrastructure. Red Hat OpenShift GitOps uses <a href="https://argo-cd.readthedocs.io/en/stable/" target="_blank" rel="noopener">Argo CD</a> to maintain cluster resources. Argo CD is an open-source declarative tool for the continuous integration and continuous deployment (CI/CD) of applications.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/green/gitops-argo-sync.png" alt="gitops argo sync">
+<img src="_images/green/gitops-argo-sync.png" alt="Simplified ArgoCD Flow Diagram">
 </div>
 </div>
 <div class="admonitionblock note">
@@ -406,7 +406,7 @@ spec:
 </td>
 <td class="content">
 <div class="paragraph">
-<p>It&#8217;s possible to run OpenShift GitOps on the same cluster that you want to sync resources to, or on a separate cluster and sync resources to a one or more distinct clusters. In this woekshop we&#8217;re running everything on a single cluster to remove the need for managing multiple clusters.</p>
+<p>It&#8217;s possible to run OpenShift GitOps on the same cluster that you want to sync resources to, or on a separate cluster and sync resources to a one or more distinct clusters. In this workshop we&#8217;re running everything on a single cluster to remove the need for managing multiple clusters.</p>
 </div>
 </td>
 </tr>
@@ -426,7 +426,7 @@ spec:
 <p>Expand the <strong>Application Launcher</strong>* menu (the 3x3 sqaure icon) in the top-right of the OpenShift console.</p>
 <div class="imageblock">
 <div class="content">
-<img src="_images/green/gitops-url.png" alt="gitops url">
+<img src="_images/green/gitops-url.png" alt="Expanded Application Launcher in the OpenShift Web Console showing an ArgoCD Link">
 </div>
 </div>
 </li>
@@ -457,14 +457,14 @@ spec:
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/green/gitops-dashboard.png" alt="gitops dashboard">
+<img src="_images/green/gitops-dashboard.png" alt="The ArgoCD Dashboard">
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_create_an_application_in_argocd"><a class="anchor" href="#_create_an_application_in_argocd"></a>Create an Application in ArgoCD</h3>
 <div class="paragraph">
-<p>An <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications"><strong>Application</strong></a> in ArgoCD represents a deployed application instance on a Kubernetes cluster. Applications can be created using the ArgoCD UI, or directly via a YAML Application CR.</p>
+<p>An <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications" target="_blank" rel="noopener"><strong>Application</strong></a> in ArgoCD represents a deployed application instance on a Kubernetes cluster. Applications can be created using the ArgoCD UI, or directly via a YAML Application CR.</p>
 </div>
 <div class="paragraph">
 <p>Create an Application using the ArgoCD UI:</p>
@@ -548,7 +548,7 @@ spec:
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/green/gitops-application.png" alt="gitops application">
+<img src="_images/green/gitops-application.png" alt="An application being rendered in the ArgoCD UI">
 </div>
 </div>
 <div class="paragraph">
