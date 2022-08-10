@@ -19,6 +19,8 @@ The source code for the default tooling container image is available in the link
 
 In this guide you'll customise the Web Terminal tooling container using a pre-built image.
 
+=== Modify the Web Terminal Container Image
+
 . Login to your OpenShift cluster as a user that has the `cluster-admin` role.
 +
 TIP: You posses the `cluster-admin` role if you can view Projects starting with the *openshift-* prefix. An existing user with the `cluster-admin` role can grant the same role to other users using the `oc adm policy add-cluster-role-to-user cluster-admin <username>` command.
@@ -34,7 +36,7 @@ image::green/devworkspacetemplate-listing.png[]
 +
 image::green/devworkspacetemplate-yaml.png[]
 
-== Use the Customised Web Terminal
+=== Use the Customised Web Terminal Container Image
 
 Take your customised Web Terminal for a spin:
 
@@ -55,9 +57,18 @@ The ASCII art displayed by the customised Web Terminal is shown in the image bel
 
 image::green/custom-web-terminal.png[]
 
-== Console Notification Banners
+== Customising the OpenShift Web Console
+
+The OpenShift Web Console provides extensive customistion options. These are documented in the link:https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html[Customizing the Web Console^] section of the OpenShift documentation.
+
+=== Console Notification Banners
 
 A notification banner can be added to the OpenShift Console using a link:https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#creating-custom-notification-banners_customizing-web-console[ConsoleNotification CRD]. An example is shown in the following screenshot.
+
+[NOTE]
+====
+Customising the Web Console requires use of a user account with `cluster-admin` permission. 
+====
 
 image::green/custom-notification-banner.png[]
 
