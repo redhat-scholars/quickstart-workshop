@@ -1,5 +1,0 @@
-spec:
-  customization:
-    customLogoFile:
-      key: green-team.png
-      name: console-custom-logo

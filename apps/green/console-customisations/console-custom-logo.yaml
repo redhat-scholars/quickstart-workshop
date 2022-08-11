@@ -11,7 +11,7 @@ spec:
   customization:
     customLogoFile:
       key: green-team.png
-      name: custom-logo
+      name: green-team-logo
   logLevel: Normal
   managementState: Managed
   operatorLogLevel: Normal
