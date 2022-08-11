@@ -382,6 +382,80 @@ spec:
 <p>Take note of the link to a GitHub repository in the ConsoleNotification. You&#8217;ll be using that code shortly!</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_customise_the_cluster_branding"><a class="anchor" href="#_customise_the_cluster_branding"></a>Customise the Cluster Branding</h3>
+<div class="paragraph">
+<p>A custom logo and/or custom product name can be applied by modifying the <a href="https://docs.openshift.com/container-platform/4.6/web_console/customizing-the-web-console.html#adding-a-custom-logo_customizing-web-console" target="_blank" rel="noopener">Console CR</a>.</p>
+</div>
+<div class="paragraph">
+<p>Follow these instructions to set a custom logo on your cluster:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Login to your OpenShift Web Console as a user with <code>cluster-admin</code> permissions.</p>
+</li>
+<li>
+<p>Open the Web Terminal.</p>
+</li>
+<li>
+<p>Download a logo file using cURL inside the Web Terminal:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl <a href="https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/green/green-team.png" class="bare">https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/green/green-team.png</a> -o /tmp/green-team.png</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Use the Web Terminal to create a ConfigMap in the <strong>openshift-config</strong> namespace on your OpenShift cluster to store the logo binary data:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc create configmap console-custom-logo \
+--from-file /tmp/green-team.png -n openshift-config</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The last step in this process is to instruct the OpenShift Web Console to display your logo instead of the default logo. This requires modifying the existing Console YAML definition. This can be accomplished using the either the <code>oc edit</code> or <code>oc patch</code> commands. Use the <code>oc patch</code> command to apply the Console configuration change:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create the patch YAML by running the following command in the Web Terminal:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cat &lt;&lt;EOF &gt; /tmp/patch.yaml
+spec:
+  customization:
+    customLogoFile:
+      key: green-team.png
+      name: console-custom-logo
+EOF</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run the patch command, applying the change to the <strong>Console</strong> item named <strong>cluster</strong>:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc patch consoles.operator.openshift.io cluster \
+--type merge --patch-file /tmp/patch.yaml</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Wait a minute, and refresh your web browser. The custom logo should be displayed in the top-left of the OpenShift Web Console.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/green/custom-logo.png" alt="A custom logo at the top of the OpenShift Web Console">
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -566,24 +640,6 @@ spec:
 <p>The <strong>Application Launcher</strong>* menu (the 3x3 sqaure icon) contains a <strong>Hackathon Resources</strong> section.</p>
 </li>
 </ol>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_customise_the_cluster_branding"><a class="anchor" href="#_customise_the_cluster_branding"></a>Customise the Cluster Branding</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre>oc create configmap console-custom-logo \
---from-file /apps/green/green-team.png \
--n openshift-config</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>oc patch consoles.operator.openshift.io cluster \
---type merge --patch-file apps/green/console-logo.patch.yaml</pre>
 </div>
 </div>
 </div>
