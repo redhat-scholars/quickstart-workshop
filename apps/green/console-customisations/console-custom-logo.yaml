@@ -11,7 +11,7 @@ spec:
   customization:
     customLogoFile:
       key: green-team.png
-      name: console-custom-logo
+      name: custom-logo
   logLevel: Normal
   managementState: Managed
   operatorLogLevel: Normal
