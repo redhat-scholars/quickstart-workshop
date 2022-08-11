@@ -107,6 +107,62 @@ If you are unable to create the ConsoleNotification, make sure to log in as a us
 
 Take note of the link to a GitHub repository in the ConsoleNotification. You'll be using that code shortly!
 
+
+=== Customise the Cluster Branding
+
+A custom logo and/or custom product name can be applied by modifying the link:https://docs.openshift.com/container-platform/4.6/web_console/customizing-the-web-console.html#adding-a-custom-logo_customizing-web-console[Console CR^].
+
+Follow these instructions to set a custom logo on your cluster:
+
+
+. Login to your OpenShift Web Console as a user with `cluster-admin` permissions.
+. Open the Web Terminal.
+. Download a logo file using cURL inside the Web Terminal:
++
+[.console-input]
+[source, bash,subs="+macros,+attributes"]
+----
+curl https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/green/green-team.png -o /tmp/green-team.png 
+----
+. Use the Web Terminal to create a ConfigMap in the *openshift-config* namespace on your OpenShift cluster to store the logo binary data:
++
+[.console-input]
+[source, bash,subs="+macros,+attributes"]
+----
+oc create configmap console-custom-logo \
+--from-file /tmp/green-team.png -n openshift-config
+----
+
+The last step in this process is to instruct the OpenShift Web Console to display your logo instead of the default logo. This requires modifying the existing Console YAML definition. This can be accomplished using the either the `oc edit` or `oc patch` commands. Use the `oc patch` command to apply the Console configuration change:
+
+
+. Create the patch YAML by running the following command in the Web Terminal:
++
+[.console-input]
+[source, bash,subs="+macros,+attributes"]
+----
+cat <<EOF > /tmp/patch.yaml
+spec:
+  customization:
+    customLogoFile:
+      key: green-team.png
+      name: console-custom-logo
+EOF
+----
+. Run the patch command, applying the change to the *Console* item named *cluster*:
++
+[.console-input]
+[source, bash,subs="+macros,+attributes"]
+----
+oc patch consoles.operator.openshift.io cluster \
+--type merge --patch-file /tmp/patch.yaml
+----
+
+Wait a minute, and refresh your web browser. The custom logo should be displayed in the top-left of the OpenShift Web Console.
+
+image::green/custom-logo.png[A custom logo at the top of the OpenShift Web Console]
+
+
 == Using GitOps to Manage Cluster Resources
 
 In this section you’ll add a customisation known as a QuickStart to the OpenShift cluster, but there's a twist! You'll be using link: https://docs.openshift.com/container-platform/4.10/cicd/gitops/understanding-openshift-gitops.html[OpenShift GitOps^] to synchronise the QuickStart YAML definition from a Git repository to the OpenShift cluster. The QuickStart will guide users through the steps required to manage a resources using OpenShift GitOps.
@@ -176,17 +232,4 @@ Return to the OpenShift Console, refresh the page, and verify that:
 . The OpenShift Container Platform logo has been replaced by a custom logo.
 . The *Application Launcher** menu (the 3x3 sqaure icon) contains a *Hackathon Resources* section.
 
-== Customise the Cluster Branding
-
-----
-oc create configmap console-custom-logo \
---from-file /apps/green/green-team.png \
--n openshift-config
-----
-
-
-----
-oc patch consoles.operator.openshift.io cluster \
---type merge --patch-file apps/green/console-logo.patch.yaml
-----
 
