@@ -10,12 +10,3 @@ include::_attributes.adoc[]
 :cluster_login_url: https://example-workshop-url
 
 Log in to the cluster using the username "{adminname}" and password "{adminpass}" at {cluster_login_url}
-
-[scoring]
-== Scoring Guidelines
-
-:scoring_doc_url: https://example-scoring-url
-
-To view team information and scoring criteria, review the following doc:
-
-{scoring_doc_url}

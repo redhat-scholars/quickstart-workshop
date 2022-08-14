@@ -5,11 +5,19 @@
 [.text-center.strong]
 == Console Customization 
 
-The purpose of this workshop is to explore several of the new OpenShift Console Customization and extensibility features. Learn to build clusters that are easier to use and more welcoming for new users.
+The purpose of this workshop is to explore several of the new OpenShift Console Customization and extensibility features. 
+
+Build clusters that are easier to use and more welcoming for new users by:
+1. Enabling the Web Terminal operator
+2. Learning how to offer guidance via QuickStarts
+3. Customizing your Login screen
+4. Configuring alerts and banners
+5. Populating the default Helm repositories
+6. Providing reusable YAML Samples and Code Snippets
 
 [.tiles.browse]
 == Workshop Outline
-Complete each of the following challenges:
+Complete each of the following challenges to increase your score during the event, or follow along at your own pace:
 
 [.tile]
 .xref:01-cluster-access.adoc[Get Started]
@@ -22,8 +30,15 @@ Complete each of the following challenges:
 
 Coming Soon:
 
-. Installation of Quickstarts
-. Customization of Login screen
-. Provide a demo of your solution
+. Quickstart Basics
+. Login screen Customizations
+. Demo your QuickStart customizations!?
 
-Scoring doc is located here: LINK
+[scoring]
+== Scoring Guidelines
+
+:scoring_doc_url: https://example-scoring-url
+
+To view team information and scoring criteria, review the following doc:
+
+{scoring_doc_url}
