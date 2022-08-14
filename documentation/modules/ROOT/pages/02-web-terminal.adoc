@@ -24,7 +24,7 @@ OpenShift will now install the Web Terminal Operator in the `openshift-operators
 
 image::terminal/operatorhub-installing.png[Installation in Progress...]
 
-Wait a few mins for the installation to proceed...
+Wait a few minutes for the installation to proceed...
 
 image::terminal/operatorhub-installed.png[Installation Complete]
 
@@ -37,9 +37,11 @@ image::terminal/operatorhub-detail.png[Web Terminal Operator detail view]
 
 :adminname: opentlc-mgr
 
-Reload your web browser to reveal a new Web Terminal button in the header menu.  Click on it to open a new Web Terminal.
+Reload your web browser to reveal a new Web Terminal button in the header menu.  Click on the Web Terminal header menu button to open a new terminal session.
 
 image::terminal/terminal-open.png[Open the Web Terminal]
+
+Paste each of the following commands into your terminal to confirm that it is working as expected:
 
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
