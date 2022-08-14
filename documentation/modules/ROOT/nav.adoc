@@ -1,22 +1,24 @@
 * xref:index.adoc[Introduction]
+** xref:index.adoc#cluster_access[Cluster Access]
+** xref:index.adoc#scoring[Scoring Guidelines]
+** xref:index.adoc#command_line[Command line tools]
 
-* xref:01-cluster-access.adoc[1. Cluster Access]
-** xref:01-cluster-access.adoc#cluster_access[Accessing the Cluster]
-** xref:01-cluster-access.adoc#scoring[Scoring Guidelines]
+* xref:01-quickstarts.adoc[1. ConsoleQuickStarts]
+** xref:01-quickstarts.adoc#basics[QuickStart Basics]
 
 * xref:02-web-terminal.adoc[2. Web Terminal]
 ** xref:02-web-terminal.adoc#install[Installation]
 ** xref:02-web-terminal.adoc#basics[Basics]
 
 * xref:03-red.adoc[3. Red]
-** xref:03-red.adoc#install[Installation]
-** xref:03-red.adoc#basics[Basics]
+** xref:03-red.adoc#custom_web_terminal[Customize the Web Terminal]
+** xref:03-red.adoc#helm_charts[Helm Chart Basics]
+** xref:03-red.adoc#login_screen[Customize the cluster Login Screen]
 
 * xref:03-green.adoc[3. Green]
 ** xref:03-green.adoc#_customise_the_web_terminal[Customise the Web Terminal]
 ** xref:03-green.adoc#_use_the_customised_web_terminal[Use the Customised Web Terminal]
 ** xref:03-green.adoc#_console_notification_banners[Console Notification Banners]
-
 
 * xref:03-blue.adoc[3. Blue]
 ** xref:03-blue.adoc#install[Installation]

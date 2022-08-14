@@ -1,13 +1,14 @@
-= Welcome to the Console Customization Workshop
+= Welcome to the Red Hat Summit Connect 2022 Console Customization Workshop
 :page-layout: home
 :!sectids:
 
 [.text-center.strong]
-== Console Customization 
+== Console Customization Hackathon
 
 The purpose of this workshop is to explore several of the new OpenShift Console Customization and extensibility features. 
 
 Build clusters that are easier to use and more welcoming for new users by:
+
 1. Enabling the Web Terminal operator
 2. Learning how to offer guidance via QuickStarts
 3. Customizing your Login screen
@@ -17,27 +18,26 @@ Build clusters that are easier to use and more welcoming for new users by:
 
 [.tiles.browse]
 == Workshop Outline
-Complete each of the following challenges to increase your score during the event, or follow along at your own pace:
 
 [.tile]
-.xref:01-cluster-access.adoc[Get Started]
-* xref:01-cluster-access.adoc#[Cluster Access]
+.xref:index.adoc[Get Started]
+* xref:index.adoc#[Cluster Access]
+
+[.title]
+.xref:01-quickstarts.adoc#[ConsoleQuickStarts]
+* xref:01-quickstarts.adoc#basics[QuickStarts Basics]
 
 [.tile]
 .xref:02-web-terminal.adoc[Web Terminal]
 * xref:02-web-terminal.adoc#install[Installing the Web Terminal operator]
 * xref:02-web-terminal.adoc#test[Web Terminal Basics]
 
-Coming Soon:
-
-. Quickstart Basics
-. Login screen Customizations
-. Demo your QuickStart customizations!?
-
 [scoring]
 == Scoring Guidelines
 
 :scoring_doc_url: https://example-scoring-url
+
+Complete each of the challenge sections to increase your score during the event, or follow along at your own pace.
 
 To view team information and scoring criteria, review the following doc:
 
