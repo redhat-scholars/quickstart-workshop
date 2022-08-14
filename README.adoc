@@ -1,1 +1,7 @@
-Check the build courseware https://redhat-scholars.github.io/build-course[documentation]  on how folder structure, how to use macros and other gotchas
+# Custom Console and QuickStart Workshop
+
+This repo contains the sources for the link:https://www.redhat.com/en/summit/connect/na[Red Hat Summit Connect 2022] hackathon workshop materials
+
+The course content is available here:
+
+https://redhat-scholars.github.io/quickstart-workshop/
