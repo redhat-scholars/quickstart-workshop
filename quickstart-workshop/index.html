@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Welcome to the Console Customization Workshop :: Custom Console Workshop</title>
+    <title>Welcome to the Red Hat Summit Connect 2022 Console Customization Workshop :: Custom Console Workshop</title>
     <link rel="canonical" href="https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/index.html">
-    <link rel="next" href="01-cluster-access.html">
+    <link rel="next" href="01-quickstarts.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -51,17 +51,26 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="1">
+    <button class="nav-item-toggle"></button>
     <a class="nav-link" href="index.html">Introduction</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#cluster_access">Cluster Access</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#scoring">Scoring Guidelines</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#command_line">Command line tools</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="01-cluster-access.html">1. Cluster Access</a>
+    <a class="nav-link" href="01-quickstarts.html">1. ConsoleQuickStarts</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="01-cluster-access.html#cluster_access">Accessing the Cluster</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="01-cluster-access.html#scoring">Scoring Guidelines</a>
+    <a class="nav-link" href="01-quickstarts.html#basics">QuickStart Basics</a>
   </li>
 </ul>
   </li>
@@ -82,10 +91,13 @@
     <a class="nav-link" href="03-red.html">3. Red</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-red.html#install">Installation</a>
+    <a class="nav-link" href="03-red.html#custom_web_terminal">Customize the Web Terminal</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-red.html#basics">Basics</a>
+    <a class="nav-link" href="03-red.html#helm_charts">Helm Chart Basics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-red.html#login_screen">Customize the cluster Login Screen</a>
   </li>
 </ul>
   </li>
@@ -138,35 +150,56 @@
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Welcome to the Console Customization Workshop</h1>
+<h1 class="page">Welcome to the Red Hat Summit Connect 2022 Console Customization Workshop</h1>
 <div class="sect1 text-center strong">
-<h2>Console Customization</h2>
+<h2>Console Customization Hackathon</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The purpose of this workshop is to explore several of the new OpenShift Console Customization and extensibility features.</p>
 </div>
 <div class="paragraph">
-<p>Build clusters that are easier to use and more welcoming for new users by:
-1. Enabling the Web Terminal operator
-2. Learning how to offer guidance via QuickStarts
-3. Customizing your Login screen
-4. Configuring alerts and banners
-5. Populating the default Helm repositories
-6. Providing reusable YAML Samples and Code Snippets</p>
+<p>Build clusters that are easier to use and more welcoming for new users by:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enabling the Web Terminal operator</p>
+</li>
+<li>
+<p>Learning how to offer guidance via QuickStarts</p>
+</li>
+<li>
+<p>Customizing your Login screen</p>
+</li>
+<li>
+<p>Configuring alerts and banners</p>
+</li>
+<li>
+<p>Populating the default Helm repositories</p>
+</li>
+<li>
+<p>Providing reusable YAML Samples and Code Snippets</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
 <div class="sect1 tiles browse">
 <h2>Workshop Outline</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Complete each of the following challenges to increase your score during the event, or follow along at your own pace:</p>
-</div>
 <div class="ulist tile">
-<div class="title"><a href="01-cluster-access.html" class="xref page">Get Started</a></div>
+<div class="title"><a href="#">Get Started</a></div>
 <ul>
 <li>
-<p><a href="01-cluster-access.html" class="xref page">Cluster Access</a></p>
+<p><a href="#">Cluster Access</a></p>
+</li>
+</ul>
+</div>
+<div class="ulist title">
+<div class="title"><a href="01-quickstarts.html" class="xref page">ConsoleQuickStarts</a></div>
+<ul>
+<li>
+<p><a href="01-quickstarts.html#basics" class="xref page">QuickStarts Basics</a></p>
 </li>
 </ul>
 </div>
@@ -181,27 +214,14 @@
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>Coming Soon:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Quickstart Basics</p>
-</li>
-<li>
-<p>Login screen Customizations</p>
-</li>
-<li>
-<p>Demo your QuickStart customizations!?</p>
-</li>
-</ol>
-</div>
 </div>
 </div>
 <div class="sect1">
 <h2>Scoring Guidelines</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Complete each of the challenge sections to increase your score during the event, or follow along at your own pace.</p>
+</div>
 <div class="paragraph">
 <p>To view team information and scoring criteria, review the following doc:</p>
 </div>
@@ -211,7 +231,7 @@
 </div>
 </div>
 <nav class="pagination">
-  <span class="next"><a href="01-cluster-access.html">1. Cluster Access</a></span>
+  <span class="next"><a href="01-quickstarts.html">1. ConsoleQuickStarts</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
