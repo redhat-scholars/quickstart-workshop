@@ -3,10 +3,10 @@ kind: ConsoleNotification
 metadata:
   name: hackathon-banner
 spec:
-  text: Welcome to the Green Team OpenShift cluster for the Summit Connect Hackathon!
+  text: Welcome to the Argo CD managed Green Team OpenShift cluster for the Summit Connect Hackathon!
   location: BannerTop 
   link:
     href: 'https://github.com/redhat-scholars/quickstart-workshop/tree/master/apps/green'
     text: (View Code for the Green Team Cluster)
   color: '#fafafa'
-  backgroundColor: '#65a30d'
+  backgroundColor: '#16a34a'
