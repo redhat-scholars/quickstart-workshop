@@ -56,13 +56,10 @@
     <a class="nav-link" href="index.html">Introduction</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="index.html#cluster_access">Cluster Access</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="index.html#scoring">Scoring Guidelines</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="index.html#command_line">Command line tools</a>
+    <a class="nav-link" href="index.html#cluster_access">Cluster Access</a>
   </li>
 </ul>
   </li>
@@ -71,7 +68,7 @@
     <a class="nav-link" href="01-quickstarts.html">1. ConsoleQuickStarts</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="01-quickstarts.html#basics">QuickStart Basics</a>
+    <a class="nav-link" href="01-quickstarts.html#basics">Basics</a>
   </li>
 </ul>
   </li>
@@ -95,10 +92,10 @@
     <a class="nav-link" href="#custom_web_terminal">Customize the Web Terminal</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#helm_charts">Helm Chart Basics</a>
+    <a class="nav-link" href="#helm_charts">Helm Charts per Project</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#login_screen">Customize the cluster Login Screen</a>
+    <a class="nav-link" href="#custom_login">Customize the Login Screen</a>
   </li>
 </ul>
   </li>
@@ -153,29 +150,21 @@
 <article class="doc">
 <h1 class="page">Deploy Service</h1>
 <div class="sect1">
-<h2 id="service"><a class="anchor" href="#service"></a>The Service</h2>
+<h2 id="custom_web_terminal"><a class="anchor" href="#custom_web_terminal"></a>Customizing the Web Terminal</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>The code:</p>
-</div>
 <div class="listingblock lines_7 console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class Main {
-
-    public static void main(String[] args) {
-
-    }
-
-}
-
-./mvnw compile</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">sed -i views/index.html -e 's/your Node.js application on OpenShift/Red Hat Summit Connect 2022/'</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="package"><a class="anchor" href="#package"></a>Packaging the Service</h2>
+<h2 id="helm_charts"><a class="anchor" href="#helm_charts"></a>Helm Charts per Project</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Helm charts can also be configured on a per-project basis.</p>
+</div>
 <div class="paragraph">
 <p>You can package the next bash script:</p>
 </div>
@@ -188,7 +177,7 @@ echo "Hello World"</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="deploy"><a class="anchor" href="#deploy"></a>Deploy the Service</h2>
+<h2 id="custom_login"><a class="anchor" href="#custom_login"></a>Customize the Login Screen</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>And then you can deploy the service and execute commands inside:</p>
