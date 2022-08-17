@@ -60,17 +60,15 @@ spec:
 
       1. Change the *Repo URL* value to the URL for your fork.
 
-      1. Click the *Save* button in the top-right corner of the UI.
+      1. Click the *Save* button in the top-right corner of the UI, then use the *X* icon to close the overlay.
 
-      
+    
     review:
       instructions: |-
-        Is a Node.js Deployment shown in the Topology View of your Project?
-
-        Is the Deployment surrounded by a blue ring to indicate it is running healthy Pod(s)?
-      failedTaskHelp: Verify that you're viewing the correct Project Topology view. Wait a moment for the Pods to be created. If this, retry the steps.
+        Were you able to save the changes?
+      failedTaskHelp: Verify the repository URL and settings you entered are valid and try again. 
     summary:
       success: >-
-        You've deployed a container on OpenShift. Nice work!
+        You updated the Argo CD Application to use your fork! Try customising some of the YAML resources in the fork and seeing them get synced to the cluster by Argo CD.
       failed: Try the steps again.
   
