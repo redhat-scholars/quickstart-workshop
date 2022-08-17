@@ -32,7 +32,7 @@ Build clusters that are easier to use and more welcoming for new users by:
 * xref:02-web-terminal.adoc#install[Installing the Web Terminal operator]
 * xref:02-web-terminal.adoc#test[Web Terminal Basics]
 
-[scoring]
+[#scoring]
 == Scoring Guidelines
 
 :scoring_doc_url: https://example-scoring-url
@@ -42,3 +42,15 @@ Complete each of the challenge sections to increase your score during the event,
 To view team information and scoring criteria, review the following doc:
 
 {scoring_doc_url}
+
+[#cluster_access]
+== Cluster Access
+
+:adminname: opentlc-mgr
+:adminpass: admin
+
+:cluster_login_url: https://example-workshop-url
+
+Log in to the cluster using the username "{adminname}" and password "{adminpass}"
+
+{cluster_login_url}

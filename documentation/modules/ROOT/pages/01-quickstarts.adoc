@@ -1,12 +1,12 @@
 = Lab Setup
 include::_attributes.adoc[]
 
-[#cluster_access]
-== Cluster Access
+[#quickstart_basics]
+== ConsoleQuickStart Basics
 
-:adminname: opentlc-mgr
-:adminpass: admin
+The `ConsoleQuickStart` custom resource provides a convienient way to offer guided experiences and usage documentation within the OpenShift Console.
 
-:cluster_login_url: https://example-workshop-url
+View all quickstarts
 
-Log in to the cluster using the username "{adminname}" and password "{adminpass}" at {cluster_login_url}
+Try the Helm quickstart.  
+Install the bitnami repo or azure repo cluster-wide

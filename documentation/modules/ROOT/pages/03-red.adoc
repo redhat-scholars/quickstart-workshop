@@ -1,28 +1,19 @@
 = Deploy Service
 include::_attributes.adoc[]
 
-[#service]
-== The Service
-
-The code:
+[#custom_web_terminal]
+== Customizing the Web Terminal
 
 [.lines_7]
 [.console-input]
-[source, java,subs="+macros,+attributes"]
+[source,bash,subs="+macros,+attributes"]
 ----
-public class Main {
-
-    public static void main(String[] args) {
-
-    } 
-
-}
-
-./mvnw compile
+sed -i views/index.html -e 's/your Node.js application on OpenShift/Red Hat Summit Connect 2022/'
 ----
 
-[#package]
-== Packaging the Service
+[#helm_charts]
+== Helm Charts per Project
+Helm charts can also be configured on a per-project basis.
 
 You can package the next bash script:
 
@@ -31,8 +22,8 @@ You can package the next bash script:
 include::example$run.sh[]
 ----
 
-[#deploy]
-== Deploy the Service
+[#custom_login]
+== Customize the Login Screen
 
 And then you can deploy the service and execute commands inside:
 
