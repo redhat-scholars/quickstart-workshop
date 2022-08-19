@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>3. Red :: Custom Console Workshop</title>
-    <link rel="canonical" href="https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/03-red.html">
-    <link rel="prev" href="03-menu.html">
-    <link rel="next" href="03-green.html">
+    <title>3. Menu :: Custom Console Workshop</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/03-menu.html">
+    <link rel="prev" href="02-web-terminal.html">
+    <link rel="next" href="03-red.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -84,24 +84,24 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="03-menu.html">3. Menu</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="03-red.html">3. Red</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#custom_login">Customize the login screen</a>
+    <a class="nav-link" href="03-red.html#custom_login">Customize the login screen</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#custom_logo">Customize the header logo</a>
+    <a class="nav-link" href="03-red.html#custom_logo">Customize the header logo</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#quickstart_install">QuickStart installation</a>
+    <a class="nav-link" href="03-red.html#quickstart_install">QuickStart installation</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#custom_web_terminal">Customize the Web Terminal</a>
+    <a class="nav-link" href="03-red.html#custom_web_terminal">Customize the Web Terminal</a>
   </li>
 </ul>
   </li>
@@ -147,61 +147,35 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Console Customization and QuickStarts</a></li>
-    <li><a href="03-red.html">3. Red</a></li>
+    <li><a href="03-menu.html">3. Menu</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/quickstart-workshop/edit/master/documentation/modules/ROOT/pages/03-red.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/quickstart-workshop/edit/master/documentation/modules/ROOT/pages/03-menu.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">3. Red</h1>
-<div class="sect1">
-<h2 id="custom_login"><a class="anchor" href="#custom_login"></a>Customize the Login Screen</h2>
-<div class="sectionbody">
-
+<h1 class="page">3. Menu</h1>
+<div class="paragraph">
+<p>For section 3, choose between "Red", "Green", or "Blue" cluster setup, depending on your interests:</p>
 </div>
+<div class="paragraph">
+<p>Table:</p>
 </div>
-<div class="sect1">
-<h2 id="custom_logo"><a class="anchor" href="#custom_logo"></a>Customize the Header Logo</h2>
-<div class="sectionbody">
-
+<div class="paragraph">
+<div class="title"><a href="03-red.html" class="xref page">Red</a>:</div>
+<p>Quickstart creation and modifications, header logos, custom web terminal, and a custom login screen</p>
 </div>
+<div class="paragraph">
+<div class="title"><a href="03-green.html" class="xref page">Green</a>:</div>
+<p>ArgoCD, header logos, custom web terminal, and more</p>
 </div>
-<div class="sect1">
-<h2 id="custom_web_terminal"><a class="anchor" href="#custom_web_terminal"></a>Customize the Web Terminal</h2>
-<div class="sectionbody">
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc version
-odo version</code></pre>
-</div>
-</div>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git clone <a href="https://github.com/sclorg/nodejs-ex" class="bare">https://github.com/sclorg/nodejs-ex</a>
-cd nodejs-ex</code></pre>
-</div>
-</div>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">odo init</code></pre>
-</div>
-</div>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">odo dev &amp;</code></pre>
-</div>
-</div>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">sed -i views/index.html -e 's/your Node.js application on OpenShift/Red Hat Summit Connect 2022/'</code></pre>
-</div>
-</div>
-</div>
+<div class="paragraph">
+<div class="title"><a href="03-blue.html" class="xref page">Blue</a>:</div>
+<p>Blue: &#8230;&#8203;</p>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="03-menu.html">3. Menu</a></span>
-  <span class="next"><a href="03-green.html">3. Green</a></span>
+  <span class="prev"><a href="02-web-terminal.html">2. Web Terminal</a></span>
+  <span class="next"><a href="03-red.html">3. Red</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
