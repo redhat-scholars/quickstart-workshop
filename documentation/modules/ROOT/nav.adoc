@@ -18,9 +18,11 @@
 ** xref:03-red.adoc#custom_web_terminal[Customize the Web Terminal]
 
 * xref:03-green.adoc[3. Green]
+** xref:03-green.adoc#_pre_applied_customisations[Pre-Applied Customisations]
 ** xref:03-green.adoc#_customise_the_web_terminal[Customise the Web Terminal]
-** xref:03-green.adoc#_use_the_customised_web_terminal[Use the Customised Web Terminal]
-** xref:03-green.adoc#_console_notification_banners[Console Notification Banners]
+** xref:03-green.adoc#_customising_the_openshift_web_console[Web Console Customisations]
+** xref:03-green.adoc#_using_gitops_to_manage_cluster_resources[Use GitOps to Manage Customisations]
+
 
 * xref:03-blue.adoc[3. Blue]
 ** xref:03-blue.adoc#install[Installation]
