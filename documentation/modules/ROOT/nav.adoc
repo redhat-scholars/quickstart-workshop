@@ -1,18 +1,21 @@
 * xref:index.adoc[Introduction]
 ** xref:index.adoc#scoring[Scoring Guidelines]
-** xref:index.adoc#cluster_access[Cluster Access]
 
 * xref:01-quickstarts.adoc[1. ConsoleQuickStarts]
-** xref:01-quickstarts.adoc#basics[Basics]
+** xref:01-quickstarts.adoc#quickstart_basics[Basics]
+** xref:01-quickstarts.adoc#helm_charts[Helm Charts]
 
 * xref:02-web-terminal.adoc[2. Web Terminal]
 ** xref:02-web-terminal.adoc#install[Installation]
 ** xref:02-web-terminal.adoc#basics[Basics]
 
+* xref:03-menu.adoc[3. Menu]
+
 * xref:03-red.adoc[3. Red]
+** xref:03-red.adoc#custom_login[Customize the login screen]
+** xref:03-red.adoc#custom_logo[Customize the header logo]
+** xref:03-red.adoc#quickstart_install[QuickStart installation]
 ** xref:03-red.adoc#custom_web_terminal[Customize the Web Terminal]
-** xref:03-red.adoc#helm_charts[Helm Charts per Project]
-** xref:03-red.adoc#custom_login[Customize the Login Screen]
 
 * xref:03-green.adoc[3. Green]
 ** xref:03-green.adoc#_customise_the_web_terminal[Customise the Web Terminal]

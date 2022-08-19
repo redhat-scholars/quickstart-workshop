@@ -19,18 +19,21 @@ Build clusters that are easier to use and more welcoming for new users by:
 [.tiles.browse]
 == Workshop Outline
 
-[.tile]
 .xref:index.adoc[Get Started]
-* xref:index.adoc#[Cluster Access]
+* xref:index.adoc#scoring[Scoring]
 
-[.title]
-.xref:01-quickstarts.adoc#[ConsoleQuickStarts]
+.xref:01-quickstarts.adoc#[CH1 ConsoleQuickStarts]
 * xref:01-quickstarts.adoc#basics[QuickStarts Basics]
 
-[.tile]
-.xref:02-web-terminal.adoc[Web Terminal]
+.xref:02-web-terminal.adoc[CH2 Web Terminal]
 * xref:02-web-terminal.adoc#install[Installing the Web Terminal operator]
 * xref:02-web-terminal.adoc#test[Web Terminal Basics]
+
+Choose ONE of the following challenge sections:
+
+* xref:03-red.adoc[CH3 Red Team customizations]
+* xref:03-green.adoc[CH3 Green Team customizations]
+* xref:03-blue.adoc[CH3 Blue Team customizations]
 
 [#scoring]
 == Scoring Guidelines
@@ -42,15 +45,3 @@ Complete each of the challenge sections to increase your score during the event,
 To view team information and scoring criteria, review the following doc:
 
 {scoring_doc_url}
-
-[#cluster_access]
-== Cluster Access
-
-:adminname: opentlc-mgr
-:adminpass: admin
-
-:cluster_login_url: https://example-workshop-url
-
-Log in to the cluster using the username "{adminname}" and password "{adminpass}"
-
-{cluster_login_url}

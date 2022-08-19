@@ -1,0 +1,16 @@
+= 3. Menu
+include::_attributes.adoc[]
+
+For section 3, choose between "Red", "Green", or "Blue" cluster setup, depending on your interests:
+
+Table:
+
+.xref:03-red.adoc[Red]:
+Quickstart creation and modifications, header logos, custom web terminal, and a custom login screen
+
+.xref:03-green.adoc[Green]:
+ArgoCD, header logos, custom web terminal, and more
+
+
+.xref:03-blue.adoc[Blue]:
+Blue: ...

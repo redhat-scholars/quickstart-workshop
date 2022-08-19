@@ -9,4 +9,18 @@ The `ConsoleQuickStart` custom resource provides a convienient way to offer guid
 View all quickstarts
 
 Try the Helm quickstart.  
-Install the bitnami repo or azure repo cluster-wide
+Install the azure charts cluster-wide
+
+[#helm_charts]
+== Helm Charts per Project
+In Section 1, we learned how to install Helm charts at the cluster level.  However, Helm charts can also be configured on a per-project basis.
+
+Follow along with the "Add Helm Chart Repositories to extend the Developer Catalog for your project" QuickStart to learn the basics.
+
+1. Search quickstarts for "Helm"
+2. Select the tile labeled "Add Helm Chart Repositories to extend the Developer Catalog for your project"
+3. Modify the quickstart with a new repo url and a shorter quickstart name
+4. Save the quickstart
+5. Search quickstarts for "Helm"
+6. Select the tile labeled "Add Helm Chart Repositories to your project
+7. Complete each step of the quickstart.  Confirm that you're able to help a quickstart user to manage the helm charts within their project scope

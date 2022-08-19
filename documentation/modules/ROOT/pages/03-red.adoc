@@ -1,34 +1,47 @@
-= Deploy Service
+= 3. Red
 include::_attributes.adoc[]
 
-[#custom_web_terminal]
-== Customizing the Web Terminal
+[#custom_login]
+== Customize the Login Screen
 
-[.lines_7]
+
+[#custom_logo]
+== Customize the Header Logo
+
+
+[#custom_web_terminal]
+== Customize the Web Terminal
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc version
+odo version
+----
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+git clone https://github.com/sclorg/nodejs-ex
+cd nodejs-ex
+----
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+odo init
+----
+
+
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+odo dev &
+----
+
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----
 sed -i views/index.html -e 's/your Node.js application on OpenShift/Red Hat Summit Connect 2022/'
 ----
-
-[#helm_charts]
-== Helm Charts per Project
-Helm charts can also be configured on a per-project basis.
-
-You can package the next bash script:
-
-[source,bash,subs="+macros,+attributes"]
-----
-include::example$run.sh[]
-----
-
-[#custom_login]
-== Customize the Login Screen
-
-And then you can deploy the service and execute commands inside:
-
-:podname: apps
-
-include::partial$exec_pod.adoc[]
-
-:!podname:
