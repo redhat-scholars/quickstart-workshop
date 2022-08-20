@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Lab Setup :: Custom Console Workshop</title>
+    <title>Ch1. ConsoleQuickStarts :: Custom Console Workshop</title>
     <link rel="canonical" href="https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/01-quickstarts.html">
     <link rel="prev" href="index.html">
     <link rel="next" href="02-web-terminal.html">
@@ -92,16 +92,16 @@
     <a class="nav-link" href="03-red.html">3. Red</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-red.html#custom_login">Customize the login screen</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-red.html#custom_logo">Customize the header logo</a>
+    <a class="nav-link" href="03-red.html#custom_web_terminal">Customize the Web Terminal</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="03-red.html#quickstart_install">QuickStart installation</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-red.html#custom_web_terminal">Customize the Web Terminal</a>
+    <a class="nav-link" href="03-red.html#login_screen">Customize the login screen</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-red.html#header_logo">Customize the header logo</a>
   </li>
 </ul>
   </li>
@@ -157,55 +157,102 @@
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Lab Setup</h1>
+<h1 class="page">Ch1. ConsoleQuickStarts</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Check the Scoring Guidelines sheet for notes on how to connect to your OpenShift Web Console.</p>
+</div>
+</div>
+</div>
 <div class="sect1">
-<h2 id="quickstart_basics"><a class="anchor" href="#quickstart_basics"></a>ConsoleQuickStart Basics</h2>
+<h2 id="quickstart_basics"><a class="anchor" href="#quickstart_basics"></a>1.1 ConsoleQuickStart Basics</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <code>ConsoleQuickStart</code> custom resource provides a convienient way to offer guided experiences and usage documentation within the OpenShift Console.</p>
 </div>
-<div class="paragraph">
-<p>View all quickstarts</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select the Developer Perspective</p>
+</li>
+<li>
+<p>Choose "View quickstarts"</p>
+</li>
+<li>
+<p>Search quickstarts for "Helm"</p>
+</li>
+<li>
+<p>Select the tile labeled "Manage available content in the Helm Chart Catalog"</p>
+</li>
+<li>
+<p>Follow along with the quickstart instructions to install the azure charts cluster-wide</p>
+</li>
+<li>
+<p>Click "Next", then follow the "Check your work" section</p>
+</li>
+<li>
+<p>Confirm that Azure helm charts are available in the "Add+" Menu.  Click "Next" when you are satisified with the results.</p>
+</li>
+<li>
+<p>Click "Close" to complete the QuickStart</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>Try the Helm quickstart.
-Install the azure charts cluster-wide</p>
+<p>Helm Charts from the new repository are now available throughout the cluster.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="helm_charts"><a class="anchor" href="#helm_charts"></a>Helm Charts per Project</h2>
+<h2 id="quickstart_modification"><a class="anchor" href="#quickstart_modification"></a>1.2 QuickStart Modifications</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In Section 1, we learned how to install Helm charts at the cluster level.  However, Helm charts can also be configured on a per-project basis.</p>
+<p>Image a situation where we wanted our team to have access to the Bitnami Helm repos, but we don&#8217;t want to clutter up the menu for other developers by making this content available cluster-wide.  <code>ProjectHelmChart</code> resources are the perfect solution when you need per-project or per-team usage of Helm repositories on a cluster.</p>
 </div>
 <div class="paragraph">
-<p>Follow along with the "Add Helm Chart Repositories to extend the Developer Catalog for your project" QuickStart to learn the basics.</p>
+<p>In this section, we will learn how to modify an existing <code>ConsoleQuickStart</code> resource with new instructions.  The resulting <code>ConsoleQuickStart</code> resource should install the Bitnami Helm repo (instead of the Azure helm repository).</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Search quickstarts for "Helm"</p>
+<p>Search for Resource type <code>ConsoleQuickStarts</code></p>
+</li>
+<li>
+<p>Select the item named <code>install-helmchartrepo-ns</code></p>
+</li>
+<li>
+<p>Click on <code>YAML</code> to edit the resource</p>
+</li>
+<li>
+<p>On line 96, update the <code>url</code> attribute with the Bitnami helm repo address: <code><a href="https://charts.bitnami.com/bitnami" class="bare">https://charts.bitnami.com/bitnami</a></code></p>
+</li>
+<li>
+<p>Click "Save"</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In the next section, the reader will verify that the quickstart has been updated by running a manual test of the modified resource.</p>
+</div>
+<div class="sect2">
+<h3 id="helm_charts"><a class="anchor" href="#helm_charts"></a>1.2.1 Helm Charts per project</h3>
+<div class="paragraph">
+<p>Follow along with the "Add Helm Chart Repositories to extend the Developer Catalog for your project" QuickStart to test your modifications from the previous seciton:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click on "view all quickstarts", then search for "Helm"</p>
 </li>
 <li>
 <p>Select the tile labeled "Add Helm Chart Repositories to extend the Developer Catalog for your project"</p>
 </li>
 <li>
-<p>Modify the quickstart with a new repo url and a shorter quickstart name</p>
-</li>
-<li>
-<p>Save the quickstart</p>
-</li>
-<li>
-<p>Search quickstarts for "Helm"</p>
-</li>
-<li>
-<p>Select the tile labeled "Add Helm Chart Repositories to your project</p>
-</li>
-<li>
-<p>Complete each step of the quickstart.  Confirm that you&#8217;re able to help a quickstart user to manage the helm charts within their project scope</p>
+<p>Complete each step of the quickstart.  Confirm that you were able to successfully modify the quickstart&#8217;s help chart repo url</p>
 </li>
 </ol>
+</div>
 </div>
 </div>
 </div>

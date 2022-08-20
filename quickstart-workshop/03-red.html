@@ -92,16 +92,16 @@
     <a class="nav-link" href="03-red.html">3. Red</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#custom_login">Customize the login screen</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#custom_logo">Customize the header logo</a>
+    <a class="nav-link" href="#custom_web_terminal">Customize the Web Terminal</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="#quickstart_install">QuickStart installation</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#custom_web_terminal">Customize the Web Terminal</a>
+    <a class="nav-link" href="#login_screen">Customize the login screen</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#header_logo">Customize the header logo</a>
   </li>
 </ul>
   </li>
@@ -159,25 +159,71 @@
 <article class="doc">
 <h1 class="page">3. Red</h1>
 <div class="sect1">
-<h2 id="custom_login"><a class="anchor" href="#custom_login"></a>Customize the Login Screen</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="custom_logo"><a class="anchor" href="#custom_logo"></a>Customize the Header Logo</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
 <h2 id="custom_web_terminal"><a class="anchor" href="#custom_web_terminal"></a>Customize the Web Terminal</h2>
 <div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Check the version of the <code>oc</code> command line tool:</p>
+</li>
+</ol>
+</div>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc version
-odo version</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc version</code></pre>
 </div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Modify the terminal settings</p>
+</li>
+<li>
+<p>Check the version of the <code>oc</code> command line tool:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc version</code></pre>
+</div>
+</div>
+<div class="listingblock console-output">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">client: 4.11.0</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quickstart_install"><a class="anchor" href="#quickstart_install"></a>Quickstart Installation and Modifications</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Verify that you have an updated version of the <code>odo</code> command line tool.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">odo version</code></pre>
+</div>
+</div>
+<div class="listingblock console-output">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">3.0.0beta2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you find that you&#8217;re still on odo version <code>2.5.0</code>, try repeating the <a href="#custom_web_terminal">previous section</a> to update your Web Terminal</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install a new quickstart and follow along with the demo script</p>
+</li>
+</ol>
 </div>
 <div class="listingblock console-input">
 <div class="content">
@@ -190,6 +236,9 @@ cd nodejs-ex</code></pre>
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">odo init</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Use interactive mode to set the following ENV variable: <code>PORT=3000</code></p>
+</div>
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">odo dev &amp;</code></pre>
@@ -200,6 +249,18 @@ cd nodejs-ex</code></pre>
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">sed -i views/index.html -e 's/your Node.js application on OpenShift/Red Hat Summit Connect 2022/'</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="login_screen"><a class="anchor" href="#login_screen"></a>Customize the Login Screen</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="header_logo"><a class="anchor" href="#header_logo"></a>Customize the Header Logo</h2>
+<div class="sectionbody">
+
 </div>
 </div>
 <nav class="pagination">
