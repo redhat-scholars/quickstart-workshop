@@ -1,26 +1,44 @@
-= Lab Setup
+= Ch1. ConsoleQuickStarts
 include::_attributes.adoc[]
 
+Check the Scoring Guidelines sheet for notes on how to connect to your OpenShift Web Console.
+
 [#quickstart_basics]
-== ConsoleQuickStart Basics
+== 1.1 ConsoleQuickStart Basics
 
 The `ConsoleQuickStart` custom resource provides a convienient way to offer guided experiences and usage documentation within the OpenShift Console.
 
-View all quickstarts
+1. Select the Developer Perspective
+2. Choose "View quickstarts"
+3. Search quickstarts for "Helm"
+4. Select the tile labeled "Manage available content in the Helm Chart Catalog"
+5. Follow along with the quickstart instructions to install the azure charts cluster-wide
+6. Click "Next", then follow the "Check your work" section
+7. Confirm that Azure helm charts are available in the "Add+" Menu.  Click "Next" when you are satisified with the results.
+8. Click "Close" to complete the QuickStart 
 
-Try the Helm quickstart.  
-Install the azure charts cluster-wide
+Helm Charts from the new repository are now available throughout the cluster.
+
+[#quickstart_modification]
+== 1.2 QuickStart Modifications
+
+Image a situation where we wanted our team to have access to the Bitnami Helm repos, but we don't want to clutter up the menu for other developers by making this content available cluster-wide.  `ProjectHelmChart` resources are the perfect solution when you need per-project or per-team usage of Helm repositories on a cluster.
+
+In this section, we will learn how to modify an existing `ConsoleQuickStart` resource with new instructions.  The resulting `ConsoleQuickStart` resource should install the Bitnami Helm repo (instead of the Azure helm repository).
+
+1. Search for Resource type `ConsoleQuickStarts`
+2. Select the item named `install-helmchartrepo-ns`
+3. Click on `YAML` to edit the resource
+4. On line 96, update the `url` attribute with the Bitnami helm repo address: `https://charts.bitnami.com/bitnami`
+5. Click "Save"
+
+In the next section, the reader will verify that the quickstart has been updated by running a manual test of the modified resource.
 
 [#helm_charts]
-== Helm Charts per Project
-In Section 1, we learned how to install Helm charts at the cluster level.  However, Helm charts can also be configured on a per-project basis.
+=== 1.2.1 Helm Charts per project
 
-Follow along with the "Add Helm Chart Repositories to extend the Developer Catalog for your project" QuickStart to learn the basics.
+Follow along with the "Add Helm Chart Repositories to extend the Developer Catalog for your project" QuickStart to test your modifications from the previous seciton:
 
-1. Search quickstarts for "Helm"
+1. Click on "view all quickstarts", then search for "Helm"
 2. Select the tile labeled "Add Helm Chart Repositories to extend the Developer Catalog for your project"
-3. Modify the quickstart with a new repo url and a shorter quickstart name
-4. Save the quickstart
-5. Search quickstarts for "Helm"
-6. Select the tile labeled "Add Helm Chart Repositories to your project
-7. Complete each step of the quickstart.  Confirm that you're able to help a quickstart user to manage the helm charts within their project scope
+3. Complete each step of the quickstart.  Confirm that you were able to successfully modify the quickstart's help chart repo url

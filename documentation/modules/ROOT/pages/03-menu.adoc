@@ -6,11 +6,16 @@ For section 3, choose between "Red", "Green", or "Blue" cluster setup, depending
 Table:
 
 .xref:03-red.adoc[Red]:
-Quickstart creation and modifications, header logos, custom web terminal, and a custom login screen
+
+* web terminal customization
+* login screen customizations
+* custom header logos
 
 .xref:03-green.adoc[Green]:
-ArgoCD, header logos, custom web terminal, and more
 
+* ArgoCD 
+* custom header logos
+* custom web terminal
 
 .xref:03-blue.adoc[Blue]:
 Blue: ...

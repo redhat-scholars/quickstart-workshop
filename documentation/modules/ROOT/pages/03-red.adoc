@@ -1,23 +1,52 @@
 = 3. Red
 include::_attributes.adoc[]
 
-[#custom_login]
-== Customize the Login Screen
-
-
-[#custom_logo]
-== Customize the Header Logo
-
-
 [#custom_web_terminal]
 == Customize the Web Terminal
+
+1. Check the version of the `oc` command line tool:
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----
 oc version
+----
+
+2. Modify the terminal settings
+
+3. Check the version of the `oc` command line tool:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc version
+----
+
+[.console-output]
+[source,bash,subs="+macros,+attributes"]
+----
+client: 4.11.0
+----
+
+[#quickstart_install]
+== Quickstart Installation and Modifications
+
+1. Verify that you have an updated version of the `odo` command line tool.  
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
 odo version
 ----
+[.console-output]
+[source,bash,subs="+macros,+attributes"]
+----
+3.0.0beta2
+----
+
+If you find that you're still on odo version `2.5.0`, try repeating the link:#custom_web_terminal[previous section] to update your Web Terminal
+
+2. Install a new quickstart and follow along with the demo script
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -32,7 +61,7 @@ cd nodejs-ex
 odo init
 ----
 
-
+Use interactive mode to set the following ENV variable: `PORT=3000`
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -45,3 +74,13 @@ odo dev &
 ----
 sed -i views/index.html -e 's/your Node.js application on OpenShift/Red Hat Summit Connect 2022/'
 ----
+
+
+[#login_screen]
+== Customize the Login Screen
+
+
+[#header_logo]
+== Customize the Header Logo
+
+

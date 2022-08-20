@@ -12,10 +12,10 @@
 * xref:03-menu.adoc[3. Menu]
 
 * xref:03-red.adoc[3. Red]
-** xref:03-red.adoc#custom_login[Customize the login screen]
-** xref:03-red.adoc#custom_logo[Customize the header logo]
-** xref:03-red.adoc#quickstart_install[QuickStart installation]
 ** xref:03-red.adoc#custom_web_terminal[Customize the Web Terminal]
+** xref:03-red.adoc#quickstart_install[QuickStart installation]
+** xref:03-red.adoc#login_screen[Customize the login screen]
+** xref:03-red.adoc#header_logo[Customize the header logo]
 
 * xref:03-green.adoc[3. Green]
 ** xref:03-green.adoc#_pre_applied_customisations[Pre-Applied Customisations]
