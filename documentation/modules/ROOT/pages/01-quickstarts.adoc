@@ -4,18 +4,40 @@ include::_attributes.adoc[]
 Check the Scoring Guidelines sheet for notes on how to connect to your OpenShift Web Console.
 
 [#quickstart_basics]
-== 1.1 ConsoleQuickStart Basics
+== 1.1 ConsoleQuickStart Basic Usage
 
 The `ConsoleQuickStart` custom resource provides a convienient way to offer guided experiences and usage documentation within the OpenShift Console.
 
-1. Select the Developer Perspective
-2. Choose "View quickstarts"
-3. Search quickstarts for "Helm"
-4. Select the tile labeled "Manage available content in the Helm Chart Catalog"
-5. Follow along with the quickstart instructions to install the azure charts cluster-wide
-6. Click "Next", then follow the "Check your work" section
-7. Confirm that Azure helm charts are available in the "Add+" Menu.  Click "Next" when you are satisified with the results.
-8. Click "Close" to complete the QuickStart 
+1. From the Overview page, Choose the "View all quick starts" link within the "Getting started resources" section
++
+image::quickstarts/1-overview.png[Overview page]
++
+image::quickstarts/2-view_all_quickstarts.png[View All Quickstarts]
+2. Search quickstarts for "Helm", then select the tile labeled "Manage available content in the Helm Chart Catalog"
++
+image::quickstarts/3-view_helm_quickstarts.png[Search Helm Quickstarts]
+3. Follow along with the quickstart instructions to install the azure charts cluster-wide
++
+image::quickstarts/4-quickstart-start.png[Start a Quickstart]
++
+image::quickstarts/5-quickstart-open.png[Run a Quickstart]
++
+image::quickstarts/6-quickstart-content.png[Quickstart content]
++
+image::quickstarts/7-search-for-helm.png[Quickstart content - Search for Helm]
++
+image::quickstarts/8-select-helm-charts.png[Quickstart content - Create Helm Chart]
++
+image::quickstarts/9-quickstart-helm-yaml.png[Quickstart content - Install Helm Chart]
+4. After completing each instruction in the quickstart guide, click "Next". Then, follow the "Check your work" section to validate your work
++
+image::quickstarts/10-quickstart-check.png[Quickstart - Check your work]
+5. Confirm that Azure helm charts are available in the "+Add" Menu. Follow the prompts to check your work. 
++
+image::quickstarts/11-quickstart-testing.png[Quickstart content]
++
+image::quickstarts/12-quickstart-results.png[Quickstart content]
+8. Click "Next" when you are satisified with the results. Then, click "Close" to complete the QuickStart 
 
 Helm Charts from the new repository are now available throughout the cluster.
 
@@ -35,7 +57,7 @@ In this section, we will learn how to modify an existing `ConsoleQuickStart` res
 In the next section, the reader will verify that the quickstart has been updated by running a manual test of the modified resource.
 
 [#helm_charts]
-=== 1.2.1 Helm Charts per project
+=== 1.2.1 Check your work - Helm Charts per project
 
 Follow along with the "Add Helm Chart Repositories to extend the Developer Catalog for your project" QuickStart to test your modifications from the previous seciton:
 
