@@ -22,8 +22,6 @@ image::quickstarts/4-quickstart-start.png[Start a Quickstart]
 +
 image::quickstarts/5-quickstart-open.png[Run a Quickstart]
 +
-image::quickstarts/6-quickstart-content.png[Quickstart content]
-+
 image::quickstarts/7-search-for-helm.png[Quickstart content - Search for Helm]
 +
 image::quickstarts/8-select-helm-charts.png[Quickstart content - Create Helm Chart]
