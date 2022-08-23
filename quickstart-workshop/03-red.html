@@ -161,28 +161,33 @@
 <div class="sect1">
 <h2 id="custom_web_terminal"><a class="anchor" href="#custom_web_terminal"></a>Customize the Web Terminal</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_update_the_devworkspacetemplateweb_terminal_tooling_resource"><a class="anchor" href="#_update_the_devworkspacetemplateweb_terminal_tooling_resource"></a>Update the DevWorkspaceTemplate/web-terminal-tooling resource</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Check the version of the <code>oc</code> command line tool:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc version</code></pre>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Modify the terminal settings</p>
+<p>Search All Projects for resources of type <code>DevWorkspaceTemplate</code></p>
 </li>
 <li>
-<p>Check the version of the <code>oc</code> command line tool:</p>
+<p>Select the resource named <code>web-terminal-tooling</code></p>
 </li>
-</ol>
-</div>
+<li>
+<p>Click on <code>YAML</code> to modify the terminal settings</p>
+</li>
+<li>
+<p>On line 41, replace the url with: <code>quay.io/ryan_j/summitconnect:4.10.25</code></p>
+</li>
+<li>
+<p>Add a new line with the following annotation after line 5: <code>web-terminal.redhat.com/unmanaged-state: "true"</code></p>
+</li>
+<li>
+<p>Click <code>Save</code> to set the new default terminal image</p>
+</li>
+<li>
+<p>Close and restart your Web Terminal</p>
+</li>
+<li>
+<p>In a new terminal, check the version of the <code>oc</code> command line tool:</p>
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc version</code></pre>
@@ -190,7 +195,13 @@
 </div>
 <div class="listingblock console-output">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">client: 4.11.0</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">Client Version: 4.10.25
+Server Version: 4.10.26
+Kubernetes Version: v1.23.5+012e945</code></pre>
+</div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -202,9 +213,6 @@
 <ol class="arabic">
 <li>
 <p>Verify that you have an updated version of the <code>odo</code> command line tool.</p>
-</li>
-</ol>
-</div>
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">odo version</code></pre>
@@ -215,11 +223,19 @@
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">3.0.0beta2</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>If you find that you&#8217;re still on odo version <code>2.5.0</code>, try repeating the <a href="#custom_web_terminal">previous section</a> to update your Web Terminal</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you find that you&#8217;re still on odo version <code>2.5.0</code>, try repeating the <a href="#custom_web_terminal">previous section</a> to update your Web Terminal
+</td>
+</tr>
+</table>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
 <p>Install a new quickstart and follow along with the demo script</p>
 </li>
@@ -259,6 +275,12 @@ cd nodejs-ex</code></pre>
 </div>
 <div class="sect1">
 <h2 id="header_logo"><a class="anchor" href="#header_logo"></a>Customize the Header Logo</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="notifications"><a class="anchor" href="#notifications"></a>Notifications</h2>
 <div class="sectionbody">
 
 </div>
