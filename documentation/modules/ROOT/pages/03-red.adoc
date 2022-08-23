@@ -4,12 +4,27 @@ include::_attributes.adoc[]
 [#custom_web_terminal]
 == Customize the Web Terminal
 
-=== Update the DevWorkspaceTemplate/web-terminal-tooling resource
+Update the *DevWorkspaceTemplate/web-terminal-tooling* resource
+
 1. Search All Projects for resources of type `DevWorkspaceTemplate`
 2. Select the resource named `web-terminal-tooling`
 3. Click on `YAML` to modify the terminal settings
-4. On line 41, replace the url with: `quay.io/ryan_j/summitconnect:4.10.25`
-5. Add a new line with the following annotation after line 5: `web-terminal.redhat.com/unmanaged-state: "true"`
+4. Replace the `spec.container.image` url with:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+quay.io/ryan_j/summitconnect:4.10.25
+----
+
+5. Add a new annotation after line 5:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+web-terminal.redhat.com/unmanaged-state: "true"
+----
+
 6. Click `Save` to set the new default terminal image
 7. Close and restart your Web Terminal
 8. In a new terminal, check the version of the `oc` command line tool:
@@ -27,11 +42,24 @@ Client Version: 4.10.25
 Server Version: 4.10.26
 Kubernetes Version: v1.23.5+012e945
 ----
++
+[TIP]
+====
+If you don't see an updated client release available, use the following command to refresh the outdated web terminal tooling pod:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc delete pod -l 'controller.devfile.io/devworkspace_id'
+----
+
+There will be a brief pause while the Web Terminal tooling container is replaced
+====
 
 [#quickstart_install]
 == Quickstart Installation and Modifications
 
-1. Verify that you have an updated version of the `odo` command line tool.  
+1. Verify that you have an updated version of the `odo` command line tool: 
 +
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
