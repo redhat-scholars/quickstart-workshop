@@ -161,8 +161,9 @@
 <div class="sect1">
 <h2 id="custom_web_terminal"><a class="anchor" href="#custom_web_terminal"></a>Customize the Web Terminal</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_update_the_devworkspacetemplateweb_terminal_tooling_resource"><a class="anchor" href="#_update_the_devworkspacetemplateweb_terminal_tooling_resource"></a>Update the DevWorkspaceTemplate/web-terminal-tooling resource</h3>
+<div class="paragraph">
+<p>Update the <strong>DevWorkspaceTemplate/web-terminal-tooling</strong> resource</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -175,10 +176,20 @@
 <p>Click on <code>YAML</code> to modify the terminal settings</p>
 </li>
 <li>
-<p>On line 41, replace the url with: <code>quay.io/ryan_j/summitconnect:4.10.25</code></p>
+<p>Replace the <code>spec.container.image</code> url with:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">quay.io/ryan_j/summitconnect:4.10.25</code></pre>
+</div>
+</div>
 </li>
 <li>
-<p>Add a new line with the following annotation after line 5: <code>web-terminal.redhat.com/unmanaged-state: "true"</code></p>
+<p>Add a new annotation after line 5:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">web-terminal.redhat.com/unmanaged-state: "true"</code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Click <code>Save</code> to set the new default terminal image</p>
@@ -200,9 +211,30 @@ Server Version: 4.10.26
 Kubernetes Version: v1.23.5+012e945</code></pre>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you don&#8217;t see an updated client release available, use the following command to refresh the outdated web terminal tooling pod:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc delete pod -l 'controller.devfile.io/devworkspace_id'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There will be a brief pause while the Web Terminal tooling container is replaced</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </li>
 </ol>
-</div>
 </div>
 </div>
 </div>
@@ -212,7 +244,7 @@ Kubernetes Version: v1.23.5+012e945</code></pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Verify that you have an updated version of the <code>odo</code> command line tool.</p>
+<p>Verify that you have an updated version of the <code>odo</code> command line tool:</p>
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">odo version</code></pre>
