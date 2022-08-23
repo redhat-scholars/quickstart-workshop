@@ -4,47 +4,48 @@ include::_attributes.adoc[]
 [#custom_web_terminal]
 == Customize the Web Terminal
 
-1. Check the version of the `oc` command line tool:
-
+=== Update the DevWorkspaceTemplate/web-terminal-tooling resource
+1. Search All Projects for resources of type `DevWorkspaceTemplate`
+2. Select the resource named `web-terminal-tooling`
+3. Click on `YAML` to modify the terminal settings
+4. On line 41, replace the url with: `quay.io/ryan_j/summitconnect:4.10.25`
+5. Add a new line with the following annotation after line 5: `web-terminal.redhat.com/unmanaged-state: "true"`
+6. Click `Save` to set the new default terminal image
+7. Close and restart your Web Terminal
+8. In a new terminal, check the version of the `oc` command line tool:
++
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----
 oc version
 ----
-
-2. Modify the terminal settings
-
-3. Check the version of the `oc` command line tool:
-
-[.console-input]
-[source,bash,subs="+macros,+attributes"]
-----
-oc version
-----
-
++
 [.console-output]
 [source,bash,subs="+macros,+attributes"]
 ----
-client: 4.11.0
+Client Version: 4.10.25
+Server Version: 4.10.26
+Kubernetes Version: v1.23.5+012e945
 ----
 
 [#quickstart_install]
 == Quickstart Installation and Modifications
 
 1. Verify that you have an updated version of the `odo` command line tool.  
-
++
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----
 odo version
 ----
++
 [.console-output]
 [source,bash,subs="+macros,+attributes"]
 ----
 3.0.0beta2
 ----
-
-If you find that you're still on odo version `2.5.0`, try repeating the link:#custom_web_terminal[previous section] to update your Web Terminal
++
+TIP: If you find that you're still on odo version `2.5.0`, try repeating the link:#custom_web_terminal[previous section] to update your Web Terminal
 
 2. Install a new quickstart and follow along with the demo script
 
@@ -83,4 +84,5 @@ sed -i views/index.html -e 's/your Node.js application on OpenShift/Red Hat Summ
 [#header_logo]
 == Customize the Header Logo
 
-
+[#notifications]
+== Notifications

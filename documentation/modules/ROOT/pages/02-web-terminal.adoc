@@ -46,13 +46,15 @@ Paste each of the following commands into your terminal to confirm that it is wo
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
-kubectl version
+oc version
 ----
 
-[.console-input]
+[.console-output]
 [source,bash, subs="+macros,+attributes"]
 ----
-oc version
+Client Version: 4.10.6
+Server Version: 4.10.26
+Kubernetes Version: v1.23.5+012e945
 ----
 
 [.console-input]
