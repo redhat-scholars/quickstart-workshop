@@ -1,23 +1,55 @@
-= 3. Red
+= 3. Cluster Customizations (RED)
 include::_attributes.adoc[]
 
-[#custom_web_terminal]
-== Customize the Web Terminal
+[#user_access]
+== User Access
+Establish a shared project namespace that everyone on your team can use:
 
-Update the *DevWorkspaceTemplate/web-terminal-tooling* resource
-
-1. Search All Projects for resources of type `DevWorkspaceTemplate`
-2. Select the resource named `web-terminal-tooling`
-3. Click on `YAML` to modify the terminal settings
-4. Replace the `spec.container.image` url with:
+1. Use an admin account to create a new project namespace for the Red team to use:
 +
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----
-quay.io/ryan_j/summitconnect:4.10.25
+oc new-project red-team
 ----
 
-5. Add a new annotation after line 5:
+2. Provide existing user accounts with access to the `red-team` project namespace:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+for user in {1..10}; do oc adm policy add-role-to-user edit user$user ; done
+----
+
+[#login_screen]
+== Customize the Login Screen
+
+[#header_logo]
+== Customize the Header Logo
+
+[#notifications]
+== Console Notifications
+
+[#custom_web_terminal]
+== Configure Web Terminal defaults
+
+Update the cluster default terminal image by modifying the *DevWorkspaceTemplate/web-terminal-tooling* resource:
+
+1. Search *All Projects* for resources of type `DevWorkspaceTemplate`
++
+image:red/1-search-all.png[Search All Projects]
++
+image:red/2-search-resource.png[Search Resource type "DevWorkspaceTemplate"]
+
+2. Select the resource named `web-terminal-tooling`
++
+image:red/2-view-templates.png[View templates]
+
+3. Click on `YAML` to modify the terminal settings
++
+image:red/3-web-terminal-tooling.png[web terminal tooling]
+
+4. Add a new annotation after line 5:
 +
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -25,7 +57,18 @@ quay.io/ryan_j/summitconnect:4.10.25
 web-terminal.redhat.com/unmanaged-state: "true"
 ----
 
-6. Click `Save` to set the new default terminal image
+4. Replace the `spec.components[].container.image` url with:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+quay.io/ryan_j/summitconnect:4.10.25
+----
+
+6. Click `Save` to set the new default terminal image for the cluster
++
+image:red/4-web-terminal-tooling-yaml.png[web-terminal-tooling yaml config]
+
 7. Close and restart your Web Terminal
 8. In a new terminal, check the version of the `oc` command line tool:
 +
@@ -56,8 +99,19 @@ oc delete pod -l 'controller.devfile.io/devworkspace_id'
 There will be a brief pause while the Web Terminal tooling container is replaced
 ====
 
+
+[TIP]
+====
+Non-admin users can also quickly override the default terminal image (without setting a new cluster default) using the `wtoctl` command:
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+wtoctl set image quay.io/ryan_j/summitconnect:latest
+----
+====
+
 [#quickstart_install]
-== Quickstart Installation and Modifications
+== Quickstart Installation
 
 1. Verify that you have an updated version of the `odo` command line tool: 
 +
@@ -105,12 +159,26 @@ sed -i views/index.html -e 's/your Node.js application on OpenShift/Red Hat Summ
 ----
 
 
-[#login_screen]
-== Customize the Login Screen
+[#quickstart_modification]
+== 1.2 QuickStart Modifications
 
+Image a situation where we wanted our team to have access to the Bitnami Helm repos, but we don't want to clutter up the menu for other developers by making this content available cluster-wide.  `ProjectHelmChart` resources are the perfect solution when you need per-project or per-team usage of Helm repositories on a cluster.
 
-[#header_logo]
-== Customize the Header Logo
+In this section, we will learn how to modify an existing `ConsoleQuickStart` resource with new instructions.  The resulting `ConsoleQuickStart` resource should install the Bitnami Helm repo (instead of the Azure helm repository).
 
-[#notifications]
-== Notifications
+1. Search for Resource type `ConsoleQuickStarts`
+2. Select the item named `install-helmchartrepo-ns`
+3. Click on `YAML` to edit the resource
+4. On line 96, update the `url` attribute with the Bitnami helm repo address: `https://charts.bitnami.com/bitnami`
+5. Click "Save"
+
+In the next section, the reader will verify that the quickstart has been updated by running a manual test of the modified resource.
+
+[#helm_charts]
+=== 1.2.1 Check your work - Helm Charts per project
+
+Follow along with the "Add Helm Chart Repositories to extend the Developer Catalog for your project" QuickStart to test your modifications from the previous seciton:
+
+1. Click on "view all quickstarts", then search for "Helm"
+2. Select the tile labeled "Add Helm Chart Repositories to extend the Developer Catalog for your project"
+3. Complete each step of the quickstart.  Confirm that you were able to successfully modify the quickstart's help chart repo url

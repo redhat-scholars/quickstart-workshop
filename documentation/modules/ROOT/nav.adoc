@@ -3,7 +3,6 @@
 
 * xref:01-quickstarts.adoc[1. ConsoleQuickStarts]
 ** xref:01-quickstarts.adoc#quickstart_basics[Basics]
-** xref:01-quickstarts.adoc#helm_charts[Helm Charts]
 
 * xref:02-web-terminal.adoc[2. Web Terminal]
 ** xref:02-web-terminal.adoc#install[Installation]
@@ -12,17 +11,18 @@
 * xref:03-menu.adoc[3. Menu]
 
 * xref:03-red.adoc[3. Red]
-** xref:03-red.adoc#custom_web_terminal[Customize the Web Terminal]
-** xref:03-red.adoc#quickstart_install[QuickStart installation]
+** xref:03-red.adoc#user_access[Provide shared access to a common namespace]
 ** xref:03-red.adoc#login_screen[Customize the login screen]
 ** xref:03-red.adoc#header_logo[Customize the header logo]
+** xref:03-red.adoc#notifications[Add header notifications]
+** xref:03-red.adoc#custom_web_terminal[Customize the Web Terminal]
+** xref:03-red.adoc#quickstart_install[QuickStart installation]
 
 * xref:03-green.adoc[3. Green]
 ** xref:03-green.adoc#_pre_applied_customisations[Pre-Applied Customisations]
 ** xref:03-green.adoc#_customise_the_web_terminal[Customise the Web Terminal]
 ** xref:03-green.adoc#_customising_the_openshift_web_console[Web Console Customisations]
 ** xref:03-green.adoc#_using_gitops_to_manage_cluster_resources[Use GitOps to Manage Customisations]
-
 
 * xref:03-blue.adoc[3. Blue]
 ** xref:03-blue.adoc#install[Installation]
