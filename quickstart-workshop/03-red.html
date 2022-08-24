@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>3. Red :: Custom Console Workshop</title>
+    <title>3. Cluster Customizations (RED) :: Custom Console Workshop</title>
     <link rel="canonical" href="https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/03-red.html">
     <link rel="prev" href="03-menu.html">
     <link rel="next" href="03-green.html">
@@ -67,9 +67,6 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="01-quickstarts.html#quickstart_basics">Basics</a>
   </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="01-quickstarts.html#helm_charts">Helm Charts</a>
-  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -92,16 +89,22 @@
     <a class="nav-link" href="03-red.html">3. Red</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#custom_web_terminal">Customize the Web Terminal</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#quickstart_install">QuickStart installation</a>
+    <a class="nav-link" href="#user_access">Provide shared access to a common namespace</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="#login_screen">Customize the login screen</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="#header_logo">Customize the header logo</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#notifications">Add header notifications</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#custom_web_terminal">Customize the Web Terminal</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#quickstart_install">QuickStart installation</a>
   </li>
 </ul>
   </li>
@@ -157,30 +160,80 @@
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">3. Red</h1>
+<h1 class="page">3. Cluster Customizations (RED)</h1>
 <div class="sect1">
-<h2 id="custom_web_terminal"><a class="anchor" href="#custom_web_terminal"></a>Customize the Web Terminal</h2>
+<h2 id="user_access"><a class="anchor" href="#user_access"></a>User Access</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Update the <strong>DevWorkspaceTemplate/web-terminal-tooling</strong> resource</p>
+<p>Establish a shared project namespace that everyone on your team can use:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Search All Projects for resources of type <code>DevWorkspaceTemplate</code></p>
+<p>Use an admin account to create a new project namespace for the Red team to use:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc new-project red-team</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Provide existing user accounts with access to the <code>red-team</code> project namespace:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">for user in {1..10}; do oc adm policy add-role-to-user edit user$user ; done</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="login_screen"><a class="anchor" href="#login_screen"></a>Customize the Login Screen</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="header_logo"><a class="anchor" href="#header_logo"></a>Customize the Header Logo</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="notifications"><a class="anchor" href="#notifications"></a>Console Notifications</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="custom_web_terminal"><a class="anchor" href="#custom_web_terminal"></a>Configure Web Terminal defaults</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Update the cluster default terminal image by modifying the <strong>DevWorkspaceTemplate/web-terminal-tooling</strong> resource:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Search <strong>All Projects</strong> for resources of type <code>DevWorkspaceTemplate</code></p>
+<div class="paragraph">
+<p><span class="image"><img src="_images/red/1-search-all.png" alt="Search All Projects"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/red/2-search-resource.png" alt="Search Resource type &quot;DevWorkspaceTemplate&quot;"></span></p>
+</div>
 </li>
 <li>
 <p>Select the resource named <code>web-terminal-tooling</code></p>
+<div class="paragraph">
+<p><span class="image"><img src="_images/red/2-view-templates.png" alt="View templates"></span></p>
+</div>
 </li>
 <li>
 <p>Click on <code>YAML</code> to modify the terminal settings</p>
-</li>
-<li>
-<p>Replace the <code>spec.container.image</code> url with:</p>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">quay.io/ryan_j/summitconnect:4.10.25</code></pre>
-</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/red/3-web-terminal-tooling.png" alt="web terminal tooling"></span></p>
 </div>
 </li>
 <li>
@@ -192,7 +245,18 @@
 </div>
 </li>
 <li>
-<p>Click <code>Save</code> to set the new default terminal image</p>
+<p>Replace the <code>spec.components[].container.image</code> url with:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">quay.io/ryan_j/summitconnect:4.10.25</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Click <code>Save</code> to set the new default terminal image for the cluster</p>
+<div class="paragraph">
+<p><span class="image"><img src="_images/red/4-web-terminal-tooling-yaml.png" alt="web-terminal-tooling yaml config"></span></p>
+</div>
 </li>
 <li>
 <p>Close and restart your Web Terminal</p>
@@ -236,10 +300,29 @@ Kubernetes Version: v1.23.5+012e945</code></pre>
 </li>
 </ol>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Non-admin users can also quickly override the default terminal image (without setting a new cluster default) using the <code>wtoctl</code> command:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">wtoctl set image quay.io/ryan_j/summitconnect:latest</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="quickstart_install"><a class="anchor" href="#quickstart_install"></a>Quickstart Installation and Modifications</h2>
+<h2 id="quickstart_install"><a class="anchor" href="#quickstart_install"></a>Quickstart Installation</h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
@@ -300,21 +383,55 @@ cd nodejs-ex</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="login_screen"><a class="anchor" href="#login_screen"></a>Customize the Login Screen</h2>
+<h2 id="quickstart_modification"><a class="anchor" href="#quickstart_modification"></a>1.2 QuickStart Modifications</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Image a situation where we wanted our team to have access to the Bitnami Helm repos, but we don&#8217;t want to clutter up the menu for other developers by making this content available cluster-wide.  <code>ProjectHelmChart</code> resources are the perfect solution when you need per-project or per-team usage of Helm repositories on a cluster.</p>
+</div>
+<div class="paragraph">
+<p>In this section, we will learn how to modify an existing <code>ConsoleQuickStart</code> resource with new instructions.  The resulting <code>ConsoleQuickStart</code> resource should install the Bitnami Helm repo (instead of the Azure helm repository).</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Search for Resource type <code>ConsoleQuickStarts</code></p>
+</li>
+<li>
+<p>Select the item named <code>install-helmchartrepo-ns</code></p>
+</li>
+<li>
+<p>Click on <code>YAML</code> to edit the resource</p>
+</li>
+<li>
+<p>On line 96, update the <code>url</code> attribute with the Bitnami helm repo address: <code><a href="https://charts.bitnami.com/bitnami" class="bare">https://charts.bitnami.com/bitnami</a></code></p>
+</li>
+<li>
+<p>Click "Save"</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In the next section, the reader will verify that the quickstart has been updated by running a manual test of the modified resource.</p>
+</div>
+<div class="sect2">
+<h3 id="helm_charts"><a class="anchor" href="#helm_charts"></a>1.2.1 Check your work - Helm Charts per project</h3>
+<div class="paragraph">
+<p>Follow along with the "Add Helm Chart Repositories to extend the Developer Catalog for your project" QuickStart to test your modifications from the previous seciton:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click on "view all quickstarts", then search for "Helm"</p>
+</li>
+<li>
+<p>Select the tile labeled "Add Helm Chart Repositories to extend the Developer Catalog for your project"</p>
+</li>
+<li>
+<p>Complete each step of the quickstart.  Confirm that you were able to successfully modify the quickstart&#8217;s help chart repo url</p>
+</li>
+</ol>
 </div>
 </div>
-<div class="sect1">
-<h2 id="header_logo"><a class="anchor" href="#header_logo"></a>Customize the Header Logo</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="notifications"><a class="anchor" href="#notifications"></a>Notifications</h2>
-<div class="sectionbody">
-
 </div>
 </div>
 <nav class="pagination">
