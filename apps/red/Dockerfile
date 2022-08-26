@@ -23,6 +23,9 @@ RUN mkdir -p /home/user && \
     curl git procps jq && \
     microdnf -y clean all
 
+RUN curl -L https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -o /usr/local/bin/yq && \
+    chmod a+x /usr/local/bin/yq
+
 RUN curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/$OPENSHIFT_RELEASE_VERSION/openshift-client-linux-$OPENSHIFT_RELEASE_VERSION.tar.gz -o /tmp/openshift-client-linux-$OPENSHIFT_RELEASE_VERSION.tar.gz && \
     tar -xvf /tmp/openshift-client-linux-$OPENSHIFT_RELEASE_VERSION.tar.gz -C /tmp && \
     mv /tmp/oc /usr/local/bin/oc && \
