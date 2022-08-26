@@ -62,22 +62,25 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="01-quickstarts.html">1. ConsoleQuickStarts</a>
+    <a class="nav-link" href="01-web-terminal.html">1. Web Terminal</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="01-quickstarts.html#quickstart_basics">Basics</a>
+    <a class="nav-link" href="01-web-terminal.html#install">Installation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-web-terminal.html#basics">Basics</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="02-web-terminal.html">2. Web Terminal</a>
+    <a class="nav-link" href="02-quickstarts.html">2. ConsoleQuickStarts</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="02-web-terminal.html#install">Installation</a>
+    <a class="nav-link" href="02-quickstarts.html#quickstart_basics">Basics</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="02-web-terminal.html#basics">Basics</a>
+    <a class="nav-link" href="02-quickstarts.html#quickstart_modifications">Modifications</a>
   </li>
 </ul>
   </li>
@@ -92,16 +95,16 @@
     <a class="nav-link" href="#user_access">Provide shared access to a common namespace</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#custom_web_terminal">Customize the Web Terminal</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="#login_screen">Customize the login screen</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="#header_logo">Customize the header logo</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#notifications">Add header notifications</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#custom_web_terminal">Customize the Web Terminal</a>
+    <a class="nav-link" href="#notifications">Console Notifications</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="#quickstart_install">QuickStart installation</a>
@@ -176,6 +179,11 @@
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc new-project red-team</code></pre>
 </div>
 </div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc project red-team</code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Provide existing user accounts with access to the <code>red-team</code> project namespace:</p>
@@ -187,24 +195,6 @@
 </li>
 </ol>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="login_screen"><a class="anchor" href="#login_screen"></a>Customize the Login Screen</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="header_logo"><a class="anchor" href="#header_logo"></a>Customize the Header Logo</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="notifications"><a class="anchor" href="#notifications"></a>Console Notifications</h2>
-<div class="sectionbody">
-
 </div>
 </div>
 <div class="sect1">
@@ -322,6 +312,90 @@ Kubernetes Version: v1.23.5+012e945</code></pre>
 </div>
 </div>
 <div class="sect1">
+<h2 id="login_screen"><a class="anchor" href="#login_screen"></a>Customize the Login Screen</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="header_logo"><a class="anchor" href="#header_logo"></a>Customize the Header Logo</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>something</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl <a href="https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/red/RedShell.png" class="bare">https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/red/RedShell.png</a> -o /tmp/red-shell.png</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>something</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc create configmap console-custom-logo --from-file /tmp/red-shell.png -n openshift-config</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Paste the following to generate a json patch file.  This file will be used to update the cluster console operator config:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">cat &lt;&lt;EOF &gt; /tmp/patch.yaml
+spec:
+  customization:
+    customLogoFile:
+      key: red-shell.png
+      name: console-custom-logo
+EOF</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Send the configuration patch to the console cluster operator:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc patch consoles.operator.openshift.io cluster --type merge --patch-file /tmp/patch.yaml`</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="notifications"><a class="anchor" href="#notifications"></a>Console Notifications</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click on the <code>Import</code> <strong>(+)</strong> link in the header, then paste the following YAML contnet:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: console.openshift.io/v1
+kind: ConsoleNotification
+metadata:
+  name: hackathon-banner
+spec:
+  text: Welcome Red Team to the Summit Connect 2022 Hackathon!
+  location: BannerTop
+  link:
+    href: 'https://github.com/redhat-scholars/quickstart-workshop/tree/master/apps/red'
+    text: (Red Team Repo)
+  color: '#fafafa'
+  backgroundColor: '#EE0000'</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Click <code>Create</code> to make the new <code>ConsoleNotification</code> visible to all cluster users</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="quickstart_install"><a class="anchor" href="#quickstart_install"></a>Quickstart Installation</h2>
 <div class="sectionbody">
 <div class="olist arabic">
@@ -335,7 +409,7 @@ Kubernetes Version: v1.23.5+012e945</code></pre>
 </div>
 <div class="listingblock console-output">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">3.0.0beta2</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">3.0.0beta3</code></pre>
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -378,58 +452,6 @@ cd nodejs-ex</code></pre>
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">sed -i views/index.html -e 's/your Node.js application on OpenShift/Red Hat Summit Connect 2022/'</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="quickstart_modification"><a class="anchor" href="#quickstart_modification"></a>1.2 QuickStart Modifications</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Image a situation where we wanted our team to have access to the Bitnami Helm repos, but we don&#8217;t want to clutter up the menu for other developers by making this content available cluster-wide.  <code>ProjectHelmChart</code> resources are the perfect solution when you need per-project or per-team usage of Helm repositories on a cluster.</p>
-</div>
-<div class="paragraph">
-<p>In this section, we will learn how to modify an existing <code>ConsoleQuickStart</code> resource with new instructions.  The resulting <code>ConsoleQuickStart</code> resource should install the Bitnami Helm repo (instead of the Azure helm repository).</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Search for Resource type <code>ConsoleQuickStarts</code></p>
-</li>
-<li>
-<p>Select the item named <code>install-helmchartrepo-ns</code></p>
-</li>
-<li>
-<p>Click on <code>YAML</code> to edit the resource</p>
-</li>
-<li>
-<p>On line 96, update the <code>url</code> attribute with the Bitnami helm repo address: <code><a href="https://charts.bitnami.com/bitnami" class="bare">https://charts.bitnami.com/bitnami</a></code></p>
-</li>
-<li>
-<p>Click "Save"</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>In the next section, the reader will verify that the quickstart has been updated by running a manual test of the modified resource.</p>
-</div>
-<div class="sect2">
-<h3 id="helm_charts"><a class="anchor" href="#helm_charts"></a>1.2.1 Check your work - Helm Charts per project</h3>
-<div class="paragraph">
-<p>Follow along with the "Add Helm Chart Repositories to extend the Developer Catalog for your project" QuickStart to test your modifications from the previous seciton:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Click on "view all quickstarts", then search for "Helm"</p>
-</li>
-<li>
-<p>Select the tile labeled "Add Helm Chart Repositories to extend the Developer Catalog for your project"</p>
-</li>
-<li>
-<p>Complete each step of the quickstart.  Confirm that you were able to successfully modify the quickstart&#8217;s help chart repo url</p>
-</li>
-</ol>
 </div>
 </div>
 </div>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CH2 ConsoleQuickStarts :: Custom Console Workshop</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/02-quickstarts.html">
+    <link rel="prev" href="01-web-terminal.html">
+    <link rel="next" href="03-menu.html">
+    <meta name="generator" content="Antora 3.0.0">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img src="../_/img/NewRHDFullLogo_4-color_white-wordmark.png" height="40px" alt="Red Hat Developer Program"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="https://redhat-scholars.github.io/quickstart-workshop">Custom Console Workshop</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://developers.redhat.com/ebooks/" target="_blank">Books</a>
+        <a class="navbar-item" href="https://developers.redhat.com/cheatsheets/" target="_blank">Cheat Sheets</a>
+        <a class="navbar-item" href="https://developers.redhat.com/events/" target="_blank">Upcoming Events</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">More Tutorials</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/kubernetes-tutorial/" target="_blank">Kubernetes</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/istio-tutorial/" target="_blank">Istio</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/quarkus-tutorial/" target="_blank">Quarkus</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/knative-tutorial/" target="_blank">Knative</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/tekton-tutorial/" target="_blank">Tekton</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="quickstart-workshop" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html"></a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Introduction</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index.html#scoring">Scoring Guidelines</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="01-web-terminal.html">1. Web Terminal</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-web-terminal.html#install">Installation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-web-terminal.html#basics">Basics</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="02-quickstarts.html">2. ConsoleQuickStarts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#quickstart_basics">Basics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#quickstart_modifications">Modifications</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="03-menu.html">3. Menu</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-red.html">3. Red</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-red.html#user_access">Provide shared access to a common namespace</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-red.html#custom_web_terminal">Customize the Web Terminal</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-red.html#login_screen">Customize the login screen</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-red.html#header_logo">Customize the header logo</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-red.html#notifications">Console Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-red.html#quickstart_install">QuickStart installation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-green.html">3. Green</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-green.html#_pre_applied_customisations">Pre-Applied Customisations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-green.html#_customise_the_web_terminal">Customise the Web Terminal</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-green.html#_customising_the_openshift_web_console">Web Console Customisations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-green.html#_using_gitops_to_manage_cluster_resources">Use GitOps to Manage Customisations</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-blue.html">3. Blue</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-blue.html#install">Installation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-blue.html#basics">Basics</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Console Customization and QuickStarts</a></li>
+    <li><a href="02-quickstarts.html">2. ConsoleQuickStarts</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/quickstart-workshop/edit/master/documentation/modules/ROOT/pages/02-quickstarts.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">CH2 ConsoleQuickStarts</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Check the Scoring Guidelines sheet for notes on how to connect to your OpenShift Web Console.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quickstart_basics"><a class="anchor" href="#quickstart_basics"></a>2.1 ConsoleQuickStart Basic Usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>ConsoleQuickStart</code> custom resource provides a convienient way to offer guided experiences and usage documentation within the OpenShift Console.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>From the Overview page, Choose the "View all quick starts" link within the "Getting started resources" section</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/quickstarts/1-overview.png" alt="Overview page">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/quickstarts/2-view_all_quickstarts.png" alt="View All Quickstarts">
+</div>
+</div>
+</li>
+<li>
+<p>Search quickstarts for "Helm", then select the tile labeled "Manage available content in the Helm Chart Catalog"</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/quickstarts/3-view_helm_quickstarts.png" alt="Search Helm Quickstarts">
+</div>
+</div>
+</li>
+<li>
+<p>Follow along with the quickstart instructions to install the azure charts cluster-wide</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/quickstarts/4-quickstart-start.png" alt="Start a Quickstart">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/quickstarts/5-quickstart-open.png" alt="Run a Quickstart">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/quickstarts/7-search-for-helm.png" alt="Quickstart content - Search for Helm">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/quickstarts/8-select-helm-charts.png" alt="Quickstart content - Create Helm Chart">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/quickstarts/9-quickstart-helm-yaml.png" alt="Quickstart content - Install Helm Chart">
+</div>
+</div>
+</li>
+<li>
+<p>After completing each instruction in the quickstart guide, click "Next". Then, follow the "Check your work" section to validate your work</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/quickstarts/10-quickstart-check.png" alt="Quickstart - Check your work">
+</div>
+</div>
+</li>
+<li>
+<p>Confirm that Azure helm charts are available in the "+Add" Menu. Follow the prompts to check your work.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/quickstarts/11-quickstart-testing.png" alt="Quickstart content">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/quickstarts/12-quickstart-results.png" alt="Quickstart content">
+</div>
+</div>
+</li>
+<li>
+<p>Click "Next" when you are satisified with the results. Then, click "Close" to complete the QuickStart</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quickstart_modifications"><a class="anchor" href="#quickstart_modifications"></a>2.2 QuickStart Modifications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Image a situation where we wanted our team to have access to the Bitnami Helm repos, but we don&#8217;t want to clutter up the menu for other developers by making this content available cluster-wide.  <code>ProjectHelmChart</code> resources are the perfect solution when you need per-project or per-team usage of Helm repositories on a cluster.</p>
+</div>
+<div class="paragraph">
+<p>In this section, we will learn how to modify an existing <code>ConsoleQuickStart</code> resource with new instructions.  The resulting <code>ConsoleQuickStart</code> resource should install the Bitnami Helm repo (instead of the Azure helm repository).</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use an admin account to create a new project namespace for this test:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc new-project summit-connect</code></pre>
+</div>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc project summit-connect</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Search for Resource type <code>ConsoleQuickStarts</code></p>
+</li>
+<li>
+<p>Select the item named <code>install-helmchartrepo-ns</code></p>
+</li>
+<li>
+<p>Generate a patch file that will hide quickstarts from our 'disabled' list:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cat &lt;&lt;EOF &gt; /tmp/patch.yaml
+spec:
+  customization:
+    quickStarts:
+      disabled:
+        - install-helmchartrepo-ns
+EOF</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Send the configuration patch to the console cluster operator:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc patch consoles.operator.openshift.io cluster --type merge --patch-file /tmp/patch.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Download a copy of the <code>install-helmchartrepo-ns</code> quickstart:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc get ConsoleQuickStart/install-helmchartrepo-ns -o yaml &gt; helm-qs.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Update the quickstart&#8217;s included <code>url</code> attribute with the Bitnami helm repo address: <code><a href="https://charts.bitnami.com/bitnami" class="bare">https://charts.bitnami.com/bitnami</a></code></p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">sed -i helm-qs.yaml -e "s/url: 'https:\/\/raw.githubusercontent.com\/Azure-Samples\/helm-charts\/master\/docs'/url: 'https:\/\/charts.bitnami.com\/bitnami\/'/"</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Update the quickstart&#8217;s name / id attribute with a unique value:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">sed -i helm-qs.yaml -e "s/name: install-helmchartrepo-ns/name: install-helmchart-bitnami/"</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Upload the updated quickstart:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc create -f helm-qs.yaml</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In the next section, the reader will verify that the quickstart has been updated by running a manual test of the modified resource.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="helm_charts"><a class="anchor" href="#helm_charts"></a>2.3 Check your work - Helm Charts per project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Follow along with the "Add Helm Chart Repositories to extend the Developer Catalog for your project" quickstart to test your modifications from the previous seciton:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click on the "?" icon in the header menu, Then select "Quick Starts".  Next, Search for "Helm"</p>
+</li>
+<li>
+<p>Select the tile labeled "Add Helm Chart Repositories to extend the Developer Catalog for your project"</p>
+</li>
+<li>
+<p>Complete each step of the quickstart.  Upon completion, confirm that the Bitnami helm repo is successfully installed within the project namespace</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="01-web-terminal.html">1. Web Terminal</a></span>
+  <span class="next"><a href="03-menu.html">3. Menu</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a class="rhd-logo" href="https://developers.redhat.com" target="_blank"></div>
+</footer>
+<script src="../_/js/vendor/clipboard.js"></script>
+<script src="../_/js/site.js"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

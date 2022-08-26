@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>3. Menu :: Custom Console Workshop</title>
-    <link rel="canonical" href="https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/03-menu.html">
-    <link rel="prev" href="02-quickstarts.html">
-    <link rel="next" href="03-red.html">
+    <title>CH1 Web Terminal :: Custom Console Workshop</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/01-web-terminal.html">
+    <link rel="prev" href="index.html">
+    <link rel="next" href="02-quickstarts.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -60,15 +60,15 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="01-web-terminal.html">1. Web Terminal</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="01-web-terminal.html#install">Installation</a>
+    <a class="nav-link" href="#install">Installation</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="01-web-terminal.html#basics">Basics</a>
+    <a class="nav-link" href="#basics">Basics</a>
   </li>
 </ul>
   </li>
@@ -84,7 +84,7 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="03-menu.html">3. Menu</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -156,55 +156,116 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Console Customization and QuickStarts</a></li>
-    <li><a href="03-menu.html">3. Menu</a></li>
+    <li><a href="01-web-terminal.html">1. Web Terminal</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/quickstart-workshop/edit/master/documentation/modules/ROOT/pages/03-menu.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/quickstart-workshop/edit/master/documentation/modules/ROOT/pages/01-web-terminal.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">3. Menu</h1>
+<h1 class="page">CH1 Web Terminal</h1>
+<div class="sect1">
+<h2 id="installation"><a class="anchor" href="#installation"></a>Installing the Web Terminal operator</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>For section 3, choose between "Red", "Green", or "Blue" cluster setup, depending on your interests:</p>
+<p>To install the Web Terminal operator, open the OperatorHub located under the Operators side menu.</p>
 </div>
-<div class="paragraph">
-<p>Table:</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/terminal/operatorhub-open.png" alt="Open OperatorHub">
 </div>
-<div class="ulist">
-<div class="title"><a href="03-red.html" class="xref page">Red</a>:</div>
-<ul>
-<li>
-<p>web terminal customization</p>
-</li>
-<li>
-<p>login screen customizations</p>
-</li>
-<li>
-<p>custom header logos</p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<div class="title"><a href="03-green.html" class="xref page">Green</a>:</div>
-<ul>
-<li>
-<p>ArgoCD</p>
-</li>
-<li>
-<p>custom header logos</p>
-</li>
-<li>
-<p>custom web terminal</p>
-</li>
-</ul>
 </div>
 <div class="paragraph">
-<div class="title"><a href="03-blue.html" class="xref page">Blue</a>:</div>
-<p>Blue: &#8230;&#8203;</p>
+<p>Enter "Web Terminal" into the OperatorHub search box, then select the "Web Terminal" tile from the list of results.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/terminal/operatorhub-search.png" alt="Search for Web Terminal">
+</div>
+</div>
+<div class="paragraph">
+<p>Click "Install" to initiate the installation process.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/terminal/operatorhub-view.png" alt="View the Web Terminal Operator">
+</div>
+</div>
+<div class="paragraph">
+<p>Confirm the default installation details by clicking "Install".</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/terminal/operatorhub-install.png" alt="Click Install to Confirm">
+</div>
+</div>
+<div class="paragraph">
+<p>OpenShift will now install the Web Terminal Operator in the <code>openshift-operators</code> namespace.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/terminal/operatorhub-installing.png" alt="Installation in Progress&#8230;&#8203;">
+</div>
+</div>
+<div class="paragraph">
+<p>Wait a few minutes for the installation to proceed&#8230;&#8203;</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/terminal/operatorhub-installed.png" alt="Installation Complete">
+</div>
+</div>
+<div class="paragraph">
+<p>After the installation has completed, you will be able to find the Web Terminal Operator in the list of installed operators.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/terminal/operatorhub-detail.png" alt="Web Terminal Operator detail view">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="basics"><a class="anchor" href="#basics"></a>Web Terminal basics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Reload your web browser to reveal a new Web Terminal button in the header menu.  Click on the Web Terminal header menu button to open a new terminal session.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/terminal/terminal-open.png" alt="Open the Web Terminal">
+</div>
+</div>
+<div class="paragraph">
+<p>Paste each of the following commands into your terminal to confirm that it is working as expected:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc version</code></pre>
+</div>
+</div>
+<div class="listingblock console-output">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">Client Version: 4.10.6
+Server Version: 4.10.26
+Kubernetes Version: v1.23.5+012e945</code></pre>
+</div>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc whoami</code></pre>
+</div>
+</div>
+<div class="listingblock console-output">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">opentlc-mgr</code></pre>
+</div>
+</div>
+</div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="02-quickstarts.html">2. ConsoleQuickStarts</a></span>
-  <span class="next"><a href="03-red.html">3. Red</a></span>
+  <span class="prev"><a href="index.html">Introduction</a></span>
+  <span class="next"><a href="02-quickstarts.html">2. ConsoleQuickStarts</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
