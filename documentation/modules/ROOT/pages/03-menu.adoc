@@ -7,15 +7,21 @@ Table:
 
 .xref:03-red.adoc[Red]:
 
-* web terminal customization
-* login screen customizations
-* custom header logos
+* Provide shared access to a common namespace
+* Customize the Web Terminal
+* Customize the login screen
+* Customize the header logo
+* Console Notifications
+* QuickStart installation
 
 .xref:03-green.adoc[Green]:
 
 * ArgoCD 
-* custom header logos
-* custom web terminal
+* Custom header logo
+* Custom web terminal
+* Console Notifications
+* Use GitOps to Manage Customisations
 
 .xref:03-blue.adoc[Blue]:
-Blue: ...
+
+* 
