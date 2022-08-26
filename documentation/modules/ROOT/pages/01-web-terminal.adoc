@@ -1,5 +1,7 @@
-= Web Terminal
+= CH1 Web Terminal
 include::_attributes.adoc[]
+
+:adminname: opentlc-mgr
 
 [#installation]
 == Installing the Web Terminal operator
@@ -34,8 +36,6 @@ image::terminal/operatorhub-detail.png[Web Terminal Operator detail view]
 
 [#basics]
 == Web Terminal basics
-
-:adminname: opentlc-mgr
 
 Reload your web browser to reveal a new Web Terminal button in the header menu.  Click on the Web Terminal header menu button to open a new terminal session.
 

@@ -1,10 +1,10 @@
-= Ch1. ConsoleQuickStarts
+= CH2 ConsoleQuickStarts
 include::_attributes.adoc[]
 
 Check the Scoring Guidelines sheet for notes on how to connect to your OpenShift Web Console.
 
 [#quickstart_basics]
-== 1.1 ConsoleQuickStart Basic Usage
+== 2.1 ConsoleQuickStart Basic Usage
 
 The `ConsoleQuickStart` custom resource provides a convienient way to offer guided experiences and usage documentation within the OpenShift Console.
 
