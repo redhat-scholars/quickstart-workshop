@@ -12,6 +12,12 @@ Establish a shared project namespace that everyone on your team can use:
 ----
 oc new-project red-team
 ----
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc project red-team
+----
 
 2. Provide existing user accounts with access to the `red-team` project namespace:
 +
@@ -20,15 +26,6 @@ oc new-project red-team
 ----
 for user in {1..10}; do oc adm policy add-role-to-user edit user$user ; done
 ----
-
-[#login_screen]
-== Customize the Login Screen
-
-[#header_logo]
-== Customize the Header Logo
-
-[#notifications]
-== Console Notifications
 
 [#custom_web_terminal]
 == Configure Web Terminal defaults
@@ -110,6 +107,86 @@ wtoctl set image quay.io/ryan_j/summitconnect:latest
 ----
 ====
 
+
+
+[#login_screen]
+== Customize the Login Screen
+
+
+
+
+
+
+
+
+[#header_logo]
+== Customize the Header Logo
+
+1. something
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+curl https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/red/RedShell.png -o /tmp/red-shell.png
+----
+
+2. something 
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc create configmap console-custom-logo --from-file /tmp/red-shell.png -n openshift-config
+----
+
+3. Paste the following to generate a json patch file.  This file will be used to update the cluster console operator config:
++
+[.console-input]
+[source,yaml,subs="+macros,+attributes"]
+----
+cat <<EOF > /tmp/patch.yaml
+spec:
+  customization:
+    customLogoFile:
+      key: red-shell.png
+      name: console-custom-logo
+EOF
+----
+
+4. Send the configuration patch to the console cluster operator:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc patch consoles.operator.openshift.io cluster --type merge --patch-file /tmp/patch.yaml`
+----
+
+
+[#notifications]
+== Console Notifications
+
+1. Click on the `Import` *(+)* link in the header, then paste the following YAML contnet:
++
+[.console-input]
+[source,yaml,subs="+macros,+attributes"]
+----
+apiVersion: console.openshift.io/v1
+kind: ConsoleNotification
+metadata:
+  name: hackathon-banner
+spec:
+  text: Welcome Red Team to the Summit Connect 2022 Hackathon!
+  location: BannerTop
+  link:
+    href: 'https://github.com/redhat-scholars/quickstart-workshop/tree/master/apps/red'
+    text: (Red Team Repo)
+  color: '#fafafa'
+  backgroundColor: '#EE0000'
+----
+
+2. Click `Create` to make the new `ConsoleNotification` visible to all cluster users
+
+
+
 [#quickstart_install]
 == Quickstart Installation
 
@@ -124,7 +201,7 @@ odo version
 [.console-output]
 [source,bash,subs="+macros,+attributes"]
 ----
-3.0.0beta2
+3.0.0beta3
 ----
 +
 TIP: If you find that you're still on odo version `2.5.0`, try repeating the link:#custom_web_terminal[previous section] to update your Web Terminal
@@ -159,26 +236,3 @@ sed -i views/index.html -e 's/your Node.js application on OpenShift/Red Hat Summ
 ----
 
 
-[#quickstart_modification]
-== 1.2 QuickStart Modifications
-
-Image a situation where we wanted our team to have access to the Bitnami Helm repos, but we don't want to clutter up the menu for other developers by making this content available cluster-wide.  `ProjectHelmChart` resources are the perfect solution when you need per-project or per-team usage of Helm repositories on a cluster.
-
-In this section, we will learn how to modify an existing `ConsoleQuickStart` resource with new instructions.  The resulting `ConsoleQuickStart` resource should install the Bitnami Helm repo (instead of the Azure helm repository).
-
-1. Search for Resource type `ConsoleQuickStarts`
-2. Select the item named `install-helmchartrepo-ns`
-3. Click on `YAML` to edit the resource
-4. On line 96, update the `url` attribute with the Bitnami helm repo address: `https://charts.bitnami.com/bitnami`
-5. Click "Save"
-
-In the next section, the reader will verify that the quickstart has been updated by running a manual test of the modified resource.
-
-[#helm_charts]
-=== 1.2.1 Check your work - Helm Charts per project
-
-Follow along with the "Add Helm Chart Repositories to extend the Developer Catalog for your project" QuickStart to test your modifications from the previous seciton:
-
-1. Click on "view all quickstarts", then search for "Helm"
-2. Select the tile labeled "Add Helm Chart Repositories to extend the Developer Catalog for your project"
-3. Complete each step of the quickstart.  Confirm that you were able to successfully modify the quickstart's help chart repo url

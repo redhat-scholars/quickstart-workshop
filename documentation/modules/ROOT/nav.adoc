@@ -1,21 +1,22 @@
 * xref:index.adoc[Introduction]
 ** xref:index.adoc#scoring[Scoring Guidelines]
 
-* xref:01-web-terminal.adoc[2. Web Terminal]
+* xref:01-web-terminal.adoc[1. Web Terminal]
 ** xref:01-web-terminal.adoc#install[Installation]
 ** xref:01-web-terminal.adoc#basics[Basics]
 
-* xref:02-quickstarts.adoc[1. ConsoleQuickStarts]
-** xref:03-quickstarts.adoc#quickstart_basics[Basics]
+* xref:02-quickstarts.adoc[2. ConsoleQuickStarts]
+** xref:02-quickstarts.adoc#quickstart_basics[Basics]
+** xref:02-quickstarts.adoc#quickstart_modifications[Modifications]
 
 * xref:03-menu.adoc[3. Menu]
 
 * xref:03-red.adoc[3. Red]
 ** xref:03-red.adoc#user_access[Provide shared access to a common namespace]
+** xref:03-red.adoc#custom_web_terminal[Customize the Web Terminal]
 ** xref:03-red.adoc#login_screen[Customize the login screen]
 ** xref:03-red.adoc#header_logo[Customize the header logo]
-** xref:03-red.adoc#notifications[Add header notifications]
-** xref:03-red.adoc#custom_web_terminal[Customize the Web Terminal]
+** xref:03-red.adoc#notifications[Console Notifications]
 ** xref:03-red.adoc#quickstart_install[QuickStart installation]
 
 * xref:03-green.adoc[3. Green]

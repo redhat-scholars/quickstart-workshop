@@ -22,12 +22,13 @@ Build clusters that are easier to use and more welcoming for new users by:
 .xref:index.adoc[Get Started]
 * xref:index.adoc#scoring[Scoring]
 
-.xref:01-quickstarts.adoc#[CH1 ConsoleQuickStarts]
-* xref:01-quickstarts.adoc#basics[QuickStarts Basics]
+.xref:01-web-terminal.adoc[CH1 Web Terminal]
+* xref:01-web-terminal.adoc#installation[Installing the Web Terminal operator]
+* xref:01-web-terminal.adoc#basics[Web Terminal Basics]
 
-.xref:02-web-terminal.adoc[CH2 Web Terminal]
-* xref:02-web-terminal.adoc#install[Installing the Web Terminal operator]
-* xref:02-web-terminal.adoc#test[Web Terminal Basics]
+.xref:02-quickstarts.adoc#[CH2 ConsoleQuickStarts]
+* xref:02-quickstarts.adoc#quickstart_basics[QuickStarts Basics]
+* xref:02-quickstarts.adoc#quickstart_modifications[QuickStarts Advanced]
 
 Choose ONE of the following challenge sections:
 
