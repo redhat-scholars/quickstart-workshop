@@ -8,7 +8,9 @@ USER 0
 # existing files)
 ENV HOME=/home/user
 WORKDIR /home/user
-ENV OPENSHIFT_RELEASE_VERSION="4.10.22"
+ENV OPENSHIFT_RELEASE_VERSION="4.10.26"
+
+RUN echo "PS1=\"[redshell \W]\$\"" >> $INITIAL_CONFIG/.bashrc
 
 RUN mkdir -p /home/user && \
     microdnf update -y && \
@@ -19,7 +21,7 @@ RUN mkdir -p /home/user && \
     vi vim nano \
     # developer tools
     npm nodejs \
-    tar \
+    tar diff\
     curl git procps jq && \
     microdnf -y clean all
 
