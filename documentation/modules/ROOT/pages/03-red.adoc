@@ -12,12 +12,6 @@ Establish a shared project namespace that everyone on your team can use:
 ----
 oc new-project red-team
 ----
-+
-[.console-input]
-[source,bash,subs="+macros,+attributes"]
-----
-oc project red-team
-----
 
 2. Provide existing user accounts with access to the `red-team` project namespace:
 +
@@ -26,6 +20,127 @@ oc project red-team
 ----
 for user in {1..10}; do oc adm policy add-role-to-user edit user$user ; done
 ----
+
+
+[#notifications]
+== Console Notifications
+
+1. Click on the `Import` *(+)* link in the header, then paste the following YAML:
++
+[.console-input]
+[source,yaml,subs="+macros,+attributes"]
+----
+apiVersion: console.openshift.io/v1
+kind: ConsoleNotification
+metadata:
+  name: hackathon-banner
+spec:
+  text: Welcome Red Team to the Summit Connect 2022 Hackathon!
+  location: BannerTop
+  link:
+    href: 'https://github.com/redhat-scholars/quickstart-workshop/tree/master/apps/red'
+    text: (Red Team Repo)
+  color: '#fafafa'
+  backgroundColor: '#EE0000'
+----
+
+2. Click `Create` to make the new `ConsoleNotification` visible to all cluster users
+
+
+
+[#header_logo]
+== Customize the Header Logo
+
+1. Download an image that we can use for our header logo
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+curl https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/red/RedShell.png -o /tmp/red-shell.png
+----
+
+2. Upload the image into a Kubernetes configmap
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc create configmap console-custom-logo --from-file /tmp/red-shell.png -n openshift-config
+----
+
+3. Paste the following to generate a json patch file.  This file will be used to update the cluster console operator config:
++
+[.console-input]
+[source,yaml,subs="+macros,+attributes"]
+----
+cat <<EOF > /tmp/patch.yaml
+spec:
+  customization:
+    customLogoFile:
+      key: red-shell.png
+      name: console-custom-logo
+EOF
+----
+
+4. Send the configuration patch to the console cluster operator:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc patch consoles.operator.openshift.io cluster --type merge --patch-file /tmp/patch.yaml
+----
+
+
+[#login_screen]
+== Customize the Login Screen
+
+Admin access required for the section
+
+1. Run the following command to create a template login page that you can modify:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc adm create-login-template > login.html
+----
+
+2. Replace the default `login.html` page with something more exciting:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+curl https://raw.githubusercontent.com/redhat-developer/openshift-web-console-customizations/master/competition/kenmoini/login.html -o login.html
+----
+
+3. Store our updated login page in a `secret`:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc create secret generic login-template --from-file=login.html -n openshift-config
+----
+
+4. Generate a patch file:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+cat <<EOF > /tmp/patch.yaml
+spec:
+  templates:
+    login:
+      name: login-template
+EOF
+----
+
+5. Apply the patch to the oauths resource named "cluster":
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc patch oauths cluster --type merge --patch-file /tmp/patch.yaml
+----
+
+
 
 [#custom_web_terminal]
 == Configure Web Terminal defaults
@@ -54,7 +169,7 @@ image:red/3-web-terminal-tooling.png[web terminal tooling]
 web-terminal.redhat.com/unmanaged-state: "true"
 ----
 
-4. Replace the `spec.components[].container.image` url with:
+5. Replace the `spec.components[].container.image` url with:
 +
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -109,82 +224,6 @@ wtoctl set image quay.io/ryan_j/summitconnect:latest
 
 
 
-[#login_screen]
-== Customize the Login Screen
-
-
-
-
-
-
-
-
-[#header_logo]
-== Customize the Header Logo
-
-1. something
-+
-[.console-input]
-[source,bash,subs="+macros,+attributes"]
-----
-curl https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/red/RedShell.png -o /tmp/red-shell.png
-----
-
-2. something 
-+
-[.console-input]
-[source,bash,subs="+macros,+attributes"]
-----
-oc create configmap console-custom-logo --from-file /tmp/red-shell.png -n openshift-config
-----
-
-3. Paste the following to generate a json patch file.  This file will be used to update the cluster console operator config:
-+
-[.console-input]
-[source,yaml,subs="+macros,+attributes"]
-----
-cat <<EOF > /tmp/patch.yaml
-spec:
-  customization:
-    customLogoFile:
-      key: red-shell.png
-      name: console-custom-logo
-EOF
-----
-
-4. Send the configuration patch to the console cluster operator:
-+
-[.console-input]
-[source,bash,subs="+macros,+attributes"]
-----
-oc patch consoles.operator.openshift.io cluster --type merge --patch-file /tmp/patch.yaml`
-----
-
-
-[#notifications]
-== Console Notifications
-
-1. Click on the `Import` *(+)* link in the header, then paste the following YAML contnet:
-+
-[.console-input]
-[source,yaml,subs="+macros,+attributes"]
-----
-apiVersion: console.openshift.io/v1
-kind: ConsoleNotification
-metadata:
-  name: hackathon-banner
-spec:
-  text: Welcome Red Team to the Summit Connect 2022 Hackathon!
-  location: BannerTop
-  link:
-    href: 'https://github.com/redhat-scholars/quickstart-workshop/tree/master/apps/red'
-    text: (Red Team Repo)
-  color: '#fafafa'
-  backgroundColor: '#EE0000'
-----
-
-2. Click `Create` to make the new `ConsoleNotification` visible to all cluster users
-
 
 
 [#quickstart_install]
@@ -204,31 +243,81 @@ odo version
 3.0.0beta3
 ----
 +
-TIP: If you find that you're still on odo version `2.5.0`, try repeating the link:#custom_web_terminal[previous section] to update your Web Terminal
+TIP: If you find that you're still on odo version `2.5.0`, try repeating the link:#custom_web_terminal[Web Terminal customization section] to update your terminal
 
-2. Install a new quickstart and follow along with the demo script
+2. Make sure your command line client is configured to work within the our `red-team` project namespace:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc project red-team
+----
 
+3. Install a new quickstart and follow along with the demo script
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc create -f link_to_quickstart.yaml
+----
+
+
+
+
+
+
+
+
+
+
+
+
+=== script
+
+
+1. Clone one of our example repos for nodejs:
++
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----
 git clone https://github.com/sclorg/nodejs-ex
 cd nodejs-ex
 ----
-
+2. Generate an initial `devfile.yaml` for the repo:
++
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----
-odo init
+odo init --name red-demo-1 --devfile nodejs
 ----
-
-Use interactive mode to set the following ENV variable: `PORT=3000`
-
+3. Update the resulting `devfile.yaml`, setting the default port to `8080`:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+sed -i devfile.yaml -e "s/targetPort: 3000/targetPort: 8080/"
+----
+4. Use `odo` to run the local sources remotely in your team's shared cluster
++
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----
 odo dev &
 ----
+5. Establish a `route` to the web service instead of connecting via the local port.  If you are running odo locally on your laptop, you could skip this step and connect to the port listed in the `odo dev` output instead.
++
+    oc expose svc/red-demo-1-app
 
+6. Connect to the route url using your web browser to test the app:
++
+    oc get routes
++
+    NAME             HOST/PORT                                                                  PATH   SERVICES         PORT        TERMINATION   WILDCARD
+    red-demo-1-app   red-demo-1-app-red-team.apps.cluster-jdqbj.jdqbj.sandbox1482.opentlc.com          red-demo-1-app   http-node                 None
+
+
+7. Make a small change to the source code.  Then, reload your browser to see if the change is visible.
++
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----

@@ -12,11 +12,11 @@
 * xref:03-menu.adoc[3. Menu]
 
 * xref:03-red.adoc[3. Red]
-** xref:03-red.adoc#user_access[Provide shared access to a common namespace]
-** xref:03-red.adoc#custom_web_terminal[Customize the Web Terminal]
-** xref:03-red.adoc#login_screen[Customize the login screen]
-** xref:03-red.adoc#header_logo[Customize the header logo]
+** xref:03-red.adoc#user_access[Project setup]
 ** xref:03-red.adoc#notifications[Console Notifications]
+** xref:03-red.adoc#header_logo[Header Logo]
+** xref:03-red.adoc#login_screen[Login Screen]
+** xref:03-red.adoc#custom_web_terminal[Web Terminal Customizations]
 ** xref:03-red.adoc#quickstart_install[QuickStart installation]
 
 * xref:03-green.adoc[3. Green]
