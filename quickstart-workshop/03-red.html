@@ -92,19 +92,19 @@
     <a class="nav-link" href="03-red.html">3. Red</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#user_access">Provide shared access to a common namespace</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#custom_web_terminal">Customize the Web Terminal</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#login_screen">Customize the login screen</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#header_logo">Customize the header logo</a>
+    <a class="nav-link" href="#user_access">Project setup</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="#notifications">Console Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#header_logo">Header Logo</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#login_screen">Login Screen</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#custom_web_terminal">Web Terminal Customizations</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="#quickstart_install">QuickStart installation</a>
@@ -179,17 +179,147 @@
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc new-project red-team</code></pre>
 </div>
 </div>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc project red-team</code></pre>
-</div>
-</div>
 </li>
 <li>
 <p>Provide existing user accounts with access to the <code>red-team</code> project namespace:</p>
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">for user in {1..10}; do oc adm policy add-role-to-user edit user$user ; done</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="notifications"><a class="anchor" href="#notifications"></a>Console Notifications</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click on the <code>Import</code> <strong>(+)</strong> link in the header, then paste the following YAML:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: console.openshift.io/v1
+kind: ConsoleNotification
+metadata:
+  name: hackathon-banner
+spec:
+  text: Welcome Red Team to the Summit Connect 2022 Hackathon!
+  location: BannerTop
+  link:
+    href: 'https://github.com/redhat-scholars/quickstart-workshop/tree/master/apps/red'
+    text: (Red Team Repo)
+  color: '#fafafa'
+  backgroundColor: '#EE0000'</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Click <code>Create</code> to make the new <code>ConsoleNotification</code> visible to all cluster users</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="header_logo"><a class="anchor" href="#header_logo"></a>Customize the Header Logo</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download an image that we can use for our header logo</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl <a href="https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/red/RedShell.png" class="bare">https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/red/RedShell.png</a> -o /tmp/red-shell.png</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Upload the image into a Kubernetes configmap</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc create configmap console-custom-logo --from-file /tmp/red-shell.png -n openshift-config</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Paste the following to generate a json patch file.  This file will be used to update the cluster console operator config:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">cat &lt;&lt;EOF &gt; /tmp/patch.yaml
+spec:
+  customization:
+    customLogoFile:
+      key: red-shell.png
+      name: console-custom-logo
+EOF</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Send the configuration patch to the console cluster operator:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc patch consoles.operator.openshift.io cluster --type merge --patch-file /tmp/patch.yaml</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="login_screen"><a class="anchor" href="#login_screen"></a>Customize the Login Screen</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Admin access required for the section</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Run the following command to create a template login page that you can modify:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc adm create-login-template &gt; login.html</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Replace the default <code>login.html</code> page with something more exciting:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl <a href="https://raw.githubusercontent.com/redhat-developer/openshift-web-console-customizations/master/competition/kenmoini/login.html" class="bare">https://raw.githubusercontent.com/redhat-developer/openshift-web-console-customizations/master/competition/kenmoini/login.html</a> -o login.html</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Store our updated login page in a <code>secret</code>:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc create secret generic login-template --from-file=login.html -n openshift-config</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Generate a patch file:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cat &lt;&lt;EOF &gt; /tmp/patch.yaml
+spec:
+  templates:
+    login:
+      name: login-template
+EOF</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Apply the patch to the oauths resource named "cluster":</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc patch oauths cluster --type merge --patch-file /tmp/patch.yaml</code></pre>
 </div>
 </div>
 </li>
@@ -312,90 +442,6 @@ Kubernetes Version: v1.23.5+012e945</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="login_screen"><a class="anchor" href="#login_screen"></a>Customize the Login Screen</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="header_logo"><a class="anchor" href="#header_logo"></a>Customize the Header Logo</h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>something</p>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl <a href="https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/red/RedShell.png" class="bare">https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/red/RedShell.png</a> -o /tmp/red-shell.png</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>something</p>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc create configmap console-custom-logo --from-file /tmp/red-shell.png -n openshift-config</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Paste the following to generate a json patch file.  This file will be used to update the cluster console operator config:</p>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">cat &lt;&lt;EOF &gt; /tmp/patch.yaml
-spec:
-  customization:
-    customLogoFile:
-      key: red-shell.png
-      name: console-custom-logo
-EOF</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Send the configuration patch to the console cluster operator:</p>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc patch consoles.operator.openshift.io cluster --type merge --patch-file /tmp/patch.yaml`</code></pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="notifications"><a class="anchor" href="#notifications"></a>Console Notifications</h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Click on the <code>Import</code> <strong>(+)</strong> link in the header, then paste the following YAML contnet:</p>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: console.openshift.io/v1
-kind: ConsoleNotification
-metadata:
-  name: hackathon-banner
-spec:
-  text: Welcome Red Team to the Summit Connect 2022 Hackathon!
-  location: BannerTop
-  link:
-    href: 'https://github.com/redhat-scholars/quickstart-workshop/tree/master/apps/red'
-    text: (Red Team Repo)
-  color: '#fafafa'
-  backgroundColor: '#EE0000'</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Click <code>Create</code> to make the new <code>ConsoleNotification</code> visible to all cluster users</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="quickstart_install"><a class="anchor" href="#quickstart_install"></a>Quickstart Installation</h2>
 <div class="sectionbody">
 <div class="olist arabic">
@@ -419,39 +465,98 @@ spec:
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-If you find that you&#8217;re still on odo version <code>2.5.0</code>, try repeating the <a href="#custom_web_terminal">previous section</a> to update your Web Terminal
+If you find that you&#8217;re still on odo version <code>2.5.0</code>, try repeating the <a href="#custom_web_terminal">Web Terminal customization section</a> to update your terminal
 </td>
 </tr>
 </table>
 </div>
 </li>
 <li>
+<p>Make sure your command line client is configured to work within the our <code>red-team</code> project namespace:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc project red-team</code></pre>
+</div>
+</div>
+</li>
+<li>
 <p>Install a new quickstart and follow along with the demo script</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc create -f link_to_quickstart.yaml</code></pre>
+</div>
+</div>
 </li>
 </ol>
 </div>
+<div class="sect2">
+<h3 id="_script"><a class="anchor" href="#_script"></a>script</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Clone one of our example repos for nodejs:</p>
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git clone <a href="https://github.com/sclorg/nodejs-ex" class="bare">https://github.com/sclorg/nodejs-ex</a>
 cd nodejs-ex</code></pre>
 </div>
 </div>
+</li>
+<li>
+<p>Generate an initial <code>devfile.yaml</code> for the repo:</p>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">odo init</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">odo init --name red-demo-1 --devfile nodejs</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Use interactive mode to set the following ENV variable: <code>PORT=3000</code></p>
+</li>
+<li>
+<p>Update the resulting <code>devfile.yaml</code>, setting the default port to <code>8080</code>:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">sed -i devfile.yaml -e "s/targetPort: 3000/targetPort: 8080/"</code></pre>
 </div>
+</div>
+</li>
+<li>
+<p>Use <code>odo</code> to run the local sources remotely in your team&#8217;s shared cluster</p>
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">odo dev &amp;</code></pre>
 </div>
 </div>
+</li>
+<li>
+<p>Establish a <code>route</code> to the web service instead of connecting via the local port.  If you are running odo locally on your laptop, you could skip this step and connect to the port listed in the <code>odo dev</code> output instead.</p>
+<div class="literalblock">
+<div class="content">
+<pre>oc expose svc/red-demo-1-app</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Connect to the route url using your web browser to test the app:</p>
+<div class="literalblock">
+<div class="content">
+<pre>oc get routes</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>NAME             HOST/PORT                                                                  PATH   SERVICES         PORT        TERMINATION   WILDCARD
+red-demo-1-app   red-demo-1-app-red-team.apps.cluster-jdqbj.jdqbj.sandbox1482.opentlc.com          red-demo-1-app   http-node                 None</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Make a small change to the source code.  Then, reload your browser to see if the change is visible.</p>
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">sed -i views/index.html -e 's/your Node.js application on OpenShift/Red Hat Summit Connect 2022/'</code></pre>
+</div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>

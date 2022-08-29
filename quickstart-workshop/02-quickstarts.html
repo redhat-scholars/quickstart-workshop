@@ -92,19 +92,19 @@
     <a class="nav-link" href="03-red.html">3. Red</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-red.html#user_access">Provide shared access to a common namespace</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-red.html#custom_web_terminal">Customize the Web Terminal</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-red.html#login_screen">Customize the login screen</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-red.html#header_logo">Customize the header logo</a>
+    <a class="nav-link" href="03-red.html#user_access">Project setup</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="03-red.html#notifications">Console Notifications</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-red.html#header_logo">Header Logo</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-red.html#login_screen">Login Screen</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-red.html#custom_web_terminal">Web Terminal Customizations</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="03-red.html#quickstart_install">QuickStart installation</a>
@@ -164,13 +164,6 @@
   <div class="content">
 <article class="doc">
 <h1 class="page">CH2 ConsoleQuickStarts</h1>
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>Check the Scoring Guidelines sheet for notes on how to connect to your OpenShift Web Console.</p>
-</div>
-</div>
-</div>
 <div class="sect1">
 <h2 id="quickstart_basics"><a class="anchor" href="#quickstart_basics"></a>2.1 ConsoleQuickStart Basic Usage</h2>
 <div class="sectionbody">
@@ -237,7 +230,7 @@
 </div>
 </li>
 <li>
-<p>Confirm that Azure helm charts are available in the "+Add" Menu. Follow the prompts to check your work.</p>
+<p>Follow the prompts to check your work and confirm that Azure helm charts are available in the "+Add" Menu.</p>
 <div class="imageblock">
 <div class="content">
 <img src="_images/quickstarts/11-quickstart-testing.png" alt="Quickstart content">
@@ -250,7 +243,7 @@
 </div>
 </li>
 <li>
-<p>Click "Next" when you are satisified with the results. Then, click "Close" to complete the QuickStart</p>
+<p>Click "Next" when you are satisified with the results. Then click <code>Close</code> to complete the QuickStart</p>
 </li>
 </ol>
 </div>
@@ -272,11 +265,6 @@
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc new-project summit-connect</code></pre>
-</div>
-</div>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc project summit-connect</code></pre>
 </div>
 </div>
 </li>
@@ -356,13 +344,13 @@ EOF</code></pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Click on the "?" icon in the header menu, Then select "Quick Starts".  Next, Search for "Helm"</p>
+<p>Click on the "?" icon in the header menu, Then select "Quick Starts".</p>
 </li>
 <li>
-<p>Select the tile labeled "Add Helm Chart Repositories to extend the Developer Catalog for your project"</p>
+<p>Search for "Helm", then select the tile labeled "Add Helm Chart Repositories to extend the Developer Catalog for your project"</p>
 </li>
 <li>
-<p>Complete each step of the quickstart.  Upon completion, confirm that the Bitnami helm repo is successfully installed within the project namespace</p>
+<p>Complete each step of the quickstart.  Upon completion, you will confirm that the Bitnami helm repo has been enabled for use within the <code>summit-connect</code> project namespace</p>
 </li>
 </ol>
 </div>
