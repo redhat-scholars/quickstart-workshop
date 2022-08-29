@@ -3,6 +3,8 @@ include::_attributes.adoc[]
 
 :adminname: opentlc-mgr
 
+Check the Scoring Guidelines sheet for notes on how to access your OpenShift Web Console.
+
 [#installation]
 == Installing the Web Terminal operator
 
