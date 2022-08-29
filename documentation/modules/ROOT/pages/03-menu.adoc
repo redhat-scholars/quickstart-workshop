@@ -7,7 +7,6 @@ Table:
 
 .xref:03-red.adoc[Red]:
 
-* Provide shared access to a common namespace
 * Customize the Web Terminal
 * Customize the login screen
 * Customize the header logo
