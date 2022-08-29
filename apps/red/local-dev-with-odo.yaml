@@ -21,43 +21,43 @@ spec:
   tasks:
   - description: |-
       Follow these steps to set up a local development loop using `odo`:
-      1. Open the Web Terminal
+      1. Open the [Web Terminal]{{highlight qs-masthead-cloudshell}}
       1. Create a new project namespace named "red-team":
         ```
         oc project red-team
-        ```
+        ```{{execute}}
       1. Clone the example repo:
         ```
         git clone https://github.com/sclorg/nodejs-ex
-        ```
+        ```{{execute}}
       1. Change into the repo directory: 
         ```
         cd nodejs-ex
-        ```
+        ```{{execute}}
       1. Generate a new devfile for the repo using the `odo init` command: 
         ```
         odo init --name red-demo-1 --devfile nodejs
-        ```
+        ```{{execute}}
       1. Update the resulting `devfile.yaml`, setting the default port to `8080`: 
         ```
         sed -i devfile.yaml -e "s/targetPort: 3000/targetPort: 8080/"
+        ```{{execute}}
+      1. Use `odo` to run local sources using remote cluster resources.  Since we only have one terminal, include an "&" after "odo dev" to run it in the background: 
         ```
-      1. Since we only have one terminal, include an "&" after "odo dev" to run it in the background: 
-        ```
-        odo dev &`
-        ```
+        odo dev &
+        ```{{execute}}
       1. If you were running odo on your laptop, you could connect to the port number listed in the output of `odo dev`.  Since we are using the web terminal, we will need to expose a `svc` in order to check the current state of the app: 
         ```
         oc expose svc/red-demo-1-app
-        ```
+        ```{{execute}}
       1. Open the route url in a new browser tab and read the title of the page: 
         ```
         oc get routes
-        ```
+        ```{{execute}}
       1. Make a small change to the source code (Welcome to Red Hat Summit Connect): 
         ```
         sed -i views/index.html -e 's/your Node.js application on OpenShift/Red Hat Summit Connect 2022/'
-        ```
+        ```{{execute}}
       1. Reload your browser to see the changes
     review:
       failedTaskHelp: This task isn’t verified yet. Try the task again.

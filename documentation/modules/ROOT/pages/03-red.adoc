@@ -253,75 +253,14 @@ TIP: If you find that you're still on odo version `2.5.0`, try repeating the lin
 oc project red-team
 ----
 
-3. Install a new quickstart and follow along with the demo script
+3. Install the red team quickstart, providing an introduction to `odo`:
 +
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----
-oc create -f link_to_quickstart.yaml
+oc create -f https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/red/local-dev-with-odo.yaml
 ----
 
+4. Search all quickstarts for a new entry named "Local development with odo 3.0"
 
-
-
-
-
-
-
-
-
-
-
-=== script
-
-
-1. Clone one of our example repos for nodejs:
-+
-[.console-input]
-[source,bash,subs="+macros,+attributes"]
-----
-git clone https://github.com/sclorg/nodejs-ex
-cd nodejs-ex
-----
-2. Generate an initial `devfile.yaml` for the repo:
-+
-[.console-input]
-[source,bash,subs="+macros,+attributes"]
-----
-odo init --name red-demo-1 --devfile nodejs
-----
-3. Update the resulting `devfile.yaml`, setting the default port to `8080`:
-+
-[.console-input]
-[source,bash,subs="+macros,+attributes"]
-----
-sed -i devfile.yaml -e "s/targetPort: 3000/targetPort: 8080/"
-----
-4. Use `odo` to run the local sources remotely in your team's shared cluster
-+
-[.console-input]
-[source,bash,subs="+macros,+attributes"]
-----
-odo dev &
-----
-5. Establish a `route` to the web service instead of connecting via the local port.  If you are running odo locally on your laptop, you could skip this step and connect to the port listed in the `odo dev` output instead.
-+
-    oc expose svc/red-demo-1-app
-
-6. Connect to the route url using your web browser to test the app:
-+
-    oc get routes
-+
-    NAME             HOST/PORT                                                                  PATH   SERVICES         PORT        TERMINATION   WILDCARD
-    red-demo-1-app   red-demo-1-app-red-team.apps.cluster-jdqbj.jdqbj.sandbox1482.opentlc.com          red-demo-1-app   http-node                 None
-
-
-7. Make a small change to the source code.  Then, reload your browser to see if the change is visible.
-+
-[.console-input]
-[source,bash,subs="+macros,+attributes"]
-----
-sed -i views/index.html -e 's/your Node.js application on OpenShift/Red Hat Summit Connect 2022/'
-----
-
-
+5. Start the quickstart and follow along with each step.  Confirm your findings.
