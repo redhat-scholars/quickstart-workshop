@@ -1,0 +1,68 @@
+apiVersion: console.openshift.io/v1
+kind: ConsoleQuickStart
+metadata:
+  annotations:
+    include.release.openshift.io/ibm-cloud-managed: "true"
+    include.release.openshift.io/self-managed-high-availability: "true"
+    include.release.openshift.io/single-node-developer: "true"
+  name: local-dev-with-odo
+spec:
+  accessReviewResources:
+  - group: helm.openshift.io
+    resource: helmchartrepositories
+    verb: create
+  conclusion: 'Changes to the local source folder sould be immediately copied into a live container environment providing rapid feedback while you work'
+  description: Learn how to set up a nodejs project for local development using odo 3.0
+  displayName: Local Development with odo 3.0
+  durationMinutes: 10
+  introduction: "Content in the Helm Chart Catalog is defined by HelmChartRepository (HCR) CRs. The HelmChartRepository (HCR) provides a URL, the Helm Catalog is populated by pulling available Helm Charts from each of the HCR URLs.\n- HCRs are cluster scoped. \n- A default HelmChartRepository (HCR) is provided, called the **redhat-helm-repo**.\n- An administrator can add additional HCRs to provide additional Helm Charts."
+  tags:
+  - odo
+  tasks:
+  - description: |-
+      Follow these steps to set up a local development loop using `odo`:
+      1. Open the Web Terminal
+      1. Create a new project namespace named "red-team":
+        ```
+        oc project red-team
+        ```
+      1. Clone the example repo:
+        ```
+        git clone https://github.com/sclorg/nodejs-ex
+        ```
+      1. Change into the repo directory: 
+        ```
+        cd nodejs-ex
+        ```
+      1. Generate a new devfile for the repo using the `odo init` command: 
+        ```
+        odo init --name red-demo-1 --devfile nodejs
+        ```
+      1. Update the resulting `devfile.yaml`, setting the default port to `8080`: 
+        ```
+        sed -i devfile.yaml -e "s/targetPort: 3000/targetPort: 8080/"
+        ```
+      1. Since we only have one terminal, include an "&" after "odo dev" to run it in the background: 
+        ```
+        odo dev &`
+        ```
+      1. If you were running odo on your laptop, you could connect to the port number listed in the output of `odo dev`.  Since we are using the web terminal, we will need to expose a `svc` in order to check the current state of the app: 
+        ```
+        oc expose svc/red-demo-1-app
+        ```
+      1. Open the route url in a new browser tab and read the title of the page: 
+        ```
+        oc get routes
+        ```
+      1. Make a small change to the source code (Welcome to Red Hat Summit Connect): 
+        ```
+        sed -i views/index.html -e 's/your Node.js application on OpenShift/Red Hat Summit Connect 2022/'
+        ```
+      1. Reload your browser to see the changes
+    review:
+      failedTaskHelp: This task isn’t verified yet. Try the task again.
+      instructions: "Verify that the HelmChartRepository was successfully installed:\n1. Click on the [perspective switcher]{{highlight qs-perspective-switcher}} at the top of the navigation, and select **Developer**.\n1. In the navigation menu, click [Add]{{highlight qs-nav-add}}.\n1. On the **+Add** page, click **Helm Chart**. \n1. Confirm that the **bitnami-sample-repo** is an available catalog.\n1. In the **Chart Repositories** filter, do you see **bitnami-sample-repo**?"
+    summary:
+      failed: Try the steps again.
+      success: Changes to the source code folder are immediately reflected in the remote container
+    title: Set up a local development workflow using the odo command-line tool
