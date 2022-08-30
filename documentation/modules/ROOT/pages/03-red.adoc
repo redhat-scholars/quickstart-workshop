@@ -229,31 +229,7 @@ wtoctl set image quay.io/ryan_j/summitconnect:latest
 [#quickstart_install]
 == Quickstart Installation
 
-1. Verify that you have an updated version of the `odo` command line tool: 
-+
-[.console-input]
-[source,bash,subs="+macros,+attributes"]
-----
-odo version
-----
-+
-[.console-output]
-[source,bash,subs="+macros,+attributes"]
-----
-3.0.0beta3
-----
-+
-TIP: If you find that you're still on odo version `2.5.0`, try repeating the link:#custom_web_terminal[Web Terminal customization section] to update your terminal
-
-2. Make sure your command line client is configured to work within the our `red-team` project namespace:
-+
-[.console-input]
-[source,bash,subs="+macros,+attributes"]
-----
-oc project red-team
-----
-
-3. Install the red team quickstart, providing an introduction to `odo`:
+1. Install the red team quickstart, providing an introduction to `odo` v3.0:
 +
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -261,6 +237,6 @@ oc project red-team
 oc create -f https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/red/local-dev-with-odo.yaml
 ----
 
-4. Search all quickstarts for a new entry named "Local development with odo 3.0"
+2. Search all quickstarts for a new entry named "Local development with odo 3.0"
 
-5. Start the quickstart and follow along with each step.  Confirm your findings.
+3. Start the quickstart and follow along with each step

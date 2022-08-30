@@ -23,7 +23,13 @@ spec:
       Follow these steps to set up a local development loop using `odo`:
       1. Open the [Web Terminal]{{highlight qs-masthead-cloudshell}}
 
-      1. Create a new project namespace named "red-team":
+
+      1. Verify that you have an updated version of the `odo` command line tool:
+        ```
+        odo version
+        ```{{execute}}
+
+      1. Verify that the terminal is configured to work with our "red-team" project namespace:
         ```
         oc project red-team
         ```{{execute}}
