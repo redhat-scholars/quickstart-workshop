@@ -21,11 +21,14 @@ spec:
   tasks:
   - description: |-
       Follow these steps to set up a local development loop using `odo`:
+
       1. Open the [Web Terminal]{{highlight qs-masthead-cloudshell}} or a terminal on your laptop machine
+
       1. Verify that you have version 3.0 of the `odo` command line tool:
         ```
         odo version
         ```{{execute}}
+
     review:
       failedTaskHelp: This task isn’t verified yet. Try running `wtoctl set image quay.io/ryan_j/summitconnect:latest` to update your terminal.
       instructions: "Verify that the terminal provides a v3 release of the odo cli tool"
@@ -36,12 +39,14 @@ spec:
   - description: |-
       1. Clone the example repo:
         ```
-        git clone https://github.com/sclorg/nodejs-ex
+        git clone https://github.com/nodeshift-starters/nodejs-rest-http
         ```{{execute}}
+
       1. Change into the repo directory: 
         ```
         cd nodejs-ex
         ```{{execute}}
+
     review:
       failedTaskHelp: This task isn’t verified yet. Try again to proceed. 
       instructions: "Verify that you were able to clone the example repo sources"
@@ -54,10 +59,12 @@ spec:
         ```
         oc project red-team
         ```{{execute}}
+
       1. Generate a new devfile for the repo using the `odo init` command: 
         ```
         odo init --name red-demo-1 --devfile nodejs
         ```{{execute}}
+
       1. Update the resulting `devfile.yaml`, setting the default port to `8080`: 
         ```
         sed -i devfile.yaml -e "s/targetPort: 3000/targetPort: 8080/"
@@ -85,6 +92,7 @@ spec:
         ```
         oc get routes
         ```{{execute}}
+
     review:
       failedTaskHelp: This task isn’t verified yet. Try running `oc get routes` to find the url to your demo application, or try `odo logs` to debug.
       instructions: "Verify that you are able to connect to your running demo application"
@@ -95,7 +103,7 @@ spec:
   - description: |-
       1. Make a small change to the source code (Welcome to Red Hat Summit Connect): 
         ```
-        sed -i views/index.html -e 's/your Node.js application on OpenShift/Red Hat Summit Connect 2022/'
+        sed -i public/index.html -e 's/API Level 0 Example/Welcome to Red Hat Summit Connect 2022/'
         ```{{execute}}
 
       1. Reload the demo application to see the changes
