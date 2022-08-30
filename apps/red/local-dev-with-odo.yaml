@@ -15,45 +15,62 @@ spec:
   description: Learn how to set up a nodejs project for local development using odo 3.0
   displayName: Local Development with odo 3.0
   durationMinutes: 10
-  introduction: "Content in the Helm Chart Catalog is defined by HelmChartRepository (HCR) CRs. The HelmChartRepository (HCR) provides a URL, the Helm Catalog is populated by pulling available Helm Charts from each of the HCR URLs.\n- HCRs are cluster scoped. \n- A default HelmChartRepository (HCR) is provided, called the **redhat-helm-repo**.\n- An administrator can add additional HCRs to provide additional Helm Charts."
+  introduction: "Establishing a viable development environment may require substantial effort.  Binaries, libraries, and code all need to be available in the correct locations, and development workloads often require additional CPU and RAM.\n- The odo command line tool is designed to help streamline local development workflow by taking advantage of cluster resources and hosted binaries.\n- This quick start will help introduce the odo v3.0 command line tool, and show how it can be used in coordination with a local code repo and editor to deliver accelerated development feedback."
   tags:
   - odo
   tasks:
   - description: |-
       Follow these steps to set up a local development loop using `odo`:
-      1. Open the [Web Terminal]{{highlight qs-masthead-cloudshell}}
-
-
-      1. Verify that you have an updated version of the `odo` command line tool:
+      1. Open the [Web Terminal]{{highlight qs-masthead-cloudshell}} or a terminal on your laptop machine
+      1. Verify that you have version 3.0 of the `odo` command line tool:
         ```
         odo version
         ```{{execute}}
-
-      1. Verify that the terminal is configured to work with our "red-team" project namespace:
-        ```
-        oc project red-team
-        ```{{execute}}
-
+    review:
+      failedTaskHelp: This task isn’t verified yet. Try running `wtoctl set image quay.io/ryan_j/summitconnect:latest` to update your terminal.
+      instructions: "Verify that the terminal provides a v3 release of the odo cli tool"
+    summary:
+      failed: The odo command is not found, or is outdated
+      success: The command `odo version` should return `3.0.0` or newer
+    title: Verify that your terminal provides access to the odo command-line tool
+  - description: |-
       1. Clone the example repo:
         ```
         git clone https://github.com/sclorg/nodejs-ex
         ```{{execute}}
-
       1. Change into the repo directory: 
         ```
         cd nodejs-ex
         ```{{execute}}
-
+    review:
+      failedTaskHelp: This task isn’t verified yet. Try again to proceed. 
+      instructions: "Verify that you were able to clone the example repo sources"
+    summary:
+      failed: The git command is not available, or the repo is unavailable
+      success: The `git clone` commnand should clone a new local copy of the repo
+    title: Verify that you have local access to the example repo
+  - description: |-
+      1. Verify that the terminal is configured to work with our "red-team" project namespace:
+        ```
+        oc project red-team
+        ```{{execute}}
       1. Generate a new devfile for the repo using the `odo init` command: 
         ```
         odo init --name red-demo-1 --devfile nodejs
         ```{{execute}}
-
       1. Update the resulting `devfile.yaml`, setting the default port to `8080`: 
         ```
         sed -i devfile.yaml -e "s/targetPort: 3000/targetPort: 8080/"
         ```{{execute}}
 
+    review:
+      failedTaskHelp: "This task isn’t verified yet. Try again to continue.  Odo documentation is available at: [odo.dev](https://odo.dev)"
+      instructions: "Verify that the repo now contains a `devfile.yaml`"
+    summary:
+      failed: If `odo init` fails to run, you might need an updated release of odo. See the previous section.
+      success: The command `odo init` should return a new `devfile.yaml` for the repo.
+    title: Generate a devfile to initialize the repo
+  - description: |-
       1. Use `odo` to run local sources using remote cluster resources.  Since we only have one terminal, include an "&" after "odo dev" to run it in the background: 
         ```
         odo dev &
@@ -68,17 +85,24 @@ spec:
         ```
         oc get routes
         ```{{execute}}
-
+    review:
+      failedTaskHelp: This task isn’t verified yet. Try running `oc get routes` to find the url to your demo application, or try `odo logs` to debug.
+      instructions: "Verify that you are able to connect to your running demo application"
+    summary:
+      failed: The application is not available
+      success: The demo application should return a welcome message
+    title: Verify that you are able to successfully connect to your demo application using a web browser.
+  - description: |-
       1. Make a small change to the source code (Welcome to Red Hat Summit Connect): 
         ```
         sed -i views/index.html -e 's/your Node.js application on OpenShift/Red Hat Summit Connect 2022/'
         ```{{execute}}
 
-      1. Reload your browser to see the changes
+      1. Reload the demo application to see the changes
     review:
       failedTaskHelp: This task isn’t verified yet. Try the task again.
-      instructions: "Verify that the HelmChartRepository was successfully installed:\n1. Click on the [perspective switcher]{{highlight qs-perspective-switcher}} at the top of the navigation, and select **Developer**.\n1. In the navigation menu, click [Add]{{highlight qs-nav-add}}.\n1. On the **+Add** page, click **Helm Chart**. \n1. Confirm that the **bitnami-sample-repo** is an available catalog.\n1. In the **Chart Repositories** filter, do you see **bitnami-sample-repo**?"
+      instructions: "Verify that the example application now displays the message \"Welcome to Red Hat Summit Connect 2022\""
     summary:
       failed: Try the steps again.
       success: Changes to the source code folder are immediately reflected in the remote container
-    title: Set up a local development workflow using the odo command-line tool
+    title: Verify that changes to the demo sources are immediately distributed to the cluster for review
