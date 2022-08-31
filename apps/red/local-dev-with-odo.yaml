@@ -24,7 +24,7 @@ spec:
 
       1. Open the [Web Terminal]{{highlight qs-masthead-cloudshell}} or a terminal on your laptop machine
 
-      1. Verify that you have version 3.0 of the `odo` command line tool:
+      2. Verify that you have version 3.0 of the `odo` command line tool:
         ```
         odo version
         ```{{execute}}
@@ -42,9 +42,9 @@ spec:
         git clone https://github.com/nodeshift-starters/nodejs-rest-http
         ```{{execute}}
 
-      1. Change into the repo directory: 
+      2. Change into the repo directory: 
         ```
-        cd nodejs-ex
+        cd nodejs-rest-http
         ```{{execute}}
 
     review:
@@ -60,12 +60,12 @@ spec:
         oc project red-team
         ```{{execute}}
 
-      1. Generate a new devfile for the repo using the `odo init` command: 
+      2. Generate a new devfile for the repo using the `odo init` command: 
         ```
         odo init --name red-demo-1 --devfile nodejs
         ```{{execute}}
 
-      1. Update the resulting `devfile.yaml`, setting the default port to `8080`: 
+      3. Update the resulting `devfile.yaml`, setting the default port to `8080`: 
         ```
         sed -i devfile.yaml -e "s/targetPort: 3000/targetPort: 8080/"
         ```{{execute}}
@@ -83,12 +83,12 @@ spec:
         odo dev &
         ```{{execute}}
 
-      1. If you were running odo on your laptop, you could connect to the port number listed in the output of `odo dev`.  Since we are using the web terminal, we will need to expose a `svc` in order to check the current state of the app: 
+      2. If you were running odo on your laptop, you could connect to the port number listed in the output of `odo dev`.  Since we are using the web terminal, we will need to expose a `svc` in order to check the current state of the app: 
         ```
         oc expose svc/red-demo-1-app
         ```{{execute}}
 
-      1. Open the route url in a new browser tab and read the title of the page: 
+      3. Open the route url in a new browser tab and read the title of the page: 
         ```
         oc get routes
         ```{{execute}}
