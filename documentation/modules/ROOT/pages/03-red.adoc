@@ -40,8 +40,8 @@ spec:
   link:
     href: 'https://github.com/redhat-scholars/quickstart-workshop/tree/master/apps/red'
     text: (Red Team Repo)
-  color: '#fafafa'
-  backgroundColor: '#EE0000'
+  color: '#fff'
+  backgroundColor: darkred
 ----
 
 2. Click `Create` to make the new `ConsoleNotification` visible to all cluster users
