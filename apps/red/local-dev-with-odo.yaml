@@ -7,10 +7,6 @@ metadata:
     include.release.openshift.io/single-node-developer: "true"
   name: local-dev-with-odo
 spec:
-  accessReviewResources:
-  - group: helm.openshift.io
-    resource: helmchartrepositories
-    verb: create
   conclusion: 'Changes to the local source folder sould be immediately copied into a live container environment providing rapid feedback while you work'
   description: Learn how to set up a nodejs project for local development using odo 3.0
   displayName: Local Development with odo 3.0
