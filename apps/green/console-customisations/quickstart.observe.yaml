@@ -89,9 +89,12 @@ spec:
       1. Click the **Create ServiceMonitor** button. A web-based YAML editor is displayed.
 
       1. Select the **Samples** pane on the right and click the "Try it" link under the **Example Service Monitor** item. 
-
+      
       1. Replace all instances of `your-app-name` in the YAML with `nodejs-metrics-example`.
       
+        ---
+        **NOTE**: The sample YAML you used is a cluster customisation! You can provide your own samples using the [ConsoleYAMLSample](https://docs.openshift.com/container-platform/4.10/web_console/customizing-the-web-console.html#adding-yaml-examples-to-kube-resources_customizing-web-console) CRD.
+        ---
       
       The YAML editor should now show a ServiceMonitor that scrapes any Service with an `app` label that matches `nodejs-metrics-example`. It will scrape the named port `8080-tcp` via `http`.
 

@@ -59,7 +59,7 @@ Take your customised Web Terminal for a spin:
 +
 [TIP]
 ====
-You might not see the ASCII art if you used an existing Project that had an existing terminal session.
+You might not see the ASCII art if you used a Project that had an existing terminal session.
 
 Force the new container image to be used by deleting the existing Pod(s) using the following command in your Web Terminal session:
 
@@ -213,9 +213,8 @@ image::green/gitops-dashboard.png[The Argo CD Dashboard]
 
 Argo CD uses an link:https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications[Application CRD^] to represent deployed application resources. The Application definition specifies the `source` state, represented using YAML files in a Git repository, and a `destination` cluster and namespace in which to deploy the resources.
 
-An example Application CR is shown below. This is just a sample, you don't need to copy/paste it:
+An example Application CR is shown below.
 
-[.console-input]
 [source, yaml,subs="+macros,+attributes"]
 ----
 apiVersion: argoproj.io/v1alpha1
@@ -238,7 +237,7 @@ You will create an Argo CD Application that uses source files defined in the lin
 
 === Create an Application in Argo CD
 
-Applications can be created using the Argo CD UI, or directly via a YAML Application CR. 
+Applications can be created using the Argo CD UI, or by directly by applying Application CRs to your OpenShift cluster using the OpenShift CLI or the OpenShift Web Console. 
 
 Create an Application using the Argo CD UI:
 
@@ -272,9 +271,14 @@ Return to the OpenShift Console, refresh the page, and verify that:
 
 . The previously added *ConsoleNotification* banner message has been modified.
 . The *Application Launcher* menu (the 3x3 sqaure icon) contains a *Hackathon Resources* section.
-. Selecting *Quick Starts* from the *Help Menu* (question mark icon) in the top-right of the OpenShift Web Console lists two new Quick Starts named _Deploy_ and _Observe_.
+. Selecting *Quick Starts* from the *Help Menu* (question mark icon) in the top-right of the OpenShift Web Console lists new Quick Starts named _Customise_, _Deploy_ and _Observe_.
 
 image::green/gitops-managed-ui.png[Custom Quick Starts displayed in the OpenShift Web Console]
 
 == Follow the Quick Starts
 
+Congratulations on making it this far! You're now ready to start your own cluster customisation journey.
+
+To get started visit the Quick Starts, and complete the Quick Start named *Summit Connect Hackathon (Customise)*. Remember, you can find the Quick Starts by selecting *Quick Starts* from the *Help Menu* (question mark icon) in the top-right of the OpenShift Web Console.
+
+After completing this Quick Start you'll have a Git repository that contains your unique customisations, and you can synchronise them with your cluster using Argo CD.
