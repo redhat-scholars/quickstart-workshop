@@ -39,7 +39,7 @@ spec:
 
       1. Click the *Create fork* button.
 
-      You will be redirected to your fork of the repository, e.g https://github.com/evanshortiss/quickstart-workshop.
+      You will be redirected to your fork of the repository, i.e https://github.com/<your-username>/quickstart-workshop.
     review:
       instructions: |-
           Is your fork of the repository available on your GitHub account? 
@@ -69,6 +69,6 @@ spec:
       failedTaskHelp: Verify the repository URL and settings you entered are valid and try again. 
     summary:
       success: >-
-        You updated the Argo CD Application to use your fork! Try customising some of the YAML resources in the fork and seeing them get synced to the cluster by Argo CD.
+        You updated the Argo CD Application to use your fork! Try customising some of the YAML resources in the fork, and observe them being synced to the cluster by Argo CD.
       failed: Try the steps again.
   
