@@ -3,8 +3,6 @@ include::_attributes.adoc[]
 
 For section 3, choose between "Red", "Green", or "Blue" cluster setup, depending on your interests:
 
-Table:
-
 .xref:03-red.adoc[Red]:
 
 * Customize the Web Terminal

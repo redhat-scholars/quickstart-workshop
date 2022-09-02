@@ -2,7 +2,7 @@
 include::_attributes.adoc[]
 
 [#user_access]
-== User Access
+== 3.0 User Access
 Establish a shared project namespace that everyone on your team can use:
 
 1. Use an admin account to create a new project namespace for the Red team to use:
@@ -23,7 +23,7 @@ for user in {1..10}; do oc adm policy add-role-to-user edit user$user ; done
 
 
 [#notifications]
-== Console Notifications
+== 3.1 Console Notifications
 
 1. Click on the `Import` *(+)* link in the header, then paste the following YAML:
 +
@@ -49,7 +49,7 @@ spec:
 
 
 [#header_logo]
-== Customize the Header Logo
+== 3.2 Customize the Header Logo
 
 1. Download an image that we can use for our header logo
 +
@@ -91,7 +91,7 @@ oc patch consoles.operator.openshift.io cluster --type merge --patch-file /tmp/p
 
 
 [#login_screen]
-== Customize the Login Screen
+== 3.3 Customize the Login Screen
 
 Admin access required for the section
 
@@ -143,7 +143,7 @@ oc patch oauths cluster --type merge --patch-file /tmp/patch.yaml
 
 
 [#custom_web_terminal]
-== Configure Web Terminal defaults
+== 3.4 Configure Web Terminal defaults
 
 Update the cluster default terminal image by modifying the *DevWorkspaceTemplate/web-terminal-tooling* resource:
 
@@ -212,7 +212,7 @@ There will be a brief pause while the Web Terminal tooling container is replaced
 ====
 
 
-[TIP]
+[NOTE]
 ====
 Non-admin users can also quickly override the default terminal image (without setting a new cluster default) using the `wtoctl` command:
 [.console-input]
@@ -227,9 +227,9 @@ wtoctl set image quay.io/ryan_j/summitconnect:latest
 
 
 [#quickstart_install]
-== Quickstart Installation
+== 3.5 Quickstart Installation
 
-1. Install the red team quickstart, providing an introduction to `odo` v3.0:
+1. Install the red team quickstart which provides an introduction to `odo` v3.0:
 +
 [.console-input]
 [source,bash,subs="+macros,+attributes"]

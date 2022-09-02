@@ -16,26 +16,6 @@ Build clusters that are easier to use and more welcoming for new users by:
 5. Populating the default Helm repositories
 6. Providing reusable YAML Samples and Code Snippets
 
-[.tiles.browse]
-== Workshop Outline
-
-.xref:index.adoc[Get Started]
-* xref:index.adoc#scoring[Scoring]
-
-.xref:01-web-terminal.adoc[CH1 Web Terminal]
-* xref:01-web-terminal.adoc#installation[Installing the Web Terminal operator]
-* xref:01-web-terminal.adoc#basics[Web Terminal Basics]
-
-.xref:02-quickstarts.adoc#[CH2 ConsoleQuickStarts]
-* xref:02-quickstarts.adoc#quickstart_basics[QuickStarts Basics]
-* xref:02-quickstarts.adoc#quickstart_modifications[QuickStarts Advanced]
-
-Choose ONE of the following challenge sections:
-
-* xref:03-red.adoc[CH3 Red Team customizations]
-* xref:03-green.adoc[CH3 Green Team customizations]
-* xref:03-blue.adoc[CH3 Blue Team customizations]
-
 [#scoring]
 == Scoring Guidelines
 
@@ -46,3 +26,23 @@ Complete each of the challenge sections to increase your score during the event,
 To view team information and scoring criteria, review the following doc:
 
 {scoring_doc_url}
+
+
+[.tiles.browse]
+== Workshop Outline
+
+.xref:01-web-terminal.adoc[CH1 Web Terminal]
+* xref:01-web-terminal.adoc#installation[Installing the Web Terminal operator]
+* xref:01-web-terminal.adoc#basics[Web Terminal Basics]
+
+.xref:02-quickstarts.adoc#[CH2 ConsoleQuickStarts]
+* xref:02-quickstarts.adoc#quickstart_basics[Quick Starts Basics]
+* xref:02-quickstarts.adoc#quickstart_advanced[Advanced Quick Starts]
+* xref:02-quickstarts.adoc#quickstart_modifications[Quick Start Modifications]
+* xref:02-quickstarts.adoc#quickstart_test[Quick Start Testing]
+
+Choose ONE of the following challenge sections:
+
+* xref:03-red.adoc[CH3 Red Team customizations]
+* xref:03-green.adoc[CH3 Green Team customizations]
+* xref:03-blue.adoc[CH3 Blue Team customizations]
