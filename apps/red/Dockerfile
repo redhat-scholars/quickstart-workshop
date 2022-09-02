@@ -36,7 +36,7 @@ RUN curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/$OPENSHIFT
     chmod +x /usr/local/bin/kubectl && \
     rm /tmp/openshift-client-linux* /tmp/README.md
 
-RUN curl -L https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/odo/v3.0.0~beta2/odo-linux-amd64 -o /usr/local/bin/odo && \
+RUN curl -L https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/odo/v3.0.0~beta3/odo-linux-amd64 -o /usr/local/bin/odo && \
     chmod +x /usr/local/bin/odo
 
 USER 1001
