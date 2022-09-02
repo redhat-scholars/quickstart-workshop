@@ -65,10 +65,10 @@
     <a class="nav-link" href="01-web-terminal.html">1. Web Terminal</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="01-web-terminal.html#install">Installation</a>
+    <a class="nav-link" href="01-web-terminal.html#install">1.1 Installation</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="01-web-terminal.html#basics">Basics</a>
+    <a class="nav-link" href="01-web-terminal.html#basics">1.2 Basics</a>
   </li>
 </ul>
   </li>
@@ -77,43 +77,46 @@
     <a class="nav-link" href="02-quickstarts.html">2. ConsoleQuickStarts</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#quickstart_basics">Basics</a>
+    <a class="nav-link" href="#quickstart_basics">2.1 Basics</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#quickstart_modifications">Modifications</a>
+    <a class="nav-link" href="#quickstart_advanced">2.2 Change the Defaults</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#quickstart_modifications">2.3 Modifications</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#quickstart_test">2.4 Test</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="03-menu.html">3. Menu</a>
+    <a class="nav-link" href="03-menu.html">3. Customization Menu</a>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="03-red.html">3. Red</a>
+    <a class="nav-link" href="03-red.html">3. Red Customizations</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-red.html#user_access">Project setup</a>
+    <a class="nav-link" href="03-red.html#notifications">3.1 Console Notifications</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-red.html#notifications">Console Notifications</a>
+    <a class="nav-link" href="03-red.html#header_logo">3.2 Header Logo</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-red.html#header_logo">Header Logo</a>
+    <a class="nav-link" href="03-red.html#login_screen">3.3 Login Screen</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-red.html#login_screen">Login Screen</a>
+    <a class="nav-link" href="03-red.html#custom_web_terminal">3.4 Web Terminal Customizations</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-red.html#custom_web_terminal">Web Terminal Customizations</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-red.html#quickstart_install">QuickStart installation</a>
+    <a class="nav-link" href="03-red.html#quickstart_install">3.5 QuickStart installation</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="03-green.html">3. Green</a>
+    <a class="nav-link" href="03-green.html">3. Green Customisations</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="03-green.html#_pre_applied_customisations">Pre-Applied Customisations</a>
@@ -131,7 +134,7 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="03-blue.html">3. Blue</a>
+    <a class="nav-link" href="03-blue.html">3. Blue Customizations</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="03-blue.html#install">Installation</a>
@@ -250,7 +253,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="quickstart_modifications"><a class="anchor" href="#quickstart_modifications"></a>2.2 QuickStart Modifications</h2>
+<h2 id="quickstart_advanced"><a class="anchor" href="#quickstart_advanced"></a>2.2 Disabling Defaults QuickStarts</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Image a situation where we wanted our team to have access to the Bitnami Helm repos, but we don&#8217;t want to clutter up the menu for other developers by making this content available cluster-wide.  <code>ProjectHelmChart</code> resources are the perfect solution when you need per-project or per-team usage of Helm repositories on a cluster.</p>
@@ -296,6 +299,15 @@ EOF</code></pre>
 </div>
 </div>
 </li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quickstart_modifications"><a class="anchor" href="#quickstart_modifications"></a>2.3 QuickStart Modifications</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Download a copy of the <code>install-helmchartrepo-ns</code> quickstart:</p>
 <div class="listingblock console-input">
@@ -336,7 +348,7 @@ EOF</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="helm_charts"><a class="anchor" href="#helm_charts"></a>2.3 Check your work - Helm Charts per project</h2>
+<h2 id="quickstart_test"><a class="anchor" href="#quickstart_test"></a>2.4 Check your work - Helm Charts per project</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Follow along with the "Add Helm Chart Repositories to extend the Developer Catalog for your project" quickstart to test your modifications from the previous seciton:</p>
@@ -358,7 +370,7 @@ EOF</code></pre>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="01-web-terminal.html">1. Web Terminal</a></span>
-  <span class="next"><a href="03-menu.html">3. Menu</a></span>
+  <span class="next"><a href="03-menu.html">3. Customization Menu</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
