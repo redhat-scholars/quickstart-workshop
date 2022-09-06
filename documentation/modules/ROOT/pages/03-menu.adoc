@@ -1,15 +1,7 @@
 = 3. Menu
 include::_attributes.adoc[]
 
-For section 3, choose between "Red", "Green", or "Blue" cluster setup, depending on your interests:
-
-.xref:03-red.adoc[Red]:
-
-* Customize the Web Terminal
-* Customize the login screen
-* Customize the header logo
-* Console Notifications
-* QuickStart installation
+For section 3, choose between "Red", or "Green" cluster customizations, depending on your interests:
 
 .xref:03-green.adoc[Green]:
 
@@ -19,6 +11,10 @@ For section 3, choose between "Red", "Green", or "Blue" cluster setup, depending
 * Console Notifications
 * Use GitOps to Manage Customisations
 
-.xref:03-blue.adoc[Blue]:
+.xref:03-red.adoc[Red]:
 
-* 
+* Customize the Web Terminal
+* Customize the login screen
+* Customize the header logo
+* Console Notifications
+* QuickStart installation

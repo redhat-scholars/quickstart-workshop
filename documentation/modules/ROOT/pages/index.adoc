@@ -45,4 +45,3 @@ Choose ONE of the following challenge sections:
 
 * xref:03-red.adoc[CH3 Red Team customizations]
 * xref:03-green.adoc[CH3 Green Team customizations]
-* xref:03-blue.adoc[CH3 Blue Team customizations]
