@@ -1,7 +1,7 @@
 = 3. Menu
 include::_attributes.adoc[]
 
-For section 3, choose between "Red", or "Green" cluster customizations, depending on your interests:
+For section 3, choose between "Green", "Red", or "Blue" cluster customizations, depending on your interests:
 
 .xref:03-green.adoc[Green]:
 

@@ -13,6 +13,12 @@
 
 * xref:03-menu.adoc[3. Customization Menu]
 
+* xref:03-green.adoc[3. Green Customisations]
+** xref:03-green.adoc#_pre_applied_customisations[Pre-Applied Customisations]
+** xref:03-green.adoc#_customise_the_web_terminal[Customise the Web Terminal]
+** xref:03-green.adoc#_customising_the_openshift_web_console[Web Console Customisations]
+** xref:03-green.adoc#_using_gitops_to_manage_cluster_resources[Use GitOps to Manage Customisations]
+
 * xref:03-red.adoc[3. Red Customizations]
 ** xref:03-red.adoc#notifications[3.1 Console Notifications]
 ** xref:03-red.adoc#header_logo[3.2 Header Logo]
@@ -20,8 +26,8 @@
 ** xref:03-red.adoc#custom_web_terminal[3.4 Web Terminal Customizations]
 ** xref:03-red.adoc#quickstart_install[3.5 QuickStart installation]
 
-* xref:03-green.adoc[3. Green Customisations]
-** xref:03-green.adoc#_pre_applied_customisations[Pre-Applied Customisations]
-** xref:03-green.adoc#_customise_the_web_terminal[Customise the Web Terminal]
-** xref:03-green.adoc#_customising_the_openshift_web_console[Web Console Customisations]
-** xref:03-green.adoc#_using_gitops_to_manage_cluster_resources[Use GitOps to Manage Customisations]
+* xref:03-blue.adoc[3. Blue Customizations]
+** xref:03-blue.adoc#notifications[3.1 Console Notifications]
+** xref:03-blue.adoc#header_logo[3.2 Header Logo]
+** xref:03-blue.adoc#custom_web_terminal[3.3 Web Terminal Customizations]
+** xref:03-blue.adoc#quickstart_install[3.4 QuickStart installation]
