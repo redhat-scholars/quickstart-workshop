@@ -1,20 +1,21 @@
-= Welcome to the Red Hat Summit Connect 2022 Console Customization Workshop
+= Welcome to the Red Hat Summit Connect 2022 Console Customization Hackathon
 :page-layout: home
 :!sectids:
 
 [.text-center.strong]
-== Console Customization Hackathon
+== Red Hat Summit Connect 2022
 
 The purpose of this workshop is to explore several of the new OpenShift Console Customization and extensibility features. 
 
-Build clusters that are easier to use and more welcoming for new users by:
+Build clusters that are easier to use and more welcoming for new users:
 
-1. Enabling the Web Terminal operator
-2. Learning how to offer guidance via QuickStarts
-3. Customizing your Login screen
-4. Configuring alerts and banners
-5. Populating the default Helm repositories
-6. Providing reusable YAML Samples and Code Snippets
+1. Enable the Web Terminal operator
+2. Learn how to offer guidance via QuickStarts
+3. Customize your Login screen
+4. Configure alerts and banners
+5. Learn how to manage and share solutions with Helm
+
+Attendees should have some prior experience administering or configuring OpenShift clusters.
 
 [#scoring]
 == Scoring Guidelines
