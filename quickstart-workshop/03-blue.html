@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Deploy Service :: Custom Console Hackathon</title>
+    <title>3. Cluster Customizations (Blue) :: Custom Console Hackathon</title>
     <link rel="canonical" href="https://redhat-scholars.github.io/quickstart-workshop/quickstart-workshop/03-blue.html">
+    <link rel="prev" href="03-red.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -93,6 +94,24 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-green.html">3. Green Customisations</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-green.html#_pre_applied_customisations">Pre-Applied Customisations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-green.html#_customise_the_web_terminal">Customise the Web Terminal</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-green.html#_customising_the_openshift_web_console">Web Console Customisations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="03-green.html#_using_gitops_to_manage_cluster_resources">Use GitOps to Manage Customisations</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
     <a class="nav-link" href="03-red.html">3. Red Customizations</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
@@ -112,21 +131,21 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="03-green.html">3. Green Customisations</a>
+    <a class="nav-link" href="03-blue.html">3. Blue Customizations</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-green.html#_pre_applied_customisations">Pre-Applied Customisations</a>
+    <a class="nav-link" href="#notifications">3.1 Console Notifications</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-green.html#_customise_the_web_terminal">Customise the Web Terminal</a>
+    <a class="nav-link" href="#header_logo">3.2 Header Logo</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-green.html#_customising_the_openshift_web_console">Web Console Customisations</a>
+    <a class="nav-link" href="#custom_web_terminal">3.3 Web Terminal Customizations</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="03-green.html#_using_gitops_to_manage_cluster_resources">Use GitOps to Manage Customisations</a>
+    <a class="nav-link" href="#quickstart_install">3.4 QuickStart installation</a>
   </li>
 </ul>
   </li>
@@ -145,76 +164,212 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Console Customization Hackathon</a></li>
-    <li><a href="03-blue.html">Deploy Service</a></li>
+    <li><a href="03-blue.html">3. Blue Customizations</a></li>
   </ul>
 </nav>
   <div class="edit-this-page"><a href="https://github.com/redhat-scholars/quickstart-workshop/edit/master/documentation/modules/ROOT/pages/03-blue.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Deploy Service</h1>
+<h1 class="page">3. Cluster Customizations (Blue)</h1>
 <div class="sect1">
-<h2 id="service"><a class="anchor" href="#service"></a>The Service</h2>
+<h2 id="user_access"><a class="anchor" href="#user_access"></a>3.0 User Access</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The code:</p>
+<p>Establish a shared project namespace that everyone on the team can use:</p>
 </div>
-<div class="listingblock lines_7 console-input">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use an admin account to create a new project:</p>
+<div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class Main {
-
-    public static void main(String[] args) {
-
-    }
-
-}
-
-./mvnw compile</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc new-project blue-team</code></pre>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="package"><a class="anchor" href="#package"></a>Packaging the Service</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>You can package the next bash script:</p>
-</div>
-<div class="listingblock">
+</li>
+<li>
+<p>Provide existing user accounts with access to the <code>blue-team</code> project namespace:</p>
+<div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">#!/bin/sh
-echo "Hello World"</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">for user in {1..10}; do oc adm policy add-role-to-user edit user$user ; done</code></pre>
 </div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="deploy"><a class="anchor" href="#deploy"></a>Deploy the Service</h2>
+<h2 id="notifications"><a class="anchor" href="#notifications"></a>3.1 Console Notifications</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click on the <code>Import</code> <strong>(+)</strong> link in the web console header. Paste the following YAML into the text editing area:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: console.openshift.io/v1
+kind: ConsoleNotification
+metadata:
+  name: hackathon-banner
+spec:
+  text: Welcome to the Blue Team OpenShift cluster for the Summit Connect Hackathon!
+  location: BannerTop
+  link:
+    href: 'https://github.com/redhat-scholars/quickstart-workshop/tree/master/apps/blue'
+    text: (View Code for the Blue Team Cluster)
+  color: '#fafafa'
+  backgroundColor: '#1919f6'</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Click <code>Create</code> to make the new <code>ConsoleNotification</code> visible to all cluster users</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="header_logo"><a class="anchor" href="#header_logo"></a>3.2 Customize the Header Logo</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download an image to use for a header logo</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl <a href="https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/blue/logo.png" class="bare">https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/blue/logo.png</a> -o /tmp/logo.png</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Store the image data in a Kubernetes configmap</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc create configmap console-custom-logo --from-file /tmp/logo.png -n openshift-config</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Paste the following to create a YAML patch file. This file holds the updated cluster console operator configuration pointing to the <code>console-custom-logo</code> configmap:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">cat &lt;&lt;EOF &gt; /tmp/patch.yaml
+spec:
+  customization:
+    customLogoFile:
+      key: logo.png
+      name: console-custom-logo
+EOF</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Patch the console cluster operator configuration:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc patch consoles.operator.openshift.io cluster --type merge --patch-file /tmp/patch.yaml</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="custom_web_terminal"><a class="anchor" href="#custom_web_terminal"></a>3.3 Configure Web Terminal defaults</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>And then you can deploy the service and execute commands inside:</p>
+<p>Update the cluster default terminal image by modifying the <strong>DevWorkspaceTemplate/web-terminal-tooling</strong> resource:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Search <strong>All Projects</strong> for resources of type <code>DevWorkspaceTemplate</code></p>
+<div class="paragraph">
+<p><span class="image"><img src="_images/red/1-search-all.png" alt="Search All Projects"></span></p>
 </div>
 <div class="paragraph">
-<p>Check that the pod is up and running:</p>
+<p><span class="image"><img src="_images/red/2-search-resource.png" alt="Search Resource type &quot;DevWorkspaceTemplate&quot;"></span></p>
 </div>
-<div class="listingblock lines_space console-input">
+</li>
+<li>
+<p>Select the resource named <code>web-terminal-tooling</code></p>
+<div class="paragraph">
+<p><span class="image"><img src="_images/red/2-view-templates.png" alt="View templates"></span></p>
+</div>
+</li>
+<li>
+<p>Click on <code>YAML</code> to modify the terminal settings</p>
+<div class="paragraph">
+<p><span class="image"><img src="_images/red/3-web-terminal-tooling.png" alt="web terminal tooling"></span></p>
+</div>
+</li>
+<li>
+<p>Add a new annotation after line 5:</p>
+<div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl get pods</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">web-terminal.redhat.com/unmanaged-state: "true"</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Replace the <code>spec.components[].container.image</code> url with:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">quay.io/ryan_j/summitconnect:4.10.25</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Click <code>Save</code> to set the new default terminal image for the cluster</p>
+<div class="paragraph">
+<p><span class="image"><img src="_images/red/4-web-terminal-tooling-yaml.png" alt="web-terminal-tooling yaml config"></span></p>
+</div>
+</li>
+<li>
+<p>Close and restart your Web Terminal</p>
+</li>
+<li>
+<p>In a new terminal, check the version of the <code>oc</code> command line tool:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc version</code></pre>
 </div>
 </div>
 <div class="listingblock console-output">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">NAME                        READY   STATUS    RESTARTS   AGE
-apps   1/1     Running   0          5s</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">Client Version: 4.10.25
+Server Version: 4.10.26
+Kubernetes Version: v1.23.5+012e945</code></pre>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Then let&#8217;s go into the running pod to execute some commands:</p>
+<p>If you don&#8217;t see an updated client release available, use the following command to refresh the outdated web terminal tooling pod:</p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl exec -ti apps /bin/bash</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc delete pod -l 'controller.devfile.io/devworkspace_id'</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>There will be a brief pause while the Web Terminal tooling container is replaced</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -223,13 +378,46 @@ apps   1/1     Running   0          5s</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Change the pod name with your pod name.
+<div class="paragraph">
+<p>Non-admin users can also quickly override the default terminal image (without setting a new cluster default) using the <code>wtoctl</code> command:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">wtoctl set image quay.io/ryan_j/summitconnect:latest</code></pre>
+</div>
+</div>
 </td>
 </tr>
 </table>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="quickstart_install"><a class="anchor" href="#quickstart_install"></a>3.4 Installing a custom QuickStart</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install the blue team quickstart, which guides you through provisioning Operators to manage a backend database and automate application connections to it:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc create -f <a href="https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/blue/svcbind-quickstart.yaml" class="bare">https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/blue/svcbind-quickstart.yaml</a></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Open the QuickStarts catalog from the Help icon near the top right of the web console. Search the QuickStarts for the string "service binding" to filter the catalog until you find the QuickStart titled <strong>Summit Connect Hackathon - Service Binding</strong>.</p>
+</li>
+<li>
+<p>Click the QuickStart and follow the steps in it to deploy both tiers of a simple veterinary practice management application, the PetClinic.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="03-red.html">3. Red Customizations</a></span>
+</nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
