@@ -206,7 +206,7 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Click on the <code>Import</code> <strong>(+)</strong> link in the web console header. Paste the following YAML into the text editing area:</p>
+<p>Click on the <code>Import</code> <strong>(represented by a plus sign, +)</strong> link in the web console header. Paste the following YAML into the text editing area:</p>
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: console.openshift.io/v1
@@ -218,9 +218,9 @@ spec:
   location: BannerTop
   link:
     href: 'https://github.com/redhat-scholars/quickstart-workshop/tree/master/apps/blue'
-    text: (View Code for the Blue Team Cluster)
-  color: '#fafafa'
-  backgroundColor: '#1919f6'</code></pre>
+    text: (View Source)
+  color: white
+  backgroundColor: blue</code></pre>
 </div>
 </div>
 </li>
@@ -267,7 +267,7 @@ EOF</code></pre>
 </div>
 </li>
 <li>
-<p>Patch the console cluster operator configuration:</p>
+<p>Patch the console cluster operator configuration to apply the new logo:</p>
 <div class="listingblock console-input">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc patch consoles.operator.openshift.io cluster --type merge --patch-file /tmp/patch.yaml</code></pre>
@@ -354,7 +354,7 @@ Kubernetes Version: v1.23.5+012e945</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If you don&#8217;t see an updated client release available, use the following command to refresh the outdated web terminal tooling pod:</p>
+<p>If you don&#8217;t see an updated <code>oc</code> version, run the following command to refresh the web terminal tooling pod:</p>
 </div>
 <div class="listingblock console-input">
 <div class="content">
@@ -362,7 +362,7 @@ Kubernetes Version: v1.23.5+012e945</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>There will be a brief pause while the Web Terminal tooling container is replaced</p>
+<p>There will be a brief pause while the Web Terminal tooling container is replaced.</p>
 </div>
 </td>
 </tr>
