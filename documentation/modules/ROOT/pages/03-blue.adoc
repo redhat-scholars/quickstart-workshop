@@ -91,7 +91,7 @@ oc patch consoles.operator.openshift.io cluster --type merge --patch-file /tmp/p
 
 
 [#custom_web_terminal]
-== 3.3 Configure Web Terminal defaults
+== 3.3 Configure Web Terminal
 
 Update the cluster default terminal image by modifying the *DevWorkspaceTemplate/web-terminal-tooling* resource:
 

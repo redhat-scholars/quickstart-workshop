@@ -3,10 +3,10 @@ kind: ConsoleNotification
 metadata:
   name: hackathon-banner
 spec:
-  text: Welcome to the Blue Team OpenShift cluster for the Summit Connect Hackathon!
-  location: BannerTop 
+  text: Welcome to the Blue Team OpenShift cluster for the Summit Connect Hackathon.
+  location: BannerTop
   link:
     href: 'https://github.com/redhat-scholars/quickstart-workshop/tree/master/apps/blue'
-    text: (View Code for the Blue Team Cluster)
-  color: '#fafafa'
-  backgroundColor: '#1919f6'
+    text: (View Source)
+  color: white
+  backgroundColor: blue
