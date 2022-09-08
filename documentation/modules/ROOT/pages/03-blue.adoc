@@ -25,7 +25,7 @@ for user in {1..10}; do oc adm policy add-role-to-user edit user$user ; done
 [#notifications]
 == 3.1 Console Notifications
 
-1. Click on the `Import` *(+)* link in the web console header. Paste the following YAML into the text editing area:
+1. Click on the `Import` *(represented by a plus sign, +)* link in the web console header. Paste the following YAML into the text editing area:
 +
 [.console-input]
 [source,yaml,subs="+macros,+attributes"]
@@ -39,9 +39,9 @@ spec:
   location: BannerTop 
   link:
     href: 'https://github.com/redhat-scholars/quickstart-workshop/tree/master/apps/blue'
-    text: (View Code for the Blue Team Cluster)
-  color: '#fafafa'
-  backgroundColor: '#1919f6'
+    text: (View Source)
+  color: white
+  backgroundColor: blue
 ----
 
 2. Click `Create` to make the new `ConsoleNotification` visible to all cluster users
@@ -80,14 +80,13 @@ spec:
 EOF
 ----
 
-4. Patch the console cluster operator configuration:
+4. Patch the console cluster operator configuration to apply the new logo:
 +
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----
 oc patch consoles.operator.openshift.io cluster --type merge --patch-file /tmp/patch.yaml
 ----
-
 
 
 [#custom_web_terminal]
@@ -148,7 +147,7 @@ Kubernetes Version: v1.23.5+012e945
 +
 [TIP]
 ====
-If you don't see an updated client release available, use the following command to refresh the outdated web terminal tooling pod:
+If you don't see an updated `oc` version, run the following command to refresh the web terminal tooling pod:
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -156,9 +155,8 @@ If you don't see an updated client release available, use the following command 
 oc delete pod -l 'controller.devfile.io/devworkspace_id'
 ----
 
-There will be a brief pause while the Web Terminal tooling container is replaced
+There will be a brief pause while the Web Terminal tooling container is replaced.
 ====
-
 
 [NOTE]
 ====
@@ -169,7 +167,6 @@ Non-admin users can also quickly override the default terminal image (without se
 wtoctl set image quay.io/ryan_j/summitconnect:latest
 ----
 ====
-
 
 
 [#quickstart_install]

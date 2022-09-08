@@ -58,22 +58,22 @@ spec:
       description: >-
         PetClinic is an application for managing the doctors, clients and animal patients of a veterinarian's office.
 
-        1. Create a deployment of the PetClinic application
+        1. Create a deployment of the PetClinic application.
             `oc apply -f https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/blue/petclinic/petclinic-deployment.yaml -n blue-team`{{execute}}
 
-        1. Instruct the Service Binding Operator to bind your application to the available database service by creating a binding
+        1. At first, the application won't reach the running state, because it is not connected to the database it requires. Instruct the Service Binding Operator to bind your application to the available database service by creating a binding.
             `oc apply -f https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/blue/petclinic/petclinic-pgcluster-binding.yaml -n blue-team`{{execute}}`
 
         1. Expose the spring-petclinic service to traffic from outside the cluster, creating a Route to the PetClinic app
             `oc expose service spring-petclinic -n blue-team`{{execute}}
 
         1. Visit the PetClinic application at its Route URL
-            Web Console - Dev perspective -> click arrow badge on the circle icon for spring-petclinic 
+            Developer perspective -> Topology -> Click the arrow badge on the circle for `spring-petclinic` 
             OR
             `oc get routes -n blue-team`{{execute}}
       review:
         instructions: |-
-          Did the PetClinic application open and operate at the Route URL?
+          Did the PetClinic application open and operate at its Route URL?
         failedTaskHelp: Verify that you're viewing the correct Project to find the Route badge in the web console. Wait a moment for the Pods to be created. If this fails, retry the steps.
   summary:
     success: >-
