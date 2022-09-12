@@ -21,10 +21,10 @@ For section 3, choose between "Green", "Red", or "Blue" cluster customizations, 
 
 .xref:03-blue.adoc[Blue]:
 
-* Console Notification
-* Custom header logo
-* Custom web terminal
-* Custom QuickStart
-* Crunchy PostgreSQL Operator-managed cluster
+* Operator-managed PostgreSQL cluster
 * Service Binding Operator
-* PetClinic frontend app
+* PetClinic application
+* Console notification
+* Custom header logo
+* Custom Web Terminal
+* Custom QuickStart Service Binding guide
