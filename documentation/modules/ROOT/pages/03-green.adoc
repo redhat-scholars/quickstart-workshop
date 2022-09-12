@@ -12,10 +12,23 @@ This cluster demonstrates how to:
 
 == Pre-Applied Customisations
 
-Your Green Team cluster already has a fun customisation pre-applied. Try it out:
+Your Green Team cluster already has a fun customisation pre-applied. 
+
+Try it out:
 
 . Login to your OpenShift Web Console using the credentials supplied by your workshop administrator.
 . Expand the *Application Launcher** menu (the 3x3 sqaure icon) in the top-right of the OpenShift console.
+
+[NOTE]
+====
+These customizations can be applied to any cluster where you have cluster-admin access:
+[source, bash,subs="+macros,+attributes"]
+----
+git clone https://github.com/redhat-scholars/quickstart-workshop
+cd quickstart-workshop/apps/green/cluster-setup
+bash setup.sh
+----
+====
 
 Notice that there's a *Cluster Argo CD* link in the launcher. This is an example of a customisation that has been pre-applied to your cluster.
 
