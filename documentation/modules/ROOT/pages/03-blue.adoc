@@ -80,7 +80,7 @@ spec:
 EOF
 ----
 
-4. Patch the console cluster operator configuration to apply the new logo:
+4. Patch the console operator configuration to apply the new logo:
 +
 [.console-input]
 [source,bash,subs="+macros,+attributes"]

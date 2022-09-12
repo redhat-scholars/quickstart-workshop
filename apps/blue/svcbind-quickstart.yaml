@@ -16,14 +16,12 @@ spec:
   tasks:
     - title: Install PostgreSQL database cluster Operator
       description: >-
-        Follow these steps to install the Crunchy PostgreSQL cluster Operator
-
         1. Use the [perspective switcher]{{highlight qs-perspective-switcher}} to select the *Administrator* perspective.
 
         1. Click the [Operators]{{highlight qs-nav-operators}} item in the left-hand navigation. Click *Operator Hub* from the expanded menu to open the Operator Hub catalog view.
 
         1. Search for "crunchy" in the Operator Hub. Select the Crunchy operator labeled **Community**. Click the Install button.
-            Configure install with defaults (stable, all namespaces)
+            Accept the default installation settings (stable, all namespaces).
       review:
         instructions: |-
           Verify that the Crunchy Postgres Operator is installed by clicking *Installed Operators* in the left navigation.
@@ -61,7 +59,7 @@ spec:
         1. Create a deployment of the PetClinic application.
             `oc apply -f https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/blue/petclinic/petclinic-deployment.yaml -n blue-team`{{execute}}
 
-        1. At first, the application won't reach the running state, because it is not connected to the database it requires. Instruct the Service Binding Operator to bind your application to the available database service by creating a binding.
+        1. Declare a binding for the Service Binding Operator to create and manage, connecting your application to the available database service.
             `oc apply -f https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/blue/petclinic/petclinic-pgcluster-binding.yaml -n blue-team`{{execute}}`
 
         1. Expose the spring-petclinic service to traffic from outside the cluster, creating a Route to the PetClinic app
