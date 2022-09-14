@@ -1,14 +1,15 @@
 #!/bin/bash
 
 # Verify we're running as a user with admin permissions
-IS_ADMIN=$(oc get subscriptions -n openshift-operators >> /dev/null)
+$(oc get subscriptions -n openshift-operators > /dev/null 2>&1)
 
-if [ "$IS_ADMIN" -eq "0" ]; then
+# Get the last exit code to deterine if user is admin
+IS_ADMIN=$(echo $?)
+
+if [ "$IS_ADMIN" -eq "1" ]; then
    echo "Please login as a cluster-admin user an re-run this script"
    exit;
 fi
-
-set -e
 
 # Install the OpenShift GitOps operator
 echo "Installing OpenShift GitOps Operator..."
