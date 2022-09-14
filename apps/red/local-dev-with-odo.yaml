@@ -1,0 +1,112 @@
+apiVersion: console.openshift.io/v1
+kind: ConsoleQuickStart
+metadata:
+  annotations:
+    include.release.openshift.io/ibm-cloud-managed: "true"
+    include.release.openshift.io/self-managed-high-availability: "true"
+    include.release.openshift.io/single-node-developer: "true"
+  name: local-dev-with-odo
+spec:
+  conclusion: 'Changes to the local source folder sould be immediately copied into a live container environment providing rapid feedback while you work'
+  description: Learn how to set up a nodejs project for local development using odo 3.0
+  displayName: Local Development with odo 3.0
+  durationMinutes: 10
+  introduction: "Establishing a viable development environment may require substantial effort.  Binaries, libraries, and code all need to be available in the correct locations, and development workloads often require additional CPU and RAM.\n- The odo command line tool is designed to help streamline local development workflow by taking advantage of cluster resources and hosted binaries.\n- This quick start will help introduce the odo v3.0 command line tool, and show how it can be used in coordination with a local code repo and editor to deliver accelerated development feedback."
+  tags:
+  - odo
+  tasks:
+  - description: |-
+      Follow these steps to set up a local development loop using `odo`:
+
+      1. Open the [Web Terminal]{{highlight qs-masthead-cloudshell}} or a terminal on your laptop machine
+
+      2. Verify that you have version 3.0 of the `odo` command line tool:
+        ```
+        odo version
+        ```
+
+    review:
+      failedTaskHelp: This task isn’t verified yet. Try running `wtoctl set image quay.io/ryan_j/summitconnect:latest` to update your terminal.
+      instructions: "Verify that the terminal provides a v3 release of the odo cli tool"
+    summary:
+      failed: The odo command is not found, or is outdated
+      success: The command `odo version` should return `3.0.0` or newer
+    title: Verify that your terminal provides access to the odo command-line tool
+  - description: |-
+      1. Clone the example repo:
+        ```
+        git clone https://github.com/nodeshift-starters/nodejs-rest-http
+        ```
+
+      2. Change into the repo directory: 
+        ```
+        cd nodejs-rest-http
+        ```
+
+    review:
+      failedTaskHelp: This task isn’t verified yet. Try again to proceed. 
+      instructions: "Verify that you were able to clone the example repo sources"
+    summary:
+      failed: The git command is not available, or the repo is unavailable
+      success: The `git clone` commnand should clone a new local copy of the repo
+    title: Verify that you have local access to the example repo
+  - description: |-
+      1. Verify that the terminal is configured to work with our "red-team" project namespace:
+        ```
+        oc project red-team
+        ```
+
+      2. Generate a new devfile for the repo using the `odo init` command: 
+        ```
+        odo init --name red-demo-1 --devfile nodejs
+        ```
+
+      3. Update the resulting `devfile.yaml` to set the default port to `8080` by running the command:
+        ```
+        sed -i devfile.yaml -e "s/targetPort: 3000/targetPort: 8080/"
+        ```
+
+    review:
+      failedTaskHelp: "This task isn’t verified yet. Try again to continue.  Odo documentation is available at: [odo.dev](https://odo.dev)"
+      instructions: "Verify that the repo now contains a `devfile.yaml`"
+    summary:
+      failed: If `odo init` fails to run, you might need an updated release of odo. See the previous section.
+      success: The command `odo init` should return a new `devfile.yaml` for the repo.
+    title: Generate a devfile to initialize the repo
+  - description: |-
+      1. Use `odo` to run local sources using remote cluster resources.  Since we only have one terminal, include an "&" after "odo dev" to run it in the background: 
+        ```
+        odo dev &
+        ```
+
+      2. If you were running odo on your laptop, you could connect to the port number listed in the output of `odo dev`.  Since we are using the web terminal, we will need to expose a `svc` in order to check the current state of the app: 
+        ```
+        oc expose svc/red-demo-1-app
+        ```
+
+      3. Open the route url in a new browser tab and read the title of the page: 
+        ```
+        oc get routes
+        ```
+
+    review:
+      failedTaskHelp: This task isn’t verified yet. Try running `oc get routes` to find the url to your demo application, or try `odo logs` to debug.
+      instructions: "Verify that you are able to connect to your running demo application"
+    summary:
+      failed: The application is not available
+      success: The demo application should return a welcome message
+    title: Verify that you are able to successfully connect to your demo application using a web browser.
+  - description: |-
+      1. Make a small change to the source code (Welcome to Red Hat Summit Connect): 
+        ```
+        sed -i public/index.html -e 's/API Level 0 Example/Welcome to Red Hat Summit Connect 2022/'
+        ```
+
+      1. Reload the demo application to see the changes
+    review:
+      failedTaskHelp: This task isn’t verified yet. Try the task again.
+      instructions: "Verify that the example application now displays the message \"Welcome to Red Hat Summit Connect 2022\""
+    summary:
+      failed: Try the steps again.
+      success: Changes to the source code folder are immediately reflected in the remote container
+    title: Verify that changes to the demo sources are immediately distributed to the cluster for review

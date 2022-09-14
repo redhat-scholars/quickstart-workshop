@@ -1,44 +1,49 @@
-= Welcome to the Red Hat Summit Connect 2022 Console Customization Workshop
+= Welcome to the Red Hat Summit Connect 2022 Console Customization Hackathon
 :page-layout: home
 :!sectids:
 
 [.text-center.strong]
-== Console Customization Hackathon
+== Red Hat Summit Connect 2022
 
 The purpose of this workshop is to explore several of the new OpenShift Console Customization and extensibility features. 
 
-Build clusters that are easier to use and more welcoming for new users by:
+Build clusters that are easier to use and more welcoming for new users:
 
-1. Enabling the Web Terminal operator
-2. Learning how to offer guidance via QuickStarts
-3. Customizing your Login screen
-4. Configuring alerts and banners
-5. Populating the default Helm repositories
-6. Providing reusable YAML Samples and Code Snippets
+1. Enable the Web Terminal operator
+2. Learn how to offer guidance via QuickStarts
+3. Customize your Login screen
+4. Configure alerts and banners
+5. Learn how to manage and share solutions with Helm
 
-[.tiles.browse]
-== Workshop Outline
+Attendees should have some prior experience administering or configuring OpenShift clusters.
 
-[.tile]
-.xref:index.adoc[Get Started]
-* xref:index.adoc#[Cluster Access]
-
-[.title]
-.xref:01-quickstarts.adoc#[ConsoleQuickStarts]
-* xref:01-quickstarts.adoc#basics[QuickStarts Basics]
-
-[.tile]
-.xref:02-web-terminal.adoc[Web Terminal]
-* xref:02-web-terminal.adoc#install[Installing the Web Terminal operator]
-* xref:02-web-terminal.adoc#test[Web Terminal Basics]
-
-[scoring]
+[#scoring]
 == Scoring Guidelines
 
-:scoring_doc_url: https://example-scoring-url
+:scoring_doc_url: https://docs.google.com/spreadsheets/d/1K6AhBIM4Oygjhkbpv2G7euajecPb7cDu7R5ZYeCf2Jo/
 
 Complete each of the challenge sections to increase your score during the event, or follow along at your own pace.
 
 To view team information and scoring criteria, review the following doc:
 
 {scoring_doc_url}
+
+
+[.tiles.browse]
+== Workshop Outline
+
+.xref:01-web-terminal.adoc[CH1 Web Terminal]
+* xref:01-web-terminal.adoc#installation[Installing the Web Terminal operator]
+* xref:01-web-terminal.adoc#basics[Web Terminal Basics]
+
+.xref:02-quickstarts.adoc#[CH2 ConsoleQuickStarts]
+* xref:02-quickstarts.adoc#quickstart_basics[Quick Starts Basics]
+* xref:02-quickstarts.adoc#quickstart_advanced[Advanced Quick Starts]
+* xref:02-quickstarts.adoc#quickstart_modifications[Quick Start Modifications]
+* xref:02-quickstarts.adoc#quickstart_test[Quick Start Testing]
+
+Choose ONE of the following challenge sections:
+
+* xref:03-green.adoc[CH3 Green Team customizations]
+* xref:03-red.adoc[CH3 Red Team customizations]
+* xref:03-blue.adoc[CH3 Blue Team customizations]

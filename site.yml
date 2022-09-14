@@ -2,7 +2,7 @@ runtime:
   cache_dir: ./.cache/antora
 
 site:
-  title: Custom Console Workshop
+  title: Custom Console Hackathon
   url: https://redhat-scholars.github.io/quickstart-workshop
   start_page: quickstart-workshop::index.adoc
 

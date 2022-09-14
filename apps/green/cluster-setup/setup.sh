@@ -28,3 +28,8 @@ oc patch argocd openshift-gitops --type merge --patch-file argocd.patch-file.yam
 oc adm groups new cluster-admins
 oc adm policy add-cluster-role-to-group cluster-admin cluster-admins
 oc adm groups add-users cluster-admins opentlc-mgr kubeadmin
+
+echo "Creating workshop namespace/project"
+oc new-project green-team
+
+echo "Green cluser setup is complete!"

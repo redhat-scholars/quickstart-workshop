@@ -1,8 +1,12 @@
-= Web Terminal
+= CH1 Web Terminal
 include::_attributes.adoc[]
 
+:adminname: opentlc-mgr
+
+Check the Scoring Guidelines sheet for notes on how to access your OpenShift Web Console.
+
 [#installation]
-== Installing the Web Terminal operator
+== 1.1 Installing the Web Terminal operator
 
 To install the Web Terminal operator, open the OperatorHub located under the Operators side menu.
 
@@ -33,9 +37,7 @@ After the installation has completed, you will be able to find the Web Terminal 
 image::terminal/operatorhub-detail.png[Web Terminal Operator detail view]
 
 [#basics]
-== Web Terminal basics
-
-:adminname: opentlc-mgr
+== 1.2 Web Terminal basics
 
 Reload your web browser to reveal a new Web Terminal button in the header menu.  Click on the Web Terminal header menu button to open a new terminal session.
 
@@ -46,13 +48,15 @@ Paste each of the following commands into your terminal to confirm that it is wo
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
-kubectl version
+oc version
 ----
 
-[.console-input]
+[.console-output]
 [source,bash, subs="+macros,+attributes"]
 ----
-oc version
+Client Version: 4.10.6
+Server Version: 4.10.26
+Kubernetes Version: v1.23.5+012e945
 ----
 
 [.console-input]

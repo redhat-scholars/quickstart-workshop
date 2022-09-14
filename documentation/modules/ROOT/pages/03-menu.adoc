@@ -1,0 +1,30 @@
+= 3. Menu
+include::_attributes.adoc[]
+
+For section 3, choose between "Green", "Red", or "Blue" cluster customizations, depending on your interests:
+
+.xref:03-green.adoc[Green]:
+
+* ArgoCD 
+* Custom header logo
+* Custom web terminal
+* Console Notifications
+* Use GitOps to Manage Customisations
+
+.xref:03-red.adoc[Red]:
+
+* Customize the Web Terminal
+* Customize the login screen
+* Customize the header logo
+* Console Notifications
+* QuickStart installation
+
+.xref:03-blue.adoc[Blue]:
+
+* Operator-managed PostgreSQL cluster
+* Service Binding Operator
+* PetClinic application
+* Console notification
+* Custom header logo
+* Custom Web Terminal
+* Custom QuickStart Service Binding guide

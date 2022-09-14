@@ -1,43 +1,242 @@
-= Deploy Service
+= 3. Cluster Customizations (RED)
 include::_attributes.adoc[]
 
-[#service]
-== The Service
+[#user_access]
+== 3.0 User Access
+Establish a shared project namespace that everyone on your team can use:
 
-The code:
-
-[.lines_7]
+1. Use an admin account to create a new project namespace for the Red team to use:
++
 [.console-input]
-[source, java,subs="+macros,+attributes"]
-----
-public class Main {
-
-    public static void main(String[] args) {
-
-    } 
-
-}
-
-./mvnw compile
-----
-
-[#package]
-== Packaging the Service
-
-You can package the next bash script:
-
 [source,bash,subs="+macros,+attributes"]
 ----
-include::example$run.sh[]
+oc new-project red-team
 ----
 
-[#deploy]
-== Deploy the Service
+2. Provide existing user accounts with access to the `red-team` project namespace:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+for user in {1..10}; do oc adm policy add-role-to-user edit user$user ; done
+----
 
-And then you can deploy the service and execute commands inside:
 
-:podname: apps
+[#notifications]
+== 3.1 Console Notifications
 
-include::partial$exec_pod.adoc[]
+1. Click on the `Import` *(+)* link in the header, then paste the following YAML:
++
+[.console-input]
+[source,yaml,subs="+macros,+attributes"]
+----
+apiVersion: console.openshift.io/v1
+kind: ConsoleNotification
+metadata:
+  name: hackathon-banner
+spec:
+  text: Welcome Red Team to the Summit Connect 2022 Hackathon!
+  location: BannerTop
+  link:
+    href: 'https://github.com/redhat-scholars/quickstart-workshop/tree/master/apps/red'
+    text: (Red Team Repo)
+  color: '#fff'
+  backgroundColor: darkred
+----
 
-:!podname:
+2. Click `Create` to make the new `ConsoleNotification` visible to all cluster users
+
+
+
+[#header_logo]
+== 3.2 Customize the Header Logo
+
+1. Download an image that we can use for our header logo
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+curl https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/red/RedShell.png -o /tmp/red-shell.png
+----
+
+2. Upload the image into a Kubernetes configmap
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc create configmap console-custom-logo --from-file /tmp/red-shell.png -n openshift-config
+----
+
+3. Paste the following to generate a json patch file.  This file will be used to update the cluster console operator config:
++
+[.console-input]
+[source,yaml,subs="+macros,+attributes"]
+----
+cat <<EOF > /tmp/patch.yaml
+spec:
+  customization:
+    customLogoFile:
+      key: red-shell.png
+      name: console-custom-logo
+EOF
+----
+
+4. Send the configuration patch to the console cluster operator:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc patch consoles.operator.openshift.io cluster --type merge --patch-file /tmp/patch.yaml
+----
+
+
+[#login_screen]
+== 3.3 Customize the Login Screen
+
+Admin access required for the section
+
+1. Run the following command to create a template login page that you can modify:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc adm create-login-template > login.html
+----
+
+2. Replace the default `login.html` page with something more exciting:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+curl https://raw.githubusercontent.com/redhat-developer/openshift-web-console-customizations/master/competition/kenmoini/login.html -o login.html
+----
+
+3. Store our updated login page in a `secret`:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc create secret generic login-template --from-file=login.html -n openshift-config
+----
+
+4. Generate a patch file:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+cat <<EOF > /tmp/patch.yaml
+spec:
+  templates:
+    login:
+      name: login-template
+EOF
+----
+
+5. Apply the patch to the oauths resource named "cluster":
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc patch oauths cluster --type merge --patch-file /tmp/patch.yaml
+----
+
+
+
+[#custom_web_terminal]
+== 3.4 Configure Web Terminal defaults
+
+Update the cluster default terminal image by modifying the *DevWorkspaceTemplate/web-terminal-tooling* resource:
+
+1. Search *All Projects* for resources of type `DevWorkspaceTemplate`
++
+image:red/1-search-all.png[Search All Projects]
++
+image:red/2-search-resource.png[Search Resource type "DevWorkspaceTemplate"]
+
+2. Select the resource named `web-terminal-tooling`
++
+image:red/2-view-templates.png[View templates]
+
+3. Click on `YAML` to modify the terminal settings
++
+image:red/3-web-terminal-tooling.png[web terminal tooling]
+
+4. Add a new annotation after line 5:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+web-terminal.redhat.com/unmanaged-state: "true"
+----
+
+5. Replace the `spec.components[].container.image` url with:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+quay.io/ryan_j/summitconnect:4.10.25
+----
+
+6. Click `Save` to set the new default terminal image for the cluster
++
+image:red/4-web-terminal-tooling-yaml.png[web-terminal-tooling yaml config]
+
+7. Close and restart your Web Terminal
+8. In a new terminal, check the version of the `oc` command line tool:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc version
+----
++
+[.console-output]
+[source,bash,subs="+macros,+attributes"]
+----
+Client Version: 4.10.25
+Server Version: 4.10.26
+Kubernetes Version: v1.23.5+012e945
+----
++
+[TIP]
+====
+If you don't see an updated client release available, use the following command to refresh the outdated web terminal tooling pod:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc delete pod -l 'controller.devfile.io/devworkspace_id'
+----
+
+There will be a brief pause while the Web Terminal tooling container is replaced
+====
+
+
+[NOTE]
+====
+Non-admin users can also quickly override the default terminal image (without setting a new cluster default) using the `wtoctl` command:
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+wtoctl set image quay.io/ryan_j/summitconnect:latest
+----
+====
+
+
+
+
+
+[#quickstart_install]
+== 3.5 Quickstart Installation
+
+1. Install the red team quickstart which provides an introduction to `odo` v3.0:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc create -f https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/red/local-dev-with-odo.yaml
+----
+
+2. Search all quickstarts for a new entry named "Local development with odo 3.0"
+
+3. Start the quickstart and follow along with each step

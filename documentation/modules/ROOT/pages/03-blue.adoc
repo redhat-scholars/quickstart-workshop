@@ -1,43 +1,185 @@
-= Deploy Service
+= 3. Cluster Customizations (Blue)
 include::_attributes.adoc[]
 
-[#service]
-== The Service
+[#user_access]
+== 3.0 User Access
+Establish a shared project namespace that everyone on the team can use:
 
-The code:
-
-[.lines_7]
+1. Use an admin account to create a new project:
++
 [.console-input]
-[source, java,subs="+macros,+attributes"]
-----
-public class Main {
-
-    public static void main(String[] args) {
-
-    } 
-
-}
-
-./mvnw compile
-----
-
-[#package]
-== Packaging the Service
-
-You can package the next bash script:
-
 [source,bash,subs="+macros,+attributes"]
 ----
-include::example$run.sh[]
+oc new-project blue-team
 ----
 
-[#deploy]
-== Deploy the Service
+2. Provide existing user accounts with access to the `blue-team` project namespace:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+for user in {1..10}; do oc adm policy add-role-to-user edit user$user ; done
+----
 
-And then you can deploy the service and execute commands inside:
 
-:podname: apps
+[#notifications]
+== 3.1 Console Notifications
 
-include::partial$exec_pod.adoc[]
+1. Click on the `Import` *(represented by a plus sign, +)* link in the web console header. Paste the following YAML into the text editing area:
++
+[.console-input]
+[source,yaml,subs="+macros,+attributes"]
+----
+apiVersion: console.openshift.io/v1
+kind: ConsoleNotification
+metadata:
+  name: hackathon-banner
+spec:
+  text: Welcome to the Blue Team OpenShift cluster for the Summit Connect Hackathon!
+  location: BannerTop 
+  link:
+    href: 'https://github.com/redhat-scholars/quickstart-workshop/tree/master/apps/blue'
+    text: (View Source)
+  color: white
+  backgroundColor: blue
+----
 
-:!podname:
+2. Click `Create` to make the new `ConsoleNotification` visible to all cluster users
+
+
+[#header_logo]
+== 3.2 Customize the Header Logo
+
+1. Download an image to use for a header logo
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+curl https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/blue/logo.png -o /tmp/logo.png
+----
+
+2. Store the image data in a Kubernetes configmap
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc create configmap console-custom-logo --from-file /tmp/logo.png -n openshift-config
+----
+
+3. Paste the following to create a YAML patch file. This file holds the updated cluster console operator configuration pointing to the `console-custom-logo` configmap:
++
+[.console-input]
+[source,yaml,subs="+macros,+attributes"]
+----
+cat <<EOF > /tmp/patch.yaml
+spec:
+  customization:
+    customLogoFile:
+      key: logo.png
+      name: console-custom-logo
+EOF
+----
+
+4. Patch the console operator configuration to apply the new logo:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc patch consoles.operator.openshift.io cluster --type merge --patch-file /tmp/patch.yaml
+----
+
+
+[#custom_web_terminal]
+== 3.3 Configure Web Terminal
+
+Update the cluster default terminal image by modifying the *DevWorkspaceTemplate/web-terminal-tooling* resource:
+
+1. Search *All Projects* for resources of type `DevWorkspaceTemplate`
++
+image:red/1-search-all.png[Search All Projects]
++
+image:red/2-search-resource.png[Search Resource type "DevWorkspaceTemplate"]
+
+2. Select the resource named `web-terminal-tooling`
++
+image:red/2-view-templates.png[View templates]
+
+3. Click on `YAML` to modify the terminal settings
++
+image:red/3-web-terminal-tooling.png[web terminal tooling]
+
+4. Add a new annotation after line 5:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+web-terminal.redhat.com/unmanaged-state: "true"
+----
+
+5. Replace the `spec.components[].container.image` url with:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+quay.io/ryan_j/summitconnect:4.10.25
+----
+
+6. Click `Save` to set the new default terminal image for the cluster
++
+image:red/4-web-terminal-tooling-yaml.png[web-terminal-tooling yaml config]
+
+7. Close and restart your Web Terminal
+8. In a new terminal, check the version of the `oc` command line tool:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc version
+----
++
+[.console-output]
+[source,bash,subs="+macros,+attributes"]
+----
+Client Version: 4.10.25
+Server Version: 4.10.26
+Kubernetes Version: v1.23.5+012e945
+----
++
+[TIP]
+====
+If you don't see an updated `oc` version, run the following command to refresh the web terminal tooling pod:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc delete pod -l 'controller.devfile.io/devworkspace_id'
+----
+
+There will be a brief pause while the Web Terminal tooling container is replaced.
+====
+
+[NOTE]
+====
+Non-admin users can also quickly override the default terminal image (without setting a new cluster default) using the `wtoctl` command:
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+wtoctl set image quay.io/ryan_j/summitconnect:latest
+----
+====
+
+
+[#quickstart_install]
+== 3.4 Installing a custom QuickStart
+
+1. Install the blue team quickstart, which guides you through provisioning Operators to manage a backend database and automate application connections to it:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc create -f https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/blue/svcbind-quickstart.yaml
+----
+
+2. Open the QuickStarts catalog from the Help icon near the top right of the web console. Search the QuickStarts for the string "service binding" to filter the catalog until you find the QuickStart titled *Summit Connect Hackathon - Service Binding*.
+
+3. Click the QuickStart and follow the steps in it to deploy both tiers of a simple veterinary practice management application, the PetClinic.

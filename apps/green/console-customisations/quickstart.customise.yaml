@@ -1,0 +1,74 @@
+apiVersion: console.openshift.io/v1
+kind: ConsoleQuickStart
+metadata:
+  name: summit-connect-hackathon-quickstart-customise
+spec:
+  icon: data:image/png;base64,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
+  conclusion: >-
+    Congratulations! You successfully used Argo CD to manage cluster customisations! 
+  displayName: '#1 - Summit Connect Hackathon (Customise)'
+  tags:     
+  - summit
+  - connect
+  - hackathon
+  durationMinutes: 8
+  description: >-
+    Learn how to manage and store cluster resources in Git, then synchronise them to an OpenShift cluster using Argo CD.
+  prerequisites:
+  - Completed the associated workshop content at https://redhat-scholars.github.io/quickstart-workshop.
+  - A GitHub account.
+  introduction: >-
+    Welcome to Red Hat Summit Connect 2022, and this hackaton-specific Quick Start!
+
+
+    In this quick start, you'll learn how to manage and store cluster resources in Git, then synchronise them to the cluster using Argo CD.
+  tasks:
+  - title: Create a Git Repository to Store Resources
+    description: >-
+      Once you've completed the workshop content at https://redhat-scholars.github.io/quickstart-workshop, you'll have an Application configured in the cluster Argo CD that is synchronising resources to this cluster.
+      
+      Those resources are in a Git repository managed by the *redhat-scholars* GitHub organisation. 
+
+      You'll need to fork this Git repository to modfiy and add new resources to your cluster.
+      
+      1. Visit https://github.com and login to your account, or create one for free.
+
+      1. Visit (https://github.com/redhat-scholars/quickstart-workshop/fork)[the fork page].
+
+      1. Confirm the *Owner*, *Repository*, and *Description* fields are OK, or change them if necessary.
+
+      1. Click the *Create fork* button.
+
+      You will be redirected to your fork of the repository, i.e https://github.com/<your-username>/quickstart-workshop.
+    review:
+      instructions: |-
+          Is your fork of the repository available on your GitHub account? 
+      failedTaskHelp: Return to the https://redhat-scholars.github.io/quickstart-workshop repository and try using the *Fork* button.
+  - title: Modify the Argo CD Application
+    description: >-
+      Since you already deployed cluster customisations from a repository using an Argo CD Application, you can modify that application to use your forked repository.
+
+      1. Open the *Application Launcher*.
+
+      1. Click the *Cluster Argo CD* link to open the Argo CD dashboard. Login if prompted.
+
+      1. Select the existing _console-customisations_ Application from the UI. The Application overview is displayed.
+
+      1. Click the *App Details* button in the top-right corner of the Application overview. An overlay will appear.
+
+      1. Click the *Edit* button on the *Summary* tab of the overlay. The fields in the overlay will become editable.
+
+      1. Change the *Repo URL* value to the URL for your fork.
+
+      1. Click the *Save* button in the top-right corner of the UI, then use the *X* icon to close the overlay.
+
+    
+    review:
+      instructions: |-
+        Were you able to save the changes?
+      failedTaskHelp: Verify the repository URL and settings you entered are valid and try again. 
+    summary:
+      success: >-
+        You updated the Argo CD Application to use your fork! Try customising some of the YAML resources in the fork, and observe them being synced to the cluster by Argo CD.
+      failed: Try the steps again.
+  

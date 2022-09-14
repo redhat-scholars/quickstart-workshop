@@ -1,0 +1,79 @@
+apiVersion: console.openshift.io/v1
+kind: ConsoleQuickStart
+metadata:
+  name: summit-connect-hackathon-service-binding
+spec:
+  conclusion: 'The PetClinic application is automatically connected to its PostgreSQL database backend.'
+  description: Learn how the Service Binding Operator manages connections between your app and foundation services like databases.
+  displayName: 'Summit Connect Hackathon - Service Binding'
+  durationMinutes: 15
+  introduction: "Every frontend needs a backend. OpenShift can manage the backend, in this case a database, as well as automatically connecting frontends to it."
+  tags:
+  - Crunchy
+  - PostgreSQL
+  - Operators
+  - Service Binding
+  tasks:
+    - title: Install PostgreSQL database cluster Operator
+      description: >-
+        1. Use the [perspective switcher]{{highlight qs-perspective-switcher}} to select the *Administrator* perspective.
+
+        1. Click the [Operators]{{highlight qs-nav-operators}} item in the left-hand navigation. Click *Operator Hub* from the expanded menu to open the Operator Hub catalog view.
+
+        1. Search for "crunchy" in the Operator Hub. Select the Crunchy operator labeled **Community**. Click the Install button.
+            Accept the default installation settings (stable, all namespaces).
+      review:
+        instructions: |-
+          Verify that the Crunchy Postgres Operator is installed by clicking *Installed Operators* in the left navigation.
+        failedTaskHelp: This task isn’t verified yet.
+
+    - title: Install Service Binding Operator
+      description: >-
+        1. Click *Operator Hub* in the left navigation to return to the Operator Hub catalog.
+
+        1. Search for "binding" to filter the available Operators.
+
+        1. Select the *Service Binding Operator*.
+        
+        1. Click Install. You can accept the defaults: Stable channel, available to tend Service Bindings in all namespaces.
+      review:
+        instructions: |-
+          Verify that the Service Binding Operator is installed by clicking *Installed Operators* in the left navigation.
+        failedTaskHelp: This task isn’t verified yet.
+    - title: Ask the Postgres Operator to deploy a database
+      description: >-
+        With the Operators in place, have them manage a database cluster and connect your app to it:
+
+        1. Use the [perspective switcher]{{highlight qs-perspective-switcher}} to select the Developer perspective and ensure you are viewing the Topology for the blue-team project.
+
+        1. Create a postgrescluster managed by the Crunchy Operator
+            `oc apply -f https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/blue/db/pgcluster-deployment.yaml -n blue-team`{{execute}}
+      review:
+        instructions: |-
+          Verify that a PostgresCluster named *hippo* is running. The Developer perspective's Topology view should show 2 running *hippo-* pods with blue circles around their icons. There will also be one initialization *hippo-* pod circled in green to represent its `Completed` state.
+        failedTaskHelp: This task isn’t verified yet.
+    - title: Deploy frontend and bind to backend database service
+      description: >-
+        PetClinic is an application for managing the doctors, clients and animal patients of a veterinarian's office.
+
+        1. Create a deployment of the PetClinic application.
+            `oc apply -f https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/blue/petclinic/petclinic-deployment.yaml -n blue-team`{{execute}}
+
+        1. Declare a binding for the Service Binding Operator to create and manage, connecting your application to the available database service.
+            `oc apply -f https://raw.githubusercontent.com/redhat-scholars/quickstart-workshop/master/apps/blue/petclinic/petclinic-pgcluster-binding.yaml -n blue-team`{{execute}}`
+
+        1. Expose the spring-petclinic service to traffic from outside the cluster, creating a Route to the PetClinic app
+            `oc expose service spring-petclinic -n blue-team`{{execute}}
+
+        1. Visit the PetClinic application at its Route URL
+            Developer perspective -> Topology -> Click the arrow badge on the circle for `spring-petclinic` 
+            OR
+            `oc get routes -n blue-team`{{execute}}
+      review:
+        instructions: |-
+          Did the PetClinic application open and operate at its Route URL?
+        failedTaskHelp: Verify that you're viewing the correct Project to find the Route badge in the web console. Wait a moment for the Pods to be created. If this fails, retry the steps.
+  summary:
+    success: >-
+      You've set up managed backend services for a team of developers and deployed an application that uses them. Nice.
+    failed: Try the steps again.

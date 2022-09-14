@@ -11,7 +11,7 @@ const getMetrics = require('./metrics')()
 const app = express()
 
 // Log incoming HTTP requests and responses
-app.use(httplog())
+app.use(httplog('combined'))
 
 // Kubernetes health/readiness endpoints
 app.get("/readyz", (req, res) => res.status(200).json({ status: 'ok' }));

@@ -1,0 +1,124 @@
+= CH2 ConsoleQuickStarts
+include::_attributes.adoc[]
+
+[#quickstart_basics]
+== 2.1 ConsoleQuickStart Basic Usage
+
+The `ConsoleQuickStart` custom resource provides a convienient way to offer guided experiences and usage documentation within the OpenShift Console.
+
+1. From the Overview page, Choose the "View all quick starts" link within the "Getting started resources" section
++
+image::quickstarts/1-overview.png[Overview page]
++
+image::quickstarts/2-view_all_quickstarts.png[View All Quickstarts]
+2. Search quickstarts for "Helm", then select the tile labeled "Manage available content in the Helm Chart Catalog"
++
+image::quickstarts/3-view_helm_quickstarts.png[Search Helm Quickstarts]
+3. Follow along with the quickstart instructions to install the azure charts cluster-wide
++
+image::quickstarts/4-quickstart-start.png[Start a Quickstart]
++
+image::quickstarts/5-quickstart-open.png[Run a Quickstart]
++
+image::quickstarts/7-search-for-helm.png[Quickstart content - Search for Helm]
++
+image::quickstarts/8-select-helm-charts.png[Quickstart content - Create Helm Chart]
++
+image::quickstarts/9-quickstart-helm-yaml.png[Quickstart content - Install Helm Chart]
+4. After completing each instruction in the quickstart guide, click "Next". Then, follow the "Check your work" section to validate your work
++
+image::quickstarts/10-quickstart-check.png[Quickstart - Check your work]
+
+5. Follow the prompts to check your work and confirm that Azure helm charts are available in the "+Add" Menu.
++
+image::quickstarts/11-quickstart-testing.png[Quickstart content]
++
+image::quickstarts/12-quickstart-results.png[Quickstart content]
+6. Click "Next" when you are satisified with the results. Then click `Close` to complete the QuickStart 
+
+
+
+[#quickstart_advanced]
+== 2.2 Disabling Defaults QuickStarts
+
+Image a situation where we wanted our team to have access to the Bitnami Helm repos, but we don't want to clutter up the menu for other developers by making this content available cluster-wide.  `ProjectHelmChart` resources are the perfect solution when you need per-project or per-team usage of Helm repositories on a cluster.
+
+In this section, we will learn how to modify an existing `ConsoleQuickStart` resource with new instructions.  The resulting `ConsoleQuickStart` resource should install the Bitnami Helm repo (instead of the Azure helm repository).
+
+1. Use an admin account to create a new project namespace for this test:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc new-project summit-connect
+----
+2. Search for Resource type `ConsoleQuickStarts`
+3. Select the item named `install-helmchartrepo-ns`
+4. Generate a patch file that will hide quickstarts from our 'disabled' list:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+cat <<EOF > /tmp/patch.yaml
+spec:
+  customization:
+    quickStarts:
+      disabled:
+        - install-helmchartrepo-ns
+EOF
+----
+
+5. Send the configuration patch to the console cluster operator:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc patch consoles.operator.openshift.io cluster --type merge --patch-file /tmp/patch.yaml
+----
+
+[#quickstart_modifications]
+== 2.3 QuickStart Modifications
+
+
+1. Download a copy of the `install-helmchartrepo-ns` quickstart:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc get ConsoleQuickStart/install-helmchartrepo-ns -o yaml > helm-qs.yaml
+----
+
+2. Update the quickstart's included `url` attribute with the Bitnami helm repo address: `https://charts.bitnami.com/bitnami`
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+sed -i helm-qs.yaml -e "s/url: 'https:\/\/raw.githubusercontent.com\/Azure-Samples\/helm-charts\/master\/docs'/url: 'https:\/\/charts.bitnami.com\/bitnami\/'/"
+----
+
+3. Update the quickstart's name / id attribute with a unique value:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+sed -i helm-qs.yaml -e "s/name: install-helmchartrepo-ns/name: install-helmchart-bitnami/"
+----
+
+4. Upload the updated quickstart:
++
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc create -f helm-qs.yaml
+----
+
+In the next section, the reader will verify that the quickstart has been updated by running a manual test of the modified resource.
+
+[#quickstart_test]
+== 2.4 Check your work - Helm Charts per project
+
+Follow along with the "Add Helm Chart Repositories to extend the Developer Catalog for your project" quickstart to test your modifications from the previous seciton:
+
+1. Click on the "?" icon in the header menu, Then select "Quick Starts".  
+2. Search for "Helm", then select the tile labeled "Add Helm Chart Repositories to extend the Developer Catalog for your project"
+3. Complete each step of the quickstart.  Upon completion, you will confirm that the Bitnami helm repo has been enabled for use within the `summit-connect` project namespace
