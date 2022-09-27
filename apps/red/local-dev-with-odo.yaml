@@ -21,9 +21,7 @@ spec:
       1. Open the [Web Terminal]{{highlight qs-masthead-cloudshell}} or a terminal on your laptop machine
 
       2. Verify that you have version 3.0 of the `odo` command line tool:
-        ```
-        odo version
-        ```
+        `odo version`{{execute}}
 
     review:
       failedTaskHelp: This task isn’t verified yet. Try running `wtoctl set image quay.io/ryan_j/summitconnect:latest` to update your terminal.
@@ -34,14 +32,10 @@ spec:
     title: Verify that your terminal provides access to the odo command-line tool
   - description: |-
       1. Clone the example repo:
-        ```
-        git clone https://github.com/nodeshift-starters/nodejs-rest-http
-        ```
+        `git clone https://github.com/nodeshift-starters/nodejs-rest-http`{{execute}}
 
       2. Change into the repo directory: 
-        ```
-        cd nodejs-rest-http
-        ```
+        `cd nodejs-rest-http`{{execute}}
 
     review:
       failedTaskHelp: This task isn’t verified yet. Try again to proceed. 
@@ -52,19 +46,13 @@ spec:
     title: Verify that you have local access to the example repo
   - description: |-
       1. Verify that the terminal is configured to work with our "red-team" project namespace:
-        ```
-        oc project red-team
-        ```
+        `oc project red-team`{{execute}}
 
       2. Generate a new devfile for the repo using the `odo init` command: 
-        ```
-        odo init --name red-demo-1 --devfile nodejs
-        ```
+        `odo init --name red-demo-1 --devfile nodejs`{{execute}}
 
       3. Update the resulting `devfile.yaml` to set the default port to `8080` by running the command:
-        ```
-        sed -i devfile.yaml -e "s/targetPort: 3000/targetPort: 8080/"
-        ```
+        `sed -i devfile.yaml -e "s/targetPort: 3000/targetPort: 8080/"`{{execute}}
 
     review:
       failedTaskHelp: "This task isn’t verified yet. Try again to continue.  Odo documentation is available at: [odo.dev](https://odo.dev)"
@@ -75,19 +63,13 @@ spec:
     title: Generate a devfile to initialize the repo
   - description: |-
       1. Use `odo` to run local sources using remote cluster resources.  Since we only have one terminal, include an "&" after "odo dev" to run it in the background: 
-        ```
-        odo dev &
-        ```
+        `odo dev &`{{execute}}
 
       2. If you were running odo on your laptop, you could connect to the port number listed in the output of `odo dev`.  Since we are using the web terminal, we will need to expose a `svc` in order to check the current state of the app: 
-        ```
-        oc expose svc/red-demo-1-app
-        ```
+        `oc expose svc/red-demo-1-app`{{execute}}
 
       3. Open the route url in a new browser tab and read the title of the page: 
-        ```
-        oc get routes
-        ```
+        `oc get routes`{{execute}}
 
     review:
       failedTaskHelp: This task isn’t verified yet. Try running `oc get routes` to find the url to your demo application, or try `odo logs` to debug.
@@ -98,9 +80,7 @@ spec:
     title: Verify that you are able to successfully connect to your demo application using a web browser.
   - description: |-
       1. Make a small change to the source code (Welcome to Red Hat Summit Connect): 
-        ```
-        sed -i public/index.html -e 's/API Level 0 Example/Welcome to Red Hat Summit Connect 2022/'
-        ```
+        `sed -i public/index.html -e 's/API Level 0 Example/Welcome to Red Hat Summit Connect 2022/'`{{execute}}
 
       1. Reload the demo application to see the changes
     review:
