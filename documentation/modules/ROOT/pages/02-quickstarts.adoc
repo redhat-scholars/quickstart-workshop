@@ -29,12 +29,14 @@ image::quickstarts/9-quickstart-helm-yaml.png[Quickstart content - Install Helm 
 +
 image::quickstarts/10-quickstart-check.png[Quickstart - Check your work]
 
-5. Follow the prompts to check your work and confirm that Azure helm charts are available in the "+Add" Menu.
+5. Select a project from the list, or create a new one.
+
+6. Follow the prompts to check your work and confirm that Azure helm charts are available in the "+Add" Menu.
 +
 image::quickstarts/11-quickstart-testing.png[Quickstart content]
 +
 image::quickstarts/12-quickstart-results.png[Quickstart content]
-6. Click "Next" when you are satisified with the results. Then click `Close` to complete the QuickStart 
+7. Click "Next" when you are satisified with the results. Then click `Close` to complete the QuickStart 
 
 
 

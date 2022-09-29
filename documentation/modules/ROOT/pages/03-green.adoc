@@ -26,7 +26,7 @@ These customizations can be applied to any cluster where you have cluster-admin 
 ----
 git clone https://github.com/redhat-scholars/quickstart-workshop
 cd quickstart-workshop/apps/green/cluster-setup
-bash setup.sh
+./setup.sh
 ----
 ====
 
